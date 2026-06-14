@@ -51,18 +51,18 @@ Update the file after completing each sub-task, not just after completing an ent
   - [x] 2.5 Per cada report, obtenir la data de l'**últim run** (s'extreu dels camps del report a `process.py`).
   - [ ] 2.6 Confirmar els noms exactes dels camps de l'API (p. ex. `last_run_at` vs `last_successfully_run_at`) contra una resposta real i ajustar el codi. *(Pendent: requereix execució real contra l'API.)*
 
-- [ ] 3.0 Processament: mapeig query→font de dades i càlcul d'antiguitat de l'últim run
-  - [ ] 3.1 `process.py`: construir un índex `data_source_id` → nom de font de dades a partir de 2.1.
-  - [ ] 3.2 Per cada query, resoldre el nom de la font de dades; si l'id no existeix al llistat actual, marcar-la com **"morta/desconeguda"** (`data_source_alive = no`).
-  - [ ] 3.3 Calcular `days_since_last_run` per cada report; si no s'ha executat mai, marcar **"mai"**.
-  - [ ] 3.4 Construir les estructures de dades per a les dues sortides (files report+query i files report).
+- [x] 3.0 Processament: mapeig query→font de dades i càlcul d'antiguitat de l'últim run
+  - [x] 3.1 `process.py`: construir un índex `data_source_id` → nom de font de dades a partir de 2.1.
+  - [x] 3.2 Per cada query, resoldre el nom de la font de dades; si l'id no existeix al llistat actual, marcar-la com **"morta/desconeguda"** (`data_source_alive = no`).
+  - [x] 3.3 Calcular `days_since_last_run` per cada report; si no s'ha executat mai, marcar **"mai"**.
+  - [x] 3.4 Construir les estructures de dades per a les dues sortides (files report+query i files report).
 
-- [ ] 4.0 Generació de sortides (Inventari per font de dades, Reports per antiguitat i resum)
-  - [ ] 4.1 `outputs.py`: generar **Sortida 1** CSV (una fila per report+query) amb les columnes del PRD, ordenada/agrupada per font de dades.
-  - [ ] 4.2 Generar **Sortida 2** CSV (un report per fila) ordenada per `days_since_last_run` descendent, cobrint tots els reports.
-  - [ ] 4.3 Generar `summary.md` amb els recomptes globals i top-N reports més antics sense executar.
-  - [ ] 4.4 Garantir que cap sortida conté credencials ni secrets.
-  - [ ] 4.5 `main.py`: orquestrar config → recollida → processament → sortides i desar els fitxers a `output/`.
+- [x] 4.0 Generació de sortides (Inventari per font de dades, Reports per antiguitat i resum)
+  - [x] 4.1 `outputs.py`: generar **Sortida 1** CSV (una fila per report+query) amb les columnes del PRD, ordenada/agrupada per font de dades.
+  - [x] 4.2 Generar **Sortida 2** CSV (un report per fila) ordenada per `days_since_last_run` descendent, cobrint tots els reports.
+  - [x] 4.3 Generar `summary.md` amb els recomptes globals i top-N reports més antics sense executar.
+  - [x] 4.4 Garantir que cap sortida conté credencials ni secrets.
+  - [x] 4.5 `main.py`: orquestrar config → recollida → processament → sortides i desar els fitxers a `output/`.
 
 - [ ] 5.0 Documentació, versionat de sortides i validació final
   - [ ] 5.1 Escriure `README.md` amb requisits, configuració de variables d'entorn i com executar l'eina.
