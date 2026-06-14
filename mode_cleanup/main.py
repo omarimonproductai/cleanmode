@@ -30,16 +30,28 @@ def _debug_dump(client: ModeClient, output_dir: str) -> None:
     out = Path(output_dir)
     out.mkdir(parents=True, exist_ok=True)
 
-    spaces_payload = client.get("spaces")
+    spaces_payload = client.get("spaces?filter=all")
     (out / "_debug_spaces.json").write_text(
         json.dumps(spaces_payload, indent=2, ensure_ascii=False),
         encoding="utf-8",
     )
 
-    spaces = spaces_payload.get("_embedded", {}).get("spaces", [])
-    print(f"Debug: /spaces ha retornat {len(spaces)} espais.")
+    # Pla B: bolca també l'estructura de les fonts de dades (que SÍ veiem) per
+    # veure si exposen enllaços cap a les seves queries/reports.
+    ds_payload = client.get("data_sources")
+    (out / "_debug_data_sources.json").write_text(
+        json.dumps(ds_payload, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    ds_list = ds_payload.get("_embedded", {}).get("data_sources", [])
+    print(f"Debug: /data_sources ha retornat {len(ds_list)} fonts.")
 
-    probe: dict = {"space_count": len(spaces)}
+    spaces = spaces_payload.get("_embedded", {}).get("spaces", [])
+    print(f"Debug: /spaces?filter=all ha retornat {len(spaces)} espais.")
+
+    probe: dict = {"space_count": len(spaces), "data_source_count": len(ds_list)}
+    if ds_list:
+        probe["first_data_source_links"] = ds_list[0].get("_links", {})
     if spaces:
         sp = spaces[0]
         token = sp.get("token")
