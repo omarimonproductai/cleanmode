@@ -48,6 +48,19 @@
     <option value="si">Only with "from definition"</option>
     <option value="no">Only without "from definition"</option>
   </select>
+  <select id="ageop">
+    <option value="">Any last run</option>
+    <option value="gt">Last run more than</option>
+    <option value="lt">Last run less than</option>
+  </select>
+  <select id="agerange">
+    <option value="30">1 month</option>
+    <option value="90">3 months</option>
+    <option value="180">6 months</option>
+    <option value="365">1 year</option>
+    <option value="730" selected>2 years</option>
+    <option value="1095">3 years</option>
+  </select>
 </div>
 <div id="count"></div>
 <table>
@@ -116,12 +129,19 @@ function rowsFiltered(){
   const cre = document.getElementById("creator").value;
   const pur = document.getElementById("purity").value;
   const dead = document.getElementById("dead").value;
+  const ageop = document.getElementById("ageop").value;
+  const agethr = Number(document.getElementById("agerange").value);
   return reports.filter(r=>{
     if (q && !(`${r.report_name} ${r.space_name} ${r.creator}`.toLowerCase().includes(q))) return false;
     if (src && !r.data_sources.split("; ").includes(src)) return false;
     if (cre && r.creator !== cre) return false;
     if (pur && r.purity !== pur) return false;
     if (dead && r.has_dead_source !== dead) return false;
+    if (ageop){
+      const n = daysNum(r.days_since_last_run);
+      if (ageop === "gt" && !(n > agethr)) return false;
+      if (ageop === "lt" && !(n < agethr)) return false;
+    }
     return true;
   });
 }
@@ -162,7 +182,7 @@ document.querySelectorAll("th").forEach(th=>th.addEventListener("click",()=>{
   if (sortKey === k) sortAsc = !sortAsc; else { sortKey = k; sortAsc = true; }
   render();
 }));
-["q","source","creator","purity","dead"].forEach(id=>document.getElementById(id).addEventListener("input", render));
+["q","source","creator","purity","dead","ageop","agerange"].forEach(id=>document.getElementById(id).addEventListener("input", render));
 initFilters(); render();
 </script>
 </body>
