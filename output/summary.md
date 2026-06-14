@@ -1,42 +1,48 @@
 # Resum — Inventari de reports/queries de MODE
 
-- Reports totals: **27**
-- Queries totals (files d'inventari): **120**
-- Queries cap a fonts mortes/desconegudes: **2**
+- Reports totals: **574**
+- Queries totals (files d'inventari): **2585**
+- Queries 'from definition' (sense font de dades real): **258**
 - Reports mai executats: **0**
 
 ## Queries per font de dades
 
 | Font de dades | Queries |
 | --- | --- |
-| EF_postgresql | 59 |
-| Snowflake | 21 |
-| ZEUS - PRO | 21 |
-| EF_PRIME | 12 |
-| EF_Gecco | 5 |
-| (morta/desconeguda) | 2 |
+| EF_postgresql | 898 |
+| ZEUS - PRO | 788 |
+| Snowflake | 402 |
+| from definition | 258 |
+| ETENDO PRO Replica lectura | 128 |
+| EF_postgresql_backup | 65 |
+| EF_PRIME | 15 |
+| Fluctuo_datawarehouse | 13 |
+| EF_Gecco | 10 |
+| App_FirebaseEvents | 4 |
+| QuestDB | 3 |
+| Invers_datawarehouse | 1 |
 
 ## Top 20 reports més antics (o mai executats)
 
 | Report | Espai | Últim run | Dies | Arxivat |
 | --- | --- | --- | --- | --- |
+| [ORIOL] Control Credits | 1-Coses meves | 2019-06-19T20:37:03.245Z | 2551 | no |
+| Locations KPIs | DATA | 2019-07-30T11:27:37.528Z | 2511 | no |
+| Finance monthly export per city | 2-ORIOL Procés tancament mensual | 2019-07-30T14:44:20.547Z | 2510 | no |
+| ABCDE Final Analysis by Oriol | eCooltra ABC(DE) Analysis | 2019-08-22T12:23:52.771Z | 2488 | no |
+| Monthly ABC(DE) (No rental filter, excluding refunds) | eCooltra ABC(DE) Analysis | 2019-08-22T12:14:52.952Z | 2488 | no |
+| Monthly ABC(DE) (Rentals prefiltered, excluding refunds) | eCooltra ABC(DE) Analysis | 2019-08-22T12:07:01.325Z | 2488 | no |
+| Monthly ABC(DE)_ Milan | eCooltra ABC(DE) Analysis | 2019-08-22T11:36:00.010Z | 2488 | no |
+| Monthly ABC(DE)_ Lisbon | eCooltra ABC(DE) Analysis | 2019-08-22T11:32:15.107Z | 2488 | no |
+| Monthly ABC(DE)_ Rome | eCooltra ABC(DE) Analysis | 2019-08-22T11:30:43.866Z | 2488 | no |
+| Monthly ABC(DE)_ Madrid | eCooltra ABC(DE) Analysis | 2019-08-22T11:28:53.809Z | 2488 | no |
+| Monthly ABC(DE)_ Barcelona | eCooltra ABC(DE) Analysis | 2019-08-22T11:26:02.517Z | 2488 | no |
+| Monthly ABC(DE)_ Valencia | eCooltra ABC(DE) Analysis | 2019-08-22T07:51:02.492Z | 2488 | no |
+| Lifetime ABC(DE) | eCooltra ABC(DE) Analysis | 2019-08-22T06:21:33.568Z | 2488 | no |
+| Charges with 0% VAT | Exports | 2019-08-30T11:07:47.273Z | 2480 | no |
 | PACK Campaign - Total per Pack | ++ aSlack reports | 2019-09-12T11:22:50.694Z | 2467 | no |
-| 24h Online Bookings tracking | ++ aSlack reports | 2020-10-24T14:11:33.251Z | 2058 | no |
-| Total Registrations | ++ aSlack reports | 2020-11-30T17:22:01.116Z | 2021 | no |
-| Deleted credits | ++ aSlack reports | 2021-05-13T12:06:23.503Z | 1857 | no |
-| Unprocessed Problem Reports (Cooltra Prime) | ++ aSlack reports | 2021-07-06T06:18:25.276Z | 1804 | no |
-| Unapproved users (Cooltra Prime) | ++ aSlack reports | 2021-07-17T02:29:20.306Z | 1793 | no |
-| Unprocessed invoices | ++ aSlack reports | 2021-10-22T08:20:11.689Z | 1696 | no |
-| [ALL] Total Riders | ++ aSlack reports | 2021-11-30T18:00:44.528Z | 1656 | no |
-| Underaged: Activated+Approved | ++ aSlack reports | 2022-10-10T16:19:19.623Z | 1342 | no |
-| Incorrect DL: Activated+Approved | ++ aSlack reports | 2022-10-11T06:16:51.827Z | 1342 | no |
-| Unapproved users | ++ aSlack reports | 2022-10-11T06:22:55.615Z | 1342 | no |
-| Original [ALL] MONTHLY REVENUE PROGRESS | ++ aSlack reports | 2022-12-20T13:17:12.521Z | 1271 | no |
-| Underaged control (simple) | ++ aSlack reports | 2023-02-06T13:20:12.337Z | 1223 | no |
-| Unprocessed Problem Reports | ++ aSlack reports | 2023-02-07T09:10:40.025Z | 1223 | no |
-| RENTALS 0-3 MIN WITH BAD RATING | ++ aSlack reports | 2023-02-07T07:17:00.598Z | 1223 | no |
-| 24h PACK TRACKING | ++ aSlack reports | 2023-02-07T08:17:04.765Z | 1223 | no |
-| Problem reports closed in the last 24 hours | ++ aSlack reports | 2023-02-07T03:53:58.835Z | 1223 | no |
-| Yesterday rentals per city | ++ aSlack reports | 2023-02-07T07:18:28.040Z | 1223 | no |
-| MODE Sync Control | ++ aSlack reports | 2023-02-06T23:21:09.384Z | 1223 | no |
-| [ZEUS] Vehicles with 3+ Unprocessed Problem Reports | ++ aSlack reports | 2024-11-04T03:27:10.710Z | 587 | no |
+| _NOW_ promocode report (copy) | DATA | 2019-10-25T00:44:35.045Z | 2424 | no |
+| Lisbon: Data for Insurance Purposes | ++ City Managers | 2019-11-22T11:25:51.984Z | 2396 | no |
+| Lisbon rentals matrix of zip codes | ++ City Managers | 2019-12-02T14:36:28.057Z | 2385 | no |
+| Monthly progress of Unique Riders | Deprecated reports | 2019-12-09T08:16:27.999Z | 2379 | no |
+| Lisbon users per age range and gender | ++ City Managers | 2020-02-03T14:28:12.215Z | 2322 | no |
