@@ -1,0 +1,49 @@
+name: MODE inventory
+
+# Execució manual: genera l'inventari de reports/queries de MODE i committeja
+# els resultats (output/) de tornada a la branca.
+on:
+  workflow_dispatch:
+    inputs:
+      workspace:
+        description: "Nom del workspace de MODE (app.mode.com/<workspace>/...)"
+        required: true
+        default: "ecooltra706"
+
+permissions:
+  contents: write
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run inventory
+        env:
+          MODE_WORKSPACE: ${{ inputs.workspace }}
+          MODE_API_TOKEN: ${{ secrets.MODE_API_TOKEN }}
+          # El secret del repo es diu MODE_SECRET; config.py l'accepta com a àlies.
+          MODE_API_SECRET: ${{ secrets.MODE_SECRET }}
+        run: python -m mode_cleanup.main --output-dir output
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add output/
+          if git diff --staged --quiet; then
+            echo "Sense canvis a output/."
+          else
+            git commit -m "Update MODE inventory output"
+            git push
+          fi

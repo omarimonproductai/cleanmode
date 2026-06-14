@@ -64,9 +64,10 @@ Update the file after completing each sub-task, not just after completing an ent
   - [x] 4.4 Garantir que cap sortida conté credencials ni secrets.
   - [x] 4.5 `main.py`: orquestrar config → recollida → processament → sortides i desar els fitxers a `output/`.
 
-- [ ] 5.0 Documentació, versionat de sortides i validació final
-  - [ ] 5.1 Escriure `README.md` amb requisits, configuració de variables d'entorn i com executar l'eina.
-  - [ ] 5.2 Escriure tests bàsics (`tests/`) amb crides a l'API mockejades i executar `pytest` en verd.
-  - [ ] 5.3 Fer una execució real contra el workspace i validar els dos CSV + el resum.
-  - [ ] 5.4 Versionar la carpeta `output/` amb la primera "fotografia" generada.
-  - [ ] 5.5 Commit i push de tot el treball a la branca designada.
+- [x] 5.0 Documentació, versionat de sortides i validació final
+  - [x] 5.1 Escriure `README.md` amb requisits, configuració de variables d'entorn i com executar l'eina.
+  - [x] 5.2 Escriure tests bàsics (`tests/`) amb crides a l'API mockejades i executar `pytest` en verd.
+  - [ ] 5.3 Fer una execució real contra el workspace i validar els dos CSV + el resum. *(Pendent: llançar el workflow "MODE inventory" a GitHub Actions — requereix xarxa/credencials no disponibles en aquest entorn.)*
+  - [ ] 5.4 Versionar la carpeta `output/` amb la primera "fotografia" generada. *(Es genera automàticament en córrer el workflow.)*
+  - [x] 5.5 Commit i push de tot el treball a la branca designada.
+  - **Extra:** workflow de GitHub Actions (`.github/workflows/mode-inventory.yml`) que executa l'eina amb els secrets del repo i committeja `output/`.
