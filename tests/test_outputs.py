@@ -2,6 +2,7 @@ import csv
 
 from mode_cleanup.outputs import (
     INVENTORY_CSV,
+    REPORT_HTML,
     REPORTS_CSV,
     SUMMARY_MD,
     write_outputs,
@@ -44,12 +45,18 @@ def _rows():
         ReportRow(
             report_name="Old",
             report_token="r2",
-            report_url="",
+            report_url="https://app.mode.com/ecooltra706/reports/r2",
             space_name="Personal",
             owner="",
             last_run_at="",
             days_since_last_run="mai",
             is_archived="si",
+            query_count=1,
+            data_source_count=1,
+            purity="pure",
+            pure_source="(morta/desconeguda)",
+            data_sources="(morta/desconeguda)",
+            has_dead_source="si",
         ),
     ]
     return inventory, reports
@@ -71,3 +78,9 @@ def test_write_outputs_creates_files(tmp_path):
     summary = (tmp_path / SUMMARY_MD).read_text(encoding="utf-8")
     assert "Queries cap a fonts mortes/desconegudes: **1**" in summary
     assert "Reports mai executats: **1**" in summary
+
+    # HTML autònom amb les dades incrustades.
+    html = (tmp_path / REPORT_HTML).read_text(encoding="utf-8")
+    assert "Inventari de reports MODE" in html
+    assert "https://app.mode.com/ecooltra706/reports/r2" in html
+    assert "__DATA__" not in html  # el placeholder s'ha substituït

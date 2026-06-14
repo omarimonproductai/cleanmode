@@ -192,7 +192,7 @@ def main(argv: list[str] | None = None) -> int:
 
     # Inventari per report/query: només si el token hi té accés.
     if collected.reports:
-        inventory, reports = process(collected)
+        inventory, reports = process(collected, workspace=config.workspace)
         paths = write_outputs(
             inventory, reports, args.output_dir, top_n=args.top_n
         )

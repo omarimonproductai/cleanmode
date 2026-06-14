@@ -1,8 +1,9 @@
-"""Escriptura de les sortides: dos CSV i un resum en Markdown."""
+"""Escriptura de les sortides: CSVs, resum en Markdown i HTML interactiu."""
 
 from __future__ import annotations
 
 import csv
+import json
 from collections import Counter
 from dataclasses import fields
 from pathlib import Path
@@ -19,6 +20,7 @@ INVENTORY_CSV = "inventory_by_data_source.csv"
 REPORTS_CSV = "reports_by_staleness.csv"
 DATA_SOURCES_CSV = "data_sources.csv"
 SUMMARY_MD = "summary.md"
+REPORT_HTML = "index.html"
 
 
 def _write_csv(path: Path, rows: list, row_type) -> None:
@@ -55,17 +57,20 @@ def write_outputs(
     inventory_path = out / INVENTORY_CSV
     reports_path = out / REPORTS_CSV
     summary_path = out / SUMMARY_MD
+    html_path = out / REPORT_HTML
 
     _write_csv(inventory_path, inventory, InventoryRow)
     _write_csv(reports_path, reports, ReportRow)
     summary_path.write_text(
         _build_summary(inventory, reports, top_n), encoding="utf-8"
     )
+    html_path.write_text(_build_html(inventory, reports), encoding="utf-8")
 
     return {
         "inventory": inventory_path,
         "reports": reports_path,
         "summary": summary_path,
+        "html": html_path,
     }
 
 
@@ -111,3 +116,164 @@ def _build_summary(
         )
 
     return "\n".join(lines) + "\n"
+
+
+def _build_html(
+    inventory: list[InventoryRow], reports: list[ReportRow]
+) -> str:
+    """HTML autònom amb taula filtrable/ordenable de reports."""
+    data = [row_to_dict(r) for r in reports]
+    by_source = Counter(r.data_source_name for r in inventory)
+    stats = {
+        "reports": len(reports),
+        "queries": len(inventory),
+        "pure": sum(1 for r in reports if r.purity == "pure"),
+        "mixed": sum(1 for r in reports if r.purity == "mixed"),
+        "with_dead": sum(1 for r in reports if r.has_dead_source == "si"),
+        "by_source": by_source.most_common(),
+    }
+    payload = json.dumps(
+        {"reports": data, "stats": stats}, ensure_ascii=False
+    )
+    return _HTML_TEMPLATE.replace("__DATA__", payload)
+
+
+_HTML_TEMPLATE = """<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inventari de reports MODE</title>
+<style>
+  body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; padding: 1.5rem; color: #1a1a2e; background: #f5f6fa; }
+  h1 { margin: 0 0 .5rem; font-size: 1.4rem; }
+  .cards { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 1rem; }
+  .card { background: #fff; border-radius: 8px; padding: .6rem 1rem; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+  .card b { display: block; font-size: 1.4rem; }
+  .controls { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; }
+  input, select { padding: .45rem .6rem; border: 1px solid #ccc; border-radius: 6px; font-size: .9rem; }
+  input#q { flex: 1; min-width: 220px; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+  th, td { padding: .5rem .6rem; text-align: left; border-bottom: 1px solid #eee; font-size: .85rem; vertical-align: top; }
+  th { background: #1a1a2e; color: #fff; cursor: pointer; white-space: nowrap; position: sticky; top: 0; }
+  th:hover { background: #2d2d4e; }
+  tr:hover td { background: #f0f1f8; }
+  a { color: #2563eb; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .tag { display: inline-block; padding: .1rem .45rem; border-radius: 4px; font-size: .72rem; font-weight: 600; }
+  .pure { background: #dcfce7; color: #166534; }
+  .mixed { background: #fef3c7; color: #92400e; }
+  .sense_queries { background: #e5e7eb; color: #374151; }
+  .dead { background: #fee2e2; color: #991b1b; }
+  .muted { color: #888; }
+  #count { color: #555; font-size: .85rem; margin-bottom: .4rem; }
+</style>
+</head>
+<body>
+<h1>Inventari de reports MODE</h1>
+<div class="cards" id="cards"></div>
+<div class="controls">
+  <input id="q" placeholder="Cerca per nom de report, espai, owner...">
+  <select id="source"><option value="">Totes les fonts</option></select>
+  <select id="purity">
+    <option value="">Pures i mixtes</option>
+    <option value="pure">Només pures</option>
+    <option value="mixed">Només mixtes</option>
+    <option value="sense_queries">Sense queries</option>
+  </select>
+  <select id="dead">
+    <option value="">Amb i sense font morta</option>
+    <option value="si">Només amb font morta</option>
+    <option value="no">Només sense font morta</option>
+  </select>
+</div>
+<div id="count"></div>
+<table>
+  <thead><tr>
+    <th data-k="report_name">Report</th>
+    <th data-k="space_name">Col·lecció</th>
+    <th data-k="data_sources">Fonts de dades</th>
+    <th data-k="purity">Puresa</th>
+    <th data-k="query_count">Queries</th>
+    <th data-k="data_source_count">#Fonts</th>
+    <th data-k="days_since_last_run">Dies sense run</th>
+    <th data-k="owner">Owner</th>
+    <th data-k="is_archived">Arxivat</th>
+  </tr></thead>
+  <tbody id="rows"></tbody>
+</table>
+<script>
+const DATA = __DATA__;
+const reports = DATA.reports;
+let sortKey = "days_since_last_run", sortAsc = false;
+
+function daysNum(v){ return v === "mai" ? Infinity : Number(v); }
+
+function renderCards(){
+  const s = DATA.stats;
+  document.getElementById("cards").innerHTML = [
+    ["Reports", s.reports], ["Queries", s.queries],
+    ["Pures", s.pure], ["Mixtes", s.mixed], ["Amb font morta", s.with_dead]
+  ].map(([k,v])=>`<div class="card"><b>${v}</b>${k}</div>`).join("");
+  const sel = document.getElementById("source");
+  s.by_source.forEach(([name])=>{
+    const o = document.createElement("option"); o.value = name; o.textContent = name; sel.appendChild(o);
+  });
+}
+
+function rowsFiltered(){
+  const q = document.getElementById("q").value.toLowerCase();
+  const src = document.getElementById("source").value;
+  const pur = document.getElementById("purity").value;
+  const dead = document.getElementById("dead").value;
+  return reports.filter(r=>{
+    if (q && !(`${r.report_name} ${r.space_name} ${r.owner}`.toLowerCase().includes(q))) return false;
+    if (src && !r.data_sources.split("; ").includes(src)) return false;
+    if (pur && r.purity !== pur) return false;
+    if (dead && r.has_dead_source !== dead) return false;
+    return true;
+  });
+}
+
+function render(){
+  let rows = rowsFiltered();
+  rows.sort((a,b)=>{
+    let x = a[sortKey], y = b[sortKey];
+    if (sortKey === "days_since_last_run"){ x = daysNum(x); y = daysNum(y); }
+    if (sortKey === "query_count" || sortKey === "data_source_count"){ x = Number(x); y = Number(y); }
+    if (x < y) return sortAsc ? -1 : 1;
+    if (x > y) return sortAsc ? 1 : -1;
+    return 0;
+  });
+  document.getElementById("count").textContent = `${rows.length} reports`;
+  document.getElementById("rows").innerHTML = rows.map(r=>{
+    const purClass = r.purity;
+    const dead = r.has_dead_source === "si" ? ' <span class="tag dead">font morta</span>' : "";
+    const name = r.report_url ? `<a href="${r.report_url}" target="_blank">${esc(r.report_name)}</a>` : esc(r.report_name);
+    return `<tr>
+      <td>${name}${dead}</td>
+      <td>${esc(r.space_name)}</td>
+      <td>${esc(r.data_sources)}</td>
+      <td><span class="tag ${purClass}">${r.purity}</span></td>
+      <td>${r.query_count}</td>
+      <td>${r.data_source_count}</td>
+      <td>${r.days_since_last_run}</td>
+      <td class="muted">${esc(r.owner)}</td>
+      <td>${r.is_archived}</td>
+    </tr>`;
+  }).join("");
+}
+
+function esc(s){ return String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\\"":"&quot;"}[c])); }
+
+document.querySelectorAll("th").forEach(th=>th.addEventListener("click",()=>{
+  const k = th.dataset.k;
+  if (sortKey === k) sortAsc = !sortAsc; else { sortKey = k; sortAsc = true; }
+  render();
+}));
+["q","source","purity","dead"].forEach(id=>document.getElementById(id).addEventListener("input", render));
+renderCards(); render();
+</script>
+</body>
+</html>
+"""

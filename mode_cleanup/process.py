@@ -44,7 +44,7 @@ class InventoryRow:
 
 @dataclass
 class ReportRow:
-    """Una fila de la Sortida 2: un report."""
+    """Una fila de la Sortida 2: un report, amb classificació de puresa."""
 
     report_name: str
     report_token: str
@@ -54,6 +54,12 @@ class ReportRow:
     last_run_at: str
     days_since_last_run: Any  # int o "mai"
     is_archived: str
+    query_count: int
+    data_source_count: int
+    purity: str  # "pure" / "mixed" / "sense_queries"
+    pure_source: str  # nom de la font si és pure, si no ""
+    data_sources: str  # totes les fonts del report, separades per "; "
+    has_dead_source: str  # "si" / "no"
 
 
 def _parse_dt(value: str | None) -> datetime | None:
@@ -69,8 +75,15 @@ def _yes_no(value: Any) -> str:
     return "si" if value else "no"
 
 
-def _report_url(report: dict[str, Any]) -> str:
-    return report.get("_links", {}).get("web", {}).get("href", "")
+def _report_url(report: dict[str, Any], workspace: str) -> str:
+    """URL web absoluta i clicable del report."""
+    href = report.get("_links", {}).get("web", {}).get("href")
+    if href:
+        return href if href.startswith("http") else f"https://app.mode.com{href}"
+    token = report.get("token")
+    if token and workspace:
+        return f"https://app.mode.com/{workspace}/reports/{token}"
+    return ""
 
 
 def _owner(report: dict[str, Any]) -> str:
@@ -100,7 +113,7 @@ def build_data_source_index(data_sources: list[dict[str, Any]]) -> dict[Any, str
 
 
 def _process_report(
-    cr: CollectedReport, ds_index: dict[Any, str], now: datetime
+    cr: CollectedReport, ds_index: dict[Any, str], now: datetime, workspace: str
 ) -> tuple[list[InventoryRow], ReportRow]:
     report = cr.report
     last_run = _last_run_raw(report)
@@ -108,17 +121,23 @@ def _process_report(
     days = _days_since(last_run, now)
     owner = _owner(report)
     archived = _yes_no(report.get("archived"))
-    url = _report_url(report)
+    url = _report_url(report, workspace)
     name = report.get("name", "(sense nom)")
     token = report.get("token", "")
 
     inventory: list[InventoryRow] = []
+    sources: list[str] = []  # noms de font per query (manté ordre/repetits)
+    has_dead = False
     for query in cr.queries:
         ds_id = query.get("data_source_id")
         alive = ds_id in ds_index
+        ds_name = ds_index.get(ds_id, DEAD_SOURCE_LABEL)
+        sources.append(ds_name)
+        if not alive:
+            has_dead = True
         inventory.append(
             InventoryRow(
-                data_source_name=ds_index.get(ds_id, DEAD_SOURCE_LABEL),
+                data_source_name=ds_name,
                 data_source_id=ds_id if ds_id is not None else "",
                 data_source_alive=_yes_no(alive),
                 report_name=name,
@@ -133,6 +152,14 @@ def _process_report(
             )
         )
 
+    distinct = sorted(set(sources))
+    if not distinct:
+        purity = "sense_queries"
+    elif len(distinct) == 1:
+        purity = "pure"
+    else:
+        purity = "mixed"
+
     report_row = ReportRow(
         report_name=name,
         report_token=token,
@@ -142,12 +169,20 @@ def _process_report(
         last_run_at=last_run_display,
         days_since_last_run=days,
         is_archived=archived,
+        query_count=len(sources),
+        data_source_count=len(distinct),
+        purity=purity,
+        pure_source=distinct[0] if purity == "pure" else "",
+        data_sources="; ".join(distinct),
+        has_dead_source=_yes_no(has_dead),
     )
     return inventory, report_row
 
 
 def process(
-    collected: Collected, now: datetime | None = None
+    collected: Collected,
+    now: datetime | None = None,
+    workspace: str = "",
 ) -> tuple[list[InventoryRow], list[ReportRow]]:
     """Genera les files de les dues sortides a partir de les dades recollides.
 
@@ -162,7 +197,7 @@ def process(
     inventory: list[InventoryRow] = []
     reports: list[ReportRow] = []
     for cr in collected.reports:
-        inv_rows, report_row = _process_report(cr, ds_index, now)
+        inv_rows, report_row = _process_report(cr, ds_index, now, workspace)
         inventory.extend(inv_rows)
         reports.append(report_row)
 
