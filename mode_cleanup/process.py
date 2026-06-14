@@ -61,6 +61,10 @@ class ReportRow:
     pure_source: str  # nom de la font si és pure, si no ""
     data_sources: str  # totes les fonts del report, separades per "; "
     has_dead_source: str  # "si" / "no"
+    has_schedule: str  # "si" / "no"
+    schedule: str  # resum llegible dels schedules
+    schedule_delivery: str  # canals de lliurament (Slack, Email...)
+    next_run: str  # propera execució programada (data)
 
 
 def _parse_dt(value: str | None) -> datetime | None:
@@ -96,6 +100,42 @@ def _last_run_raw(report: dict[str, Any]) -> str | None:
         if report.get(key):
             return str(report[key])
     return None
+
+
+_DELIVERY_MAP = {
+    "SlackReportSubscriber": "Slack",
+    "EmailReportSubscriber": "Email",
+    "WebhookReportSubscriber": "Webhook",
+}
+
+
+def _schedule_summary(
+    schedules: list[dict[str, Any]],
+) -> tuple[str, str, str]:
+    """Retorna (resum, canals_lliurament, propera_execució) dels schedules."""
+    descs: list[str] = []
+    deliveries: set[str] = set()
+    nexts: list[str] = []
+    for s in schedules:
+        parts = [
+            s.get("frequency", "") or "",
+            s.get("hour", "") or "",
+            s.get("time_zone", "") or "",
+        ]
+        desc = " ".join(p for p in parts if p)
+        if desc:
+            descs.append(desc)
+        delivery = s.get("delivery")
+        if delivery:
+            deliveries.add(_DELIVERY_MAP.get(delivery, delivery))
+        nxt = s.get("next_scheduled_run")
+        if nxt:
+            nexts.append(nxt)
+    return (
+        " | ".join(descs),
+        ", ".join(sorted(deliveries)),
+        (min(nexts)[:10] if nexts else ""),
+    )
 
 
 def _days_since(last_run: str | None, now: datetime) -> Any:
@@ -150,6 +190,8 @@ def _process_report(
             )
         )
 
+    sched_desc, sched_delivery, sched_next = _schedule_summary(cr.schedules)
+
     distinct = sorted(set(sources))
     if not distinct:
         purity = "sense_queries"
@@ -174,6 +216,10 @@ def _process_report(
         pure_source=distinct[0] if purity == "pure" else "",
         data_sources="; ".join(distinct),
         has_dead_source=_yes_no(has_dead),
+        has_schedule=_yes_no(cr.schedules),
+        schedule=sched_desc,
+        schedule_delivery=sched_delivery,
+        next_run=sched_next,
     )
     return inventory, report_row
 

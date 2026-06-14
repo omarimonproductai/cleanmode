@@ -1,3 +1,5 @@
+import re
+
 import responses
 
 from mode_cleanup.client import ModeClient
@@ -6,6 +8,17 @@ from mode_cleanup.config import Config
 
 CONFIG = Config(workspace="ecooltra706", api_token="tok", api_secret="sec")
 WS = "https://app.mode.com/api/ecooltra706"
+SCHEDULES_RE = re.compile(r".*/schedules$")
+
+
+def _stub_schedules():
+    """Respon buit a qualsevol crida de /schedules (per als tests de collect)."""
+    responses.add(
+        responses.GET,
+        SCHEDULES_RE,
+        json={"_embedded": {"report_schedules": []}},
+        status=200,
+    )
 
 
 @responses.activate
@@ -48,6 +61,7 @@ def test_collect_all_gathers_reports_with_queries():
         status=200,
     )
 
+    _stub_schedules()
     result = collect_all(ModeClient(CONFIG))
 
     assert len(result.data_sources) == 1
@@ -105,6 +119,7 @@ def test_collect_follows_hal_reports_link_and_skips_404_space():
         status=200,
     )
 
+    _stub_schedules()
     result = collect_all(ModeClient(CONFIG))
     # L'espai 404 s'ha saltat; només queda el report de l'espai accessible.
     assert {r.report["token"] for r in result.reports} == {"r1"}
@@ -138,6 +153,7 @@ def test_collect_with_explicit_collection_tokens():
         status=200,
     )
 
+    _stub_schedules()
     result = collect_all(ModeClient(CONFIG), collection_tokens=["tok123"])
     assert len(result.reports) == 1
     assert result.reports[0].space_name == "Finance"
@@ -175,6 +191,7 @@ def test_failed_report_queries_does_not_abort_run():
     responses.add(responses.GET, f"{WS}/reports/rBAD/queries", status=500)
 
     client = ModeClient(CONFIG, max_retries=1, backoff_base=0)
+    _stub_schedules()
     result = collect_all(client, collection_tokens=["tokX"])
     # Tots dos reports hi son; el dolent amb queries buides.
     by_token = {r.report["token"]: r for r in result.reports}

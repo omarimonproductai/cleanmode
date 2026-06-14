@@ -23,6 +23,15 @@ def _collected():
                 {"name": "q_live", "data_source_id": 10},
                 {"name": "q_dead", "data_source_id": 999},
             ],
+            schedules=[
+                {
+                    "frequency": "daily",
+                    "hour": "1:00 pm",
+                    "time_zone": "Madrid",
+                    "delivery": "SlackReportSubscriber",
+                    "next_scheduled_run": "2026-06-15T11:00:00.000+00:00",
+                }
+            ],
         ),
         CollectedReport(
             report={"token": "r2", "name": "Never run", "archived": True},
@@ -78,6 +87,18 @@ def test_purity_mixed_and_pure():
     # r2 té només una query morta -> pure (d'una sola font, la morta).
     assert r2.purity == "pure"
     assert r2.pure_source == DEAD_SOURCE_LABEL
+
+
+def test_schedule_summary():
+    _, reports = process(_collected(), now=NOW, workspace="ecooltra706")
+    r1 = [r for r in reports if r.report_token == "r1"][0]
+    assert r1.has_schedule == "si"
+    assert r1.schedule == "daily 1:00 pm Madrid"
+    assert r1.schedule_delivery == "Slack"
+    assert r1.next_run == "2026-06-15"
+    r2 = [r for r in reports if r.report_token == "r2"][0]
+    assert r2.has_schedule == "no"
+    assert r2.schedule == ""
 
 
 def test_report_url_editor_format():

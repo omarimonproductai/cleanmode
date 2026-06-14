@@ -58,6 +58,10 @@ def _rows():
             pure_source="(morta/desconeguda)",
             data_sources="(morta/desconeguda)",
             has_dead_source="si",
+            has_schedule="si",
+            schedule="daily 1:00 pm Madrid",
+            schedule_delivery="Slack",
+            next_run="2026-06-15",
         ),
     ]
     return inventory, reports
@@ -83,5 +87,6 @@ def test_write_outputs_creates_files(tmp_path):
     # HTML autònom amb les dades incrustades.
     html = (tmp_path / REPORT_HTML).read_text(encoding="utf-8")
     assert "MODE reports inventory" in html
+    assert "daily 1:00 pm Madrid" in html  # schedule a la taula
     assert "https://app.mode.com/editor/ecooltra706/reports/r2" in html
     assert "__DATA__" not in html  # el placeholder s'ha substituït

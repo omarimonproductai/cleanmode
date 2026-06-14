@@ -167,6 +167,7 @@ _HTML_TEMPLATE = """<!DOCTYPE html>
   .mixed { background: #fef3c7; color: #92400e; }
   .sense_queries { background: #e5e7eb; color: #374151; }
   .dead { background: #fee2e2; color: #991b1b; }
+  .sched { background: #dbeafe; color: #1e40af; }
   .muted { color: #888; }
   #count { color: #555; font-size: .85rem; margin-bottom: .4rem; }
 </style>
@@ -188,6 +189,11 @@ _HTML_TEMPLATE = """<!DOCTYPE html>
     <option value="">From definition: all</option>
     <option value="si">Has from definition</option>
     <option value="no">No from definition</option>
+  </select>
+  <select id="sched">
+    <option value="">Scheduled: all</option>
+    <option value="si">Scheduled</option>
+    <option value="no">Not scheduled</option>
   </select>
   <select id="ageop">
     <option value="">Any last run</option>
@@ -212,6 +218,7 @@ _HTML_TEMPLATE = """<!DOCTYPE html>
     <th data-k="purity">Purity</th>
     <th data-k="query_count">Queries</th>
     <th data-k="days_since_last_run">Time since last run</th>
+    <th data-k="schedule">Schedule</th>
     <th data-k="creator">Creator</th>
     <th data-k="is_archived">Archived</th>
   </tr></thead>
@@ -240,6 +247,12 @@ function fmtAge(v){
 }
 
 function purityLabel(p){ return p === "sense_queries" ? "no queries" : p; }
+
+function schedCell(r){
+  if (r.has_schedule !== "si") return '<span class="muted">—</span>';
+  const dl = r.schedule_delivery ? ` <span class="tag sched">${esc(r.schedule_delivery)}</span>` : "";
+  return `${esc(r.schedule)}${dl}`;
+}
 
 function renderCards(rows){
   const queries = rows.reduce((a,r)=>a+Number(r.query_count||0),0);
@@ -270,6 +283,7 @@ function rowsFiltered(){
   const cre = document.getElementById("creator").value;
   const pur = document.getElementById("purity").value;
   const dead = document.getElementById("dead").value;
+  const sched = document.getElementById("sched").value;
   const ageop = document.getElementById("ageop").value;
   const agethr = Number(document.getElementById("agerange").value);
   return reports.filter(r=>{
@@ -278,6 +292,7 @@ function rowsFiltered(){
     if (cre && r.creator !== cre) return false;
     if (pur && r.purity !== pur) return false;
     if (dead && r.has_dead_source !== dead) return false;
+    if (sched && r.has_schedule !== sched) return false;
     if (ageop){
       const n = daysNum(r.days_since_last_run);
       if (ageop === "gt" && !(n > agethr)) return false;
@@ -310,6 +325,7 @@ function render(){
       <td><span class="tag ${purClass}">${purityLabel(r.purity)}</span></td>
       <td>${r.query_count}</td>
       <td>${fmtAge(r.days_since_last_run)}</td>
+      <td>${schedCell(r)}</td>
       <td class="muted">${esc(r.creator)}</td>
       <td>${r.is_archived}</td>
     </tr>`;
@@ -323,7 +339,7 @@ document.querySelectorAll("th").forEach(th=>th.addEventListener("click",()=>{
   if (sortKey === k) sortAsc = !sortAsc; else { sortKey = k; sortAsc = true; }
   render();
 }));
-["q","source","creator","purity","dead","ageop","agerange"].forEach(id=>document.getElementById(id).addEventListener("input", render));
+["q","source","creator","purity","dead","sched","ageop","agerange"].forEach(id=>document.getElementById(id).addEventListener("input", render));
 initFilters(); render();
 </script>
 </body>

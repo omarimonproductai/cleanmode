@@ -21,6 +21,7 @@ class CollectedReport:
     report: dict[str, Any]
     space_name: str
     queries: list[dict[str, Any]] = field(default_factory=list)
+    schedules: list[dict[str, Any]] = field(default_factory=list)
 
 
 @dataclass
@@ -56,6 +57,17 @@ def collect_report_queries(
     """
     path = _href(report, "queries") or f"reports/{report.get('token')}/queries"
     return list(client.paginate(path, "queries"))
+
+
+def collect_report_schedules(
+    client: ModeClient, report: dict[str, Any]
+) -> list[dict[str, Any]]:
+    """Schedules d'un report (freqüència, hora, lliurament...)."""
+    token = report.get("token")
+    if not token:
+        return []
+    payload = client.get(f"reports/{token}/schedules")
+    return payload.get("_embedded", {}).get("report_schedules", [])
 
 
 _SKIP_STATUSES = {403, 404}
@@ -149,9 +161,16 @@ def collect_all(
                     file=sys.stderr,
                 )
                 queries = []
+            try:
+                schedules = collect_report_schedules(client, report)
+            except ModeAPIError:
+                schedules = []
             reports.append(
                 CollectedReport(
-                    report=report, space_name=space_name, queries=queries
+                    report=report,
+                    space_name=space_name,
+                    queries=queries,
+                    schedules=schedules,
                 )
             )
 
