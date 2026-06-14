@@ -90,7 +90,7 @@ def _build_summary(
         "",
         f"- Reports totals: **{total_reports}**",
         f"- Queries totals (files d'inventari): **{total_queries}**",
-        f"- Queries cap a fonts mortes/desconegudes: **{dead_queries}**",
+        f"- Queries 'from definition' (sense font de dades real): **{dead_queries}**",
         f"- Reports mai executats: **{never_run}**",
         "",
         "## Queries per font de dades",
@@ -173,7 +173,7 @@ _HTML_TEMPLATE = """<!DOCTYPE html>
 <h1>Inventari de reports MODE</h1>
 <div class="cards" id="cards"></div>
 <div class="controls">
-  <input id="q" placeholder="Cerca per nom de report, espai, owner...">
+  <input id="q" placeholder="Cerca per report, col·lecció o creador...">
   <select id="source"><option value="">Totes les fonts</option></select>
   <select id="purity">
     <option value="">Pures i mixtes</option>
@@ -182,22 +182,21 @@ _HTML_TEMPLATE = """<!DOCTYPE html>
     <option value="sense_queries">Sense queries</option>
   </select>
   <select id="dead">
-    <option value="">Amb i sense font morta</option>
-    <option value="si">Només amb font morta</option>
-    <option value="no">Només sense font morta</option>
+    <option value="">Amb i sense "from definition"</option>
+    <option value="si">Només amb "from definition"</option>
+    <option value="no">Només sense "from definition"</option>
   </select>
 </div>
 <div id="count"></div>
 <table>
   <thead><tr>
-    <th data-k="report_name">Report</th>
     <th data-k="space_name">Col·lecció</th>
+    <th data-k="report_name">Report</th>
     <th data-k="data_sources">Fonts de dades</th>
     <th data-k="purity">Puresa</th>
     <th data-k="query_count">Queries</th>
-    <th data-k="data_source_count">#Fonts</th>
     <th data-k="days_since_last_run">Dies sense run</th>
-    <th data-k="owner">Owner</th>
+    <th data-k="creator">Creador</th>
     <th data-k="is_archived">Arxivat</th>
   </tr></thead>
   <tbody id="rows"></tbody>
@@ -213,7 +212,7 @@ function renderCards(){
   const s = DATA.stats;
   document.getElementById("cards").innerHTML = [
     ["Reports", s.reports], ["Queries", s.queries],
-    ["Pures", s.pure], ["Mixtes", s.mixed], ["Amb font morta", s.with_dead]
+    ["Pures", s.pure], ["Mixtes", s.mixed], ["From definition", s.with_dead]
   ].map(([k,v])=>`<div class="card"><b>${v}</b>${k}</div>`).join("");
   const sel = document.getElementById("source");
   s.by_source.forEach(([name])=>{
@@ -227,7 +226,7 @@ function rowsFiltered(){
   const pur = document.getElementById("purity").value;
   const dead = document.getElementById("dead").value;
   return reports.filter(r=>{
-    if (q && !(`${r.report_name} ${r.space_name} ${r.owner}`.toLowerCase().includes(q))) return false;
+    if (q && !(`${r.report_name} ${r.space_name} ${r.creator}`.toLowerCase().includes(q))) return false;
     if (src && !r.data_sources.split("; ").includes(src)) return false;
     if (pur && r.purity !== pur) return false;
     if (dead && r.has_dead_source !== dead) return false;
@@ -248,17 +247,16 @@ function render(){
   document.getElementById("count").textContent = `${rows.length} reports`;
   document.getElementById("rows").innerHTML = rows.map(r=>{
     const purClass = r.purity;
-    const dead = r.has_dead_source === "si" ? ' <span class="tag dead">font morta</span>' : "";
+    const dead = r.has_dead_source === "si" ? ' <span class="tag dead">from definition</span>' : "";
     const name = r.report_url ? `<a href="${r.report_url}" target="_blank">${esc(r.report_name)}</a>` : esc(r.report_name);
     return `<tr>
-      <td>${name}${dead}</td>
       <td>${esc(r.space_name)}</td>
+      <td>${name}${dead}</td>
       <td>${esc(r.data_sources)}</td>
       <td><span class="tag ${purClass}">${r.purity}</span></td>
       <td>${r.query_count}</td>
-      <td>${r.data_source_count}</td>
       <td>${r.days_since_last_run}</td>
-      <td class="muted">${esc(r.owner)}</td>
+      <td class="muted">${esc(r.creator)}</td>
       <td>${r.is_archived}</td>
     </tr>`;
   }).join("");

@@ -14,7 +14,7 @@ from typing import Any
 
 from .collect import Collected, CollectedReport
 
-DEAD_SOURCE_LABEL = "(morta/desconeguda)"
+DEAD_SOURCE_LABEL = "from definition"
 NEVER_RUN = "mai"
 
 # Possibles noms del camp d'últim run al report (es confirmaran contra l'API
@@ -51,6 +51,7 @@ class ReportRow:
     report_url: str
     space_name: str
     owner: str
+    creator: str  # usuari de MODE que va crear el report (de _links.creator)
     last_run_at: str
     days_since_last_run: Any  # int o "mai"
     is_archived: str
@@ -163,6 +164,7 @@ def _process_report(
         report_url=url,
         space_name=cr.space_name,
         owner=owner,
+        creator=_creator(report),
         last_run_at=last_run_display,
         days_since_last_run=days,
         is_archived=archived,

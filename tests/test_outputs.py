@@ -48,6 +48,7 @@ def _rows():
             report_url="https://app.mode.com/editor/ecooltra706/reports/r2",
             space_name="Personal",
             owner="",
+            creator="robertoleta",
             last_run_at="",
             days_since_last_run="mai",
             is_archived="si",
@@ -76,7 +77,7 @@ def test_write_outputs_creates_files(tmp_path):
     assert rows[0]["data_source_name"] == "(morta/desconeguda)"
 
     summary = (tmp_path / SUMMARY_MD).read_text(encoding="utf-8")
-    assert "Queries cap a fonts mortes/desconegudes: **1**" in summary
+    assert "Queries 'from definition' (sense font de dades real): **1**" in summary
     assert "Reports mai executats: **1**" in summary
 
     # HTML autònom amb les dades incrustades.

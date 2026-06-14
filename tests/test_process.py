@@ -77,7 +77,7 @@ def test_purity_mixed_and_pure():
     r2 = [r for r in reports if r.report_token == "r2"][0]
     # r2 té només una query morta -> pure (d'una sola font, la morta).
     assert r2.purity == "pure"
-    assert r2.pure_source == "(morta/desconeguda)"
+    assert r2.pure_source == DEAD_SOURCE_LABEL
 
 
 def test_report_url_editor_format():
