@@ -11,9 +11,10 @@
   .cards { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 1rem; }
   .card { background: #fff; border-radius: 8px; padding: .6rem 1rem; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
   .card b { display: block; font-size: 1.4rem; }
-  .controls { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; }
-  input, select { padding: .45rem .6rem; border: 1px solid #ccc; border-radius: 6px; font-size: .9rem; }
-  input#q { flex: 1; min-width: 220px; }
+  .controls { display: flex; flex-wrap: nowrap; gap: .4rem; margin-bottom: 1rem; overflow-x: auto; align-items: center; }
+  input, select { padding: .4rem .5rem; border: 1px solid #ccc; border-radius: 6px; font-size: .82rem; }
+  input#q { flex: 1 1 160px; min-width: 140px; }
+  .controls select { flex: 0 0 auto; min-width: 0; }
   table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
   th, td { padding: .5rem .6rem; text-align: left; border-bottom: 1px solid #eee; font-size: .85rem; vertical-align: top; }
   th { background: #1a1a2e; color: #fff; cursor: pointer; white-space: nowrap; position: sticky; top: 0; }
@@ -44,9 +45,9 @@
     <option value="sense_queries">No queries</option>
   </select>
   <select id="dead">
-    <option value="">With and without "from definition"</option>
-    <option value="si">Only with "from definition"</option>
-    <option value="no">Only without "from definition"</option>
+    <option value="">From definition: all</option>
+    <option value="si">Has from definition</option>
+    <option value="no">No from definition</option>
   </select>
   <select id="ageop">
     <option value="">Any last run</option>
@@ -107,7 +108,7 @@ function renderCards(rows){
   const dead = rows.filter(r=>r.has_dead_source==="si").length;
   document.getElementById("cards").innerHTML = [
     ["Reports", rows.length], ["Queries", queries],
-    ["Pures", pure], ["Mixtes", mixed], ["From definition", dead]
+    ["Pure", pure], ["Mixed", mixed], ["From definition", dead]
   ].map(([k,v])=>`<div class="card"><b>${v}</b>${k}</div>`).join("");
 }
 
