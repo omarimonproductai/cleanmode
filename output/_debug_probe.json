@@ -36,5 +36,26 @@
       "ok": false,
       "status": 404
     }
-  ]
+  ],
+  "data_source_count": 14,
+  "first_data_source_links": {
+    "self": {
+      "href": "/api/ecooltra706/data_sources/8d0b1ba3d4d5"
+    },
+    "creator": {
+      "href": "/api/robertoleta"
+    },
+    "account": {
+      "href": "/api/ecooltra706"
+    },
+    "permissions": {
+      "href": "/api/ecooltra706/data_sources/8d0b1ba3d4d5/permissions"
+    },
+    "web": {
+      "href": "/organizations/ecooltra706/data_sources/8d0b1ba3d4d5"
+    },
+    "web_home": {
+      "href": "/home/ecooltra706/data_sources/8d0b1ba3d4d5"
+    }
+  }
 }

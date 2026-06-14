@@ -1,0 +1,1418 @@
+{
+  "_links": {
+    "self": {
+      "href": "/api/ecooltra706/data_sources"
+    }
+  },
+  "_embedded": {
+    "data_sources": [
+      {
+        "id": "31860",
+        "name": "App_FirebaseEvents",
+        "description": "",
+        "token": "8d0b1ba3d4d5",
+        "adapter": "jdbc:bigquery",
+        "created_at": "2021-06-28T09:21:10.751Z",
+        "updated_at": "2025-04-03T07:32:05.778Z",
+        "has_expensive_schema_updates": false,
+        "public": false,
+        "asleep": false,
+        "queryable": true,
+        "soft_deleted": false,
+        "display_name": "App_FirebaseEvents",
+        "account_id": "138643",
+        "account_username": "ecooltra706",
+        "organization_token": "0c8ecf80991c",
+        "organization_plan_code": "plus",
+        "database": "default",
+        "host": "api-project-1029065104652",
+        "port": 9443,
+        "ssl": true,
+        "username": "mode-connector@api-project-1029065104652.iam.gserviceaccount.com",
+        "provider": "google",
+        "vendor": "bigquery",
+        "ldap": false,
+        "warehouse": null,
+        "bridged": false,
+        "adapter_version": "1.6.1.1002",
+        "custom_attributes": {
+          "standard_sql": "true"
+        },
+        "default_access_level": "View",
+        "_links": {
+          "self": {
+            "href": "/api/ecooltra706/data_sources/8d0b1ba3d4d5"
+          },
+          "creator": {
+            "href": "/api/robertoleta"
+          },
+          "account": {
+            "href": "/api/ecooltra706"
+          },
+          "permissions": {
+            "href": "/api/ecooltra706/data_sources/8d0b1ba3d4d5/permissions"
+          },
+          "web": {
+            "href": "/organizations/ecooltra706/data_sources/8d0b1ba3d4d5"
+          },
+          "web_home": {
+            "href": "/home/ecooltra706/data_sources/8d0b1ba3d4d5"
+          }
+        },
+        "_forms": {
+          "edit": {
+            "method": "patch",
+            "action": "/api/ecooltra706/data_sources/8d0b1ba3d4d5",
+            "content_type": "application/json",
+            "input": {
+              "data_source": {
+                "tables[]": {
+                  "name": {
+                    "type": "text"
+                  },
+                  "description": {
+                    "type": "text"
+                  },
+                  "schema": {
+                    "type": "text"
+                  },
+                  "columns[]": {
+                    "name": {
+                      "type": "text"
+                    },
+                    "data_type": {
+                      "type": "text"
+                    },
+                    "is_nullable": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": true
+                    },
+                    "primary_key": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "25788",
+        "name": "EF_Gecco",
+        "description": "bbdd gecco",
+        "token": "25153eba0548",
+        "adapter": "jdbc:postgresql",
+        "created_at": "2020-07-13T18:04:31.130Z",
+        "updated_at": "2025-04-03T07:32:33.334Z",
+        "has_expensive_schema_updates": false,
+        "public": false,
+        "asleep": false,
+        "queryable": true,
+        "soft_deleted": false,
+        "display_name": "EF_Gecco",
+        "account_id": "138643",
+        "account_username": "ecooltra706",
+        "organization_token": "0c8ecf80991c",
+        "organization_plan_code": "plus",
+        "database": "86d53d8f58cc",
+        "host": "ef-warehouse.cwkdbly7jpmk.eu-west-1.rds.amazonaws.com",
+        "port": 5432,
+        "ssl": true,
+        "username": "86d53d8f58cc_analytics",
+        "provider": "default",
+        "vendor": "postgresql",
+        "ldap": false,
+        "warehouse": null,
+        "bridged": false,
+        "adapter_version": "42.7.4",
+        "custom_attributes": {
+          "instance_name": ""
+        },
+        "ssl_trusted_cert": null,
+        "default_access_level": "View",
+        "_links": {
+          "self": {
+            "href": "/api/ecooltra706/data_sources/25153eba0548"
+          },
+          "creator": {
+            "href": "/api/robertoleta"
+          },
+          "account": {
+            "href": "/api/ecooltra706"
+          },
+          "permissions": {
+            "href": "/api/ecooltra706/data_sources/25153eba0548/permissions"
+          },
+          "web": {
+            "href": "/organizations/ecooltra706/data_sources/25153eba0548"
+          },
+          "web_home": {
+            "href": "/home/ecooltra706/data_sources/25153eba0548"
+          }
+        },
+        "_forms": {
+          "edit": {
+            "method": "patch",
+            "action": "/api/ecooltra706/data_sources/25153eba0548",
+            "content_type": "application/json",
+            "input": {
+              "data_source": {
+                "tables[]": {
+                  "name": {
+                    "type": "text"
+                  },
+                  "description": {
+                    "type": "text"
+                  },
+                  "schema": {
+                    "type": "text"
+                  },
+                  "columns[]": {
+                    "name": {
+                      "type": "text"
+                    },
+                    "data_type": {
+                      "type": "text"
+                    },
+                    "is_nullable": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": true
+                    },
+                    "primary_key": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "22468",
+        "name": "EF_PRIME",
+        "description": "BBDD Prime Cooltra",
+        "token": "e12d2bc32007",
+        "adapter": "jdbc:postgresql",
+        "created_at": "2019-12-17T20:49:58.011Z",
+        "updated_at": "2025-04-03T07:32:33.424Z",
+        "has_expensive_schema_updates": false,
+        "public": false,
+        "asleep": false,
+        "queryable": true,
+        "soft_deleted": false,
+        "display_name": "EF_PRIME",
+        "account_id": "138643",
+        "account_username": "ecooltra706",
+        "organization_token": "0c8ecf80991c",
+        "organization_plan_code": "plus",
+        "database": "861fe0b487c0",
+        "host": "ef-warehouse.cwkdbly7jpmk.eu-west-1.rds.amazonaws.com",
+        "port": 5432,
+        "ssl": true,
+        "username": "861fe0b487c0_analytics",
+        "provider": "default",
+        "vendor": "postgresql",
+        "ldap": false,
+        "warehouse": null,
+        "bridged": false,
+        "adapter_version": "42.7.4",
+        "custom_attributes": {
+          "instance_name": ""
+        },
+        "ssl_trusted_cert": null,
+        "default_access_level": "View",
+        "_links": {
+          "self": {
+            "href": "/api/ecooltra706/data_sources/e12d2bc32007"
+          },
+          "creator": {
+            "href": "/api/robertoleta"
+          },
+          "account": {
+            "href": "/api/ecooltra706"
+          },
+          "permissions": {
+            "href": "/api/ecooltra706/data_sources/e12d2bc32007/permissions"
+          },
+          "web": {
+            "href": "/organizations/ecooltra706/data_sources/e12d2bc32007"
+          },
+          "web_home": {
+            "href": "/home/ecooltra706/data_sources/e12d2bc32007"
+          }
+        },
+        "_forms": {
+          "edit": {
+            "method": "patch",
+            "action": "/api/ecooltra706/data_sources/e12d2bc32007",
+            "content_type": "application/json",
+            "input": {
+              "data_source": {
+                "tables[]": {
+                  "name": {
+                    "type": "text"
+                  },
+                  "description": {
+                    "type": "text"
+                  },
+                  "schema": {
+                    "type": "text"
+                  },
+                  "columns[]": {
+                    "name": {
+                      "type": "text"
+                    },
+                    "data_type": {
+                      "type": "text"
+                    },
+                    "is_nullable": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": true
+                    },
+                    "primary_key": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "18616",
+        "name": "EF_postgresql",
+        "description": "",
+        "token": "19371e2503f8",
+        "adapter": "jdbc:postgresql",
+        "created_at": "2019-05-23T10:16:50.049Z",
+        "updated_at": "2025-04-03T07:32:33.380Z",
+        "has_expensive_schema_updates": false,
+        "public": false,
+        "asleep": false,
+        "queryable": true,
+        "soft_deleted": false,
+        "display_name": "EF_postgresql",
+        "account_id": "138643",
+        "account_username": "ecooltra706",
+        "organization_token": "0c8ecf80991c",
+        "organization_plan_code": "plus",
+        "database": "b98042e9eafc",
+        "host": "ef-warehouse.cwkdbly7jpmk.eu-west-1.rds.amazonaws.com",
+        "port": 5432,
+        "ssl": true,
+        "username": "b98042e9eafc_analytics",
+        "provider": "default",
+        "vendor": "postgresql",
+        "ldap": false,
+        "warehouse": null,
+        "bridged": false,
+        "adapter_version": "42.7.4",
+        "custom_attributes": null,
+        "ssl_trusted_cert": null,
+        "default_access_level": "View",
+        "_links": {
+          "self": {
+            "href": "/api/ecooltra706/data_sources/19371e2503f8"
+          },
+          "creator": {
+            "href": "/api/robertoleta"
+          },
+          "account": {
+            "href": "/api/ecooltra706"
+          },
+          "permissions": {
+            "href": "/api/ecooltra706/data_sources/19371e2503f8/permissions"
+          },
+          "web": {
+            "href": "/organizations/ecooltra706/data_sources/19371e2503f8"
+          },
+          "web_home": {
+            "href": "/home/ecooltra706/data_sources/19371e2503f8"
+          }
+        },
+        "_forms": {
+          "edit": {
+            "method": "patch",
+            "action": "/api/ecooltra706/data_sources/19371e2503f8",
+            "content_type": "application/json",
+            "input": {
+              "data_source": {
+                "tables[]": {
+                  "name": {
+                    "type": "text"
+                  },
+                  "description": {
+                    "type": "text"
+                  },
+                  "schema": {
+                    "type": "text"
+                  },
+                  "columns[]": {
+                    "name": {
+                      "type": "text"
+                    },
+                    "data_type": {
+                      "type": "text"
+                    },
+                    "is_nullable": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": true
+                    },
+                    "primary_key": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "40594",
+        "name": "EF_postgresql_backup",
+        "description": "EF's DWH backup",
+        "token": "e465cfc808d4",
+        "adapter": "jdbc:postgresql",
+        "created_at": "2023-02-07T11:20:30.007Z",
+        "updated_at": "2023-02-07T11:20:30.161Z",
+        "has_expensive_schema_updates": false,
+        "public": false,
+        "asleep": false,
+        "queryable": true,
+        "soft_deleted": false,
+        "display_name": "EF_postgresql_backup",
+        "account_id": "138643",
+        "account_username": "ecooltra706",
+        "organization_token": "0c8ecf80991c",
+        "organization_plan_code": "plus",
+        "database": "efbackup",
+        "host": "ef-backup.zeus.cooltra.com",
+        "port": 5432,
+        "ssl": true,
+        "username": "zeusefcopy",
+        "provider": "aurora",
+        "vendor": "postgresql",
+        "ldap": false,
+        "warehouse": null,
+        "bridged": true,
+        "adapter_version": "42.3.2",
+        "custom_attributes": {
+          "instance_name": ""
+        },
+        "ssl_trusted_cert": null,
+        "default_access_level": "View",
+        "_links": {
+          "self": {
+            "href": "/api/ecooltra706/data_sources/e465cfc808d4"
+          },
+          "creator": {
+            "href": "/api/modezeus"
+          },
+          "account": {
+            "href": "/api/ecooltra706"
+          },
+          "permissions": {
+            "href": "/api/ecooltra706/data_sources/e465cfc808d4/permissions"
+          },
+          "web": {
+            "href": "/organizations/ecooltra706/data_sources/e465cfc808d4"
+          },
+          "web_home": {
+            "href": "/home/ecooltra706/data_sources/e465cfc808d4"
+          }
+        },
+        "_forms": {
+          "edit": {
+            "method": "patch",
+            "action": "/api/ecooltra706/data_sources/e465cfc808d4",
+            "content_type": "application/json",
+            "input": {
+              "data_source": {
+                "tables[]": {
+                  "name": {
+                    "type": "text"
+                  },
+                  "description": {
+                    "type": "text"
+                  },
+                  "schema": {
+                    "type": "text"
+                  },
+                  "columns[]": {
+                    "name": {
+                      "type": "text"
+                    },
+                    "data_type": {
+                      "type": "text"
+                    },
+                    "is_nullable": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": true
+                    },
+                    "primary_key": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "39596",
+        "name": "ETENDO PRO Replica lectura",
+        "description": "",
+        "token": "35697c007101",
+        "adapter": "jdbc:postgresql",
+        "created_at": "2022-11-16T09:25:12.386Z",
+        "updated_at": "2023-02-03T14:25:19.195Z",
+        "has_expensive_schema_updates": false,
+        "public": false,
+        "asleep": false,
+        "queryable": true,
+        "soft_deleted": false,
+        "display_name": "ETENDO PRO Replica lectura",
+        "account_id": "138643",
+        "account_username": "ecooltra706",
+        "organization_token": "0c8ecf80991c",
+        "organization_plan_code": "plus",
+        "database": "openbravo",
+        "host": "cooltra-etendo-22q2-cluster.cluster-ro-c0oeog17s6z6.eu-west-1.rds.amazonaws.com",
+        "port": 5432,
+        "ssl": true,
+        "username": "rds_admin",
+        "provider": "default",
+        "vendor": "postgresql",
+        "ldap": false,
+        "warehouse": null,
+        "bridged": true,
+        "adapter_version": "42.3.2",
+        "custom_attributes": {
+          "instance_name": ""
+        },
+        "ssl_trusted_cert": null,
+        "default_access_level": "Query",
+        "_links": {
+          "self": {
+            "href": "/api/ecooltra706/data_sources/35697c007101"
+          },
+          "creator": {
+            "href": "/api/robertoleta"
+          },
+          "account": {
+            "href": "/api/ecooltra706"
+          },
+          "permissions": {
+            "href": "/api/ecooltra706/data_sources/35697c007101/permissions"
+          },
+          "web": {
+            "href": "/organizations/ecooltra706/data_sources/35697c007101"
+          },
+          "web_home": {
+            "href": "/home/ecooltra706/data_sources/35697c007101"
+          }
+        },
+        "_forms": {
+          "edit": {
+            "method": "patch",
+            "action": "/api/ecooltra706/data_sources/35697c007101",
+            "content_type": "application/json",
+            "input": {
+              "data_source": {
+                "tables[]": {
+                  "name": {
+                    "type": "text"
+                  },
+                  "description": {
+                    "type": "text"
+                  },
+                  "schema": {
+                    "type": "text"
+                  },
+                  "columns[]": {
+                    "name": {
+                      "type": "text"
+                    },
+                    "data_type": {
+                      "type": "text"
+                    },
+                    "is_nullable": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": true
+                    },
+                    "primary_key": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "29154",
+        "name": "Fluctuo_datawarehouse",
+        "description": "BD que contiene la información de los servicios de sharing europeos de la compañía fluctuo",
+        "token": "2307d9629f39",
+        "adapter": "jdbc:postgresql",
+        "created_at": "2021-01-29T15:40:39.317Z",
+        "updated_at": "2025-04-03T07:32:35.837Z",
+        "has_expensive_schema_updates": false,
+        "public": false,
+        "asleep": false,
+        "queryable": true,
+        "soft_deleted": false,
+        "display_name": "Fluctuo_datawarehouse",
+        "account_id": "138643",
+        "account_username": "ecooltra706",
+        "organization_token": "0c8ecf80991c",
+        "organization_plan_code": "plus",
+        "database": "ModeFluctuo",
+        "host": "modedatawarehouse.cluster-c0oeog17s6z6.eu-west-1.rds.amazonaws.com",
+        "port": 5432,
+        "ssl": true,
+        "username": "rds_admin",
+        "provider": "default",
+        "vendor": "postgresql",
+        "ldap": false,
+        "warehouse": null,
+        "bridged": false,
+        "adapter_version": "42.7.4",
+        "custom_attributes": {
+          "instance_name": ""
+        },
+        "ssl_trusted_cert": null,
+        "default_access_level": "View",
+        "_links": {
+          "self": {
+            "href": "/api/ecooltra706/data_sources/2307d9629f39"
+          },
+          "creator": {
+            "href": "/api/robertoleta"
+          },
+          "account": {
+            "href": "/api/ecooltra706"
+          },
+          "permissions": {
+            "href": "/api/ecooltra706/data_sources/2307d9629f39/permissions"
+          },
+          "web": {
+            "href": "/organizations/ecooltra706/data_sources/2307d9629f39"
+          },
+          "web_home": {
+            "href": "/home/ecooltra706/data_sources/2307d9629f39"
+          }
+        },
+        "_forms": {
+          "edit": {
+            "method": "patch",
+            "action": "/api/ecooltra706/data_sources/2307d9629f39",
+            "content_type": "application/json",
+            "input": {
+              "data_source": {
+                "tables[]": {
+                  "name": {
+                    "type": "text"
+                  },
+                  "description": {
+                    "type": "text"
+                  },
+                  "schema": {
+                    "type": "text"
+                  },
+                  "columns[]": {
+                    "name": {
+                      "type": "text"
+                    },
+                    "data_type": {
+                      "type": "text"
+                    },
+                    "is_nullable": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": true
+                    },
+                    "primary_key": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "22215",
+        "name": "Invers_datawarehouse",
+        "description": "",
+        "token": "50aa0bf820e8",
+        "adapter": "jdbc:postgresql",
+        "created_at": "2019-11-30T22:35:34.722Z",
+        "updated_at": "2025-04-03T07:32:51.895Z",
+        "has_expensive_schema_updates": false,
+        "public": false,
+        "asleep": false,
+        "queryable": true,
+        "soft_deleted": false,
+        "display_name": "Invers_datawarehouse",
+        "account_id": "138643",
+        "account_username": "ecooltra706",
+        "organization_token": "0c8ecf80991c",
+        "organization_plan_code": "plus",
+        "database": "invers",
+        "host": "modedatawarehouse.cluster-c0oeog17s6z6.eu-west-1.rds.amazonaws.com",
+        "port": 5432,
+        "ssl": true,
+        "username": "rds_admin",
+        "provider": "default",
+        "vendor": "postgresql",
+        "ldap": false,
+        "warehouse": null,
+        "bridged": false,
+        "adapter_version": "42.7.4",
+        "custom_attributes": {
+          "instance_name": ""
+        },
+        "ssl_trusted_cert": null,
+        "default_access_level": "View",
+        "_links": {
+          "self": {
+            "href": "/api/ecooltra706/data_sources/50aa0bf820e8"
+          },
+          "creator": {
+            "href": "/api/robertoleta"
+          },
+          "account": {
+            "href": "/api/ecooltra706"
+          },
+          "permissions": {
+            "href": "/api/ecooltra706/data_sources/50aa0bf820e8/permissions"
+          },
+          "web": {
+            "href": "/organizations/ecooltra706/data_sources/50aa0bf820e8"
+          },
+          "web_home": {
+            "href": "/home/ecooltra706/data_sources/50aa0bf820e8"
+          }
+        },
+        "_forms": {
+          "edit": {
+            "method": "patch",
+            "action": "/api/ecooltra706/data_sources/50aa0bf820e8",
+            "content_type": "application/json",
+            "input": {
+              "data_source": {
+                "tables[]": {
+                  "name": {
+                    "type": "text"
+                  },
+                  "description": {
+                    "type": "text"
+                  },
+                  "schema": {
+                    "type": "text"
+                  },
+                  "columns[]": {
+                    "name": {
+                      "type": "text"
+                    },
+                    "data_type": {
+                      "type": "text"
+                    },
+                    "is_nullable": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": true
+                    },
+                    "primary_key": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "22169",
+        "name": "Numintec_datawarehouse",
+        "description": "",
+        "token": "5f04f1742ea7",
+        "adapter": "jdbc:postgresql",
+        "created_at": "2019-11-27T17:21:54.408Z",
+        "updated_at": "2025-04-03T07:33:10.216Z",
+        "has_expensive_schema_updates": false,
+        "public": false,
+        "asleep": false,
+        "queryable": true,
+        "soft_deleted": false,
+        "display_name": "Numintec_datawarehouse",
+        "account_id": "138643",
+        "account_username": "ecooltra706",
+        "organization_token": "0c8ecf80991c",
+        "organization_plan_code": "plus",
+        "database": "numintec",
+        "host": "modedatawarehouse.cluster-c0oeog17s6z6.eu-west-1.rds.amazonaws.com",
+        "port": 5432,
+        "ssl": true,
+        "username": "mode",
+        "provider": "default",
+        "vendor": "postgresql",
+        "ldap": false,
+        "warehouse": null,
+        "bridged": false,
+        "adapter_version": "42.7.4",
+        "custom_attributes": null,
+        "ssl_trusted_cert": null,
+        "default_access_level": "View",
+        "_links": {
+          "self": {
+            "href": "/api/ecooltra706/data_sources/5f04f1742ea7"
+          },
+          "creator": {
+            "href": "/api/robertoleta"
+          },
+          "account": {
+            "href": "/api/ecooltra706"
+          },
+          "permissions": {
+            "href": "/api/ecooltra706/data_sources/5f04f1742ea7/permissions"
+          },
+          "web": {
+            "href": "/organizations/ecooltra706/data_sources/5f04f1742ea7"
+          },
+          "web_home": {
+            "href": "/home/ecooltra706/data_sources/5f04f1742ea7"
+          }
+        },
+        "_forms": {
+          "edit": {
+            "method": "patch",
+            "action": "/api/ecooltra706/data_sources/5f04f1742ea7",
+            "content_type": "application/json",
+            "input": {
+              "data_source": {
+                "tables[]": {
+                  "name": {
+                    "type": "text"
+                  },
+                  "description": {
+                    "type": "text"
+                  },
+                  "schema": {
+                    "type": "text"
+                  },
+                  "columns[]": {
+                    "name": {
+                      "type": "text"
+                    },
+                    "data_type": {
+                      "type": "text"
+                    },
+                    "is_nullable": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": true
+                    },
+                    "primary_key": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "49690",
+        "name": "QuestDB",
+        "description": "",
+        "token": "37d6459de6ad",
+        "adapter": "jdbc:postgresql",
+        "created_at": "2026-05-21T15:26:03.948Z",
+        "updated_at": "2026-05-21T15:26:04.164Z",
+        "has_expensive_schema_updates": false,
+        "public": false,
+        "asleep": false,
+        "queryable": true,
+        "soft_deleted": false,
+        "display_name": "QuestDB",
+        "account_id": "138643",
+        "account_username": "ecooltra706",
+        "organization_token": "0c8ecf80991c",
+        "organization_plan_code": "plus",
+        "database": "qdb",
+        "host": "questdb.zeus-data.local",
+        "port": 8812,
+        "ssl": false,
+        "username": "reader",
+        "provider": "default",
+        "vendor": "postgresql",
+        "ldap": false,
+        "warehouse": null,
+        "bridged": true,
+        "adapter_version": "42.7.4",
+        "custom_attributes": null,
+        "ssl_trusted_cert": null,
+        "default_access_level": "View",
+        "_links": {
+          "self": {
+            "href": "/api/ecooltra706/data_sources/37d6459de6ad"
+          },
+          "creator": {
+            "href": "/api/fabiofacchini"
+          },
+          "account": {
+            "href": "/api/ecooltra706"
+          },
+          "permissions": {
+            "href": "/api/ecooltra706/data_sources/37d6459de6ad/permissions"
+          },
+          "web": {
+            "href": "/organizations/ecooltra706/data_sources/37d6459de6ad"
+          },
+          "web_home": {
+            "href": "/home/ecooltra706/data_sources/37d6459de6ad"
+          }
+        },
+        "_forms": {
+          "edit": {
+            "method": "patch",
+            "action": "/api/ecooltra706/data_sources/37d6459de6ad",
+            "content_type": "application/json",
+            "input": {
+              "data_source": {
+                "tables[]": {
+                  "name": {
+                    "type": "text"
+                  },
+                  "description": {
+                    "type": "text"
+                  },
+                  "schema": {
+                    "type": "text"
+                  },
+                  "columns[]": {
+                    "name": {
+                      "type": "text"
+                    },
+                    "data_type": {
+                      "type": "text"
+                    },
+                    "is_nullable": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": true
+                    },
+                    "primary_key": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "22518",
+        "name": "SFSC_DataWarehouse",
+        "description": "",
+        "token": "c699b71ea84b",
+        "adapter": "jdbc:postgresql",
+        "created_at": "2019-12-19T18:30:07.196Z",
+        "updated_at": "2022-05-19T11:54:06.303Z",
+        "has_expensive_schema_updates": false,
+        "public": false,
+        "asleep": false,
+        "queryable": true,
+        "soft_deleted": false,
+        "display_name": "SFSC_DataWarehouse",
+        "account_id": "138643",
+        "account_username": "ecooltra706",
+        "organization_token": "0c8ecf80991c",
+        "organization_plan_code": "plus",
+        "database": "ModeSFSC",
+        "host": "modedatawarehouse.cluster-c0oeog17s6z6.eu-west-1.rds.amazonaws.com",
+        "port": 5432,
+        "ssl": true,
+        "username": "SFSC",
+        "provider": "default",
+        "vendor": "postgresql",
+        "ldap": false,
+        "warehouse": null,
+        "bridged": false,
+        "adapter_version": "42.3.2",
+        "custom_attributes": {
+          "instance_name": ""
+        },
+        "ssl_trusted_cert": null,
+        "default_access_level": "View",
+        "_links": {
+          "self": {
+            "href": "/api/ecooltra706/data_sources/c699b71ea84b"
+          },
+          "creator": {
+            "href": "/api/robertoleta"
+          },
+          "account": {
+            "href": "/api/ecooltra706"
+          },
+          "permissions": {
+            "href": "/api/ecooltra706/data_sources/c699b71ea84b/permissions"
+          },
+          "web": {
+            "href": "/organizations/ecooltra706/data_sources/c699b71ea84b"
+          },
+          "web_home": {
+            "href": "/home/ecooltra706/data_sources/c699b71ea84b"
+          }
+        },
+        "_forms": {
+          "edit": {
+            "method": "patch",
+            "action": "/api/ecooltra706/data_sources/c699b71ea84b",
+            "content_type": "application/json",
+            "input": {
+              "data_source": {
+                "tables[]": {
+                  "name": {
+                    "type": "text"
+                  },
+                  "description": {
+                    "type": "text"
+                  },
+                  "schema": {
+                    "type": "text"
+                  },
+                  "columns[]": {
+                    "name": {
+                      "type": "text"
+                    },
+                    "data_type": {
+                      "type": "text"
+                    },
+                    "is_nullable": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": true
+                    },
+                    "primary_key": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "41462",
+        "name": "Snowflake",
+        "description": "Snowflake",
+        "token": "ae9722cef05a",
+        "adapter": "jdbc:snowflake",
+        "created_at": "2023-04-17T09:05:21.568Z",
+        "updated_at": "2026-04-23T13:03:32.338Z",
+        "has_expensive_schema_updates": false,
+        "public": false,
+        "asleep": false,
+        "queryable": true,
+        "soft_deleted": false,
+        "display_name": "Snowflake",
+        "account_id": "138643",
+        "account_username": "ecooltra706",
+        "organization_token": "0c8ecf80991c",
+        "organization_plan_code": "plus",
+        "database": "COOLTRA",
+        "host": "rd02543.europe-west4.gcp.snowflakecomputing.com",
+        "port": 1024,
+        "ssl": true,
+        "username": "mode_user",
+        "provider": "snowflake",
+        "vendor": "snowflake",
+        "ldap": false,
+        "warehouse": "mode_warehouse",
+        "bridged": false,
+        "adapter_version": "3.26.0",
+        "custom_attributes": {
+          "authentication_method": "private_key",
+          "role": ""
+        },
+        "default_access_level": "Query",
+        "_links": {
+          "self": {
+            "href": "/api/ecooltra706/data_sources/ae9722cef05a"
+          },
+          "creator": {
+            "href": "/api/estebanprieto"
+          },
+          "account": {
+            "href": "/api/ecooltra706"
+          },
+          "permissions": {
+            "href": "/api/ecooltra706/data_sources/ae9722cef05a/permissions"
+          },
+          "web": {
+            "href": "/organizations/ecooltra706/data_sources/ae9722cef05a"
+          },
+          "web_home": {
+            "href": "/home/ecooltra706/data_sources/ae9722cef05a"
+          }
+        },
+        "_forms": {
+          "edit": {
+            "method": "patch",
+            "action": "/api/ecooltra706/data_sources/ae9722cef05a",
+            "content_type": "application/json",
+            "input": {
+              "data_source": {
+                "tables[]": {
+                  "name": {
+                    "type": "text"
+                  },
+                  "description": {
+                    "type": "text"
+                  },
+                  "schema": {
+                    "type": "text"
+                  },
+                  "columns[]": {
+                    "name": {
+                      "type": "text"
+                    },
+                    "data_type": {
+                      "type": "text"
+                    },
+                    "is_nullable": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": true
+                    },
+                    "primary_key": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "33625",
+        "name": "Web_LT_datawarehouse",
+        "description": "BD que contiene los leads recibidos en la web de LT",
+        "token": "12f511a19578",
+        "adapter": "jdbc:postgresql",
+        "created_at": "2021-10-15T11:19:24.852Z",
+        "updated_at": "2021-10-15T11:19:24.852Z",
+        "has_expensive_schema_updates": false,
+        "public": false,
+        "asleep": false,
+        "queryable": true,
+        "soft_deleted": false,
+        "display_name": "Web_LT_datawarehouse",
+        "account_id": "138643",
+        "account_username": "ecooltra706",
+        "organization_token": "0c8ecf80991c",
+        "organization_plan_code": "plus",
+        "database": "web_lt",
+        "host": "modedatawarehouse.cluster-c0oeog17s6z6.eu-west-1.rds.amazonaws.com",
+        "port": 5432,
+        "ssl": true,
+        "username": "rds_admin",
+        "provider": "default",
+        "vendor": "postgresql",
+        "ldap": false,
+        "warehouse": null,
+        "bridged": false,
+        "adapter_version": "42.2.23",
+        "custom_attributes": {
+          "instance_name": ""
+        },
+        "ssl_trusted_cert": null,
+        "default_access_level": "View",
+        "_links": {
+          "self": {
+            "href": "/api/ecooltra706/data_sources/12f511a19578"
+          },
+          "creator": {
+            "href": "/api/robertoleta"
+          },
+          "account": {
+            "href": "/api/ecooltra706"
+          },
+          "permissions": {
+            "href": "/api/ecooltra706/data_sources/12f511a19578/permissions"
+          },
+          "web": {
+            "href": "/organizations/ecooltra706/data_sources/12f511a19578"
+          },
+          "web_home": {
+            "href": "/home/ecooltra706/data_sources/12f511a19578"
+          }
+        },
+        "_forms": {
+          "edit": {
+            "method": "patch",
+            "action": "/api/ecooltra706/data_sources/12f511a19578",
+            "content_type": "application/json",
+            "input": {
+              "data_source": {
+                "tables[]": {
+                  "name": {
+                    "type": "text"
+                  },
+                  "description": {
+                    "type": "text"
+                  },
+                  "schema": {
+                    "type": "text"
+                  },
+                  "columns[]": {
+                    "name": {
+                      "type": "text"
+                    },
+                    "data_type": {
+                      "type": "text"
+                    },
+                    "is_nullable": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": true
+                    },
+                    "primary_key": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "40151",
+        "name": "ZEUS - PRO",
+        "description": "data-replica-zeus",
+        "token": "b9cc5aaba102",
+        "adapter": "jdbc:postgresql",
+        "created_at": "2023-01-04T11:23:23.468Z",
+        "updated_at": "2025-05-19T11:19:03.025Z",
+        "has_expensive_schema_updates": false,
+        "public": false,
+        "asleep": false,
+        "queryable": true,
+        "soft_deleted": false,
+        "display_name": "ZEUS - PRO",
+        "account_id": "138643",
+        "account_username": "ecooltra706",
+        "organization_token": "0c8ecf80991c",
+        "organization_plan_code": "plus",
+        "database": "zeus",
+        "host": "data-replica-endpoint.cluster-custom-csrtb3rzfc9n.eu-west-1.rds.amazonaws.com",
+        "port": 5432,
+        "ssl": true,
+        "username": "mode_app_external",
+        "provider": "aurora",
+        "vendor": "postgresql",
+        "ldap": false,
+        "warehouse": null,
+        "bridged": true,
+        "adapter_version": "42.3.2",
+        "custom_attributes": {
+          "instance_name": ""
+        },
+        "ssl_trusted_cert": null,
+        "default_access_level": "Query",
+        "_links": {
+          "self": {
+            "href": "/api/ecooltra706/data_sources/b9cc5aaba102"
+          },
+          "creator": {
+            "href": "/api/fabiofacchini"
+          },
+          "account": {
+            "href": "/api/ecooltra706"
+          },
+          "permissions": {
+            "href": "/api/ecooltra706/data_sources/b9cc5aaba102/permissions"
+          },
+          "web": {
+            "href": "/organizations/ecooltra706/data_sources/b9cc5aaba102"
+          },
+          "web_home": {
+            "href": "/home/ecooltra706/data_sources/b9cc5aaba102"
+          }
+        },
+        "_forms": {
+          "edit": {
+            "method": "patch",
+            "action": "/api/ecooltra706/data_sources/b9cc5aaba102",
+            "content_type": "application/json",
+            "input": {
+              "data_source": {
+                "tables[]": {
+                  "name": {
+                    "type": "text"
+                  },
+                  "description": {
+                    "type": "text"
+                  },
+                  "schema": {
+                    "type": "text"
+                  },
+                  "columns[]": {
+                    "name": {
+                      "type": "text"
+                    },
+                    "data_type": {
+                      "type": "text"
+                    },
+                    "is_nullable": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": true
+                    },
+                    "primary_key": {
+                      "type": "select",
+                      "options": [
+                        true,
+                        false
+                      ],
+                      "value": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}
