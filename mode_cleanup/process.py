@@ -132,9 +132,19 @@ def _schedule_summary(
         if nxt:
             nexts.append(nxt)
     return (
-        " | ".join(descs),
+        _dedupe_with_count(descs),
         ", ".join(sorted(deliveries)),
         (min(nexts)[:10] if nexts else ""),
+    )
+
+
+def _dedupe_with_count(items: list[str]) -> str:
+    """'a | a | b' -> 'a (×2) | b' (manté l'ordre d'aparició)."""
+    counts: dict[str, int] = {}
+    for it in items:
+        counts[it] = counts.get(it, 0) + 1
+    return " | ".join(
+        f"{name} (×{n})" if n > 1 else name for name, n in counts.items()
     )
 
 
