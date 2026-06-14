@@ -56,3 +56,55 @@ def test_collect_all_gathers_reports_with_queries():
     r1 = next(r for r in result.reports if r.report["token"] == "r1")
     assert r1.space_name == "Analytics"
     assert r1.queries[0]["data_source_id"] == 10
+
+
+@responses.activate
+def test_collect_follows_hal_reports_link_and_skips_404_space():
+    responses.add(
+        responses.GET,
+        f"{WS}/data_sources",
+        json={"_embedded": {"data_sources": []}},
+        status=200,
+    )
+    # Un espai dóna un enllaç HAL de reports propi; un altre dóna 404.
+    responses.add(
+        responses.GET,
+        f"{WS}/spaces",
+        json={
+            "_embedded": {
+                "spaces": [
+                    {
+                        "token": "sp_ok",
+                        "name": "OK",
+                        "_links": {
+                            "reports": {"href": "/api/ecooltra706/spaces/sp_ok/reports"}
+                        },
+                    },
+                    {"token": "sp_bad", "name": "Privat"},
+                ]
+            }
+        },
+        status=200,
+    )
+    responses.add(
+        responses.GET,
+        f"{WS}/spaces/sp_ok/reports",
+        json={"_embedded": {"reports": [{"token": "r1", "name": "OK report"}]}},
+        status=200,
+    )
+    responses.add(
+        responses.GET,
+        f"{WS}/spaces/sp_bad/reports",
+        json={"id": "not_found", "message": "space not found"},
+        status=404,
+    )
+    responses.add(
+        responses.GET,
+        f"{WS}/reports/r1/queries",
+        json={"_embedded": {"queries": []}},
+        status=200,
+    )
+
+    result = collect_all(ModeClient(CONFIG))
+    # L'espai 404 s'ha saltat; només queda el report de l'espai accessible.
+    assert {r.report["token"] for r in result.reports} == {"r1"}

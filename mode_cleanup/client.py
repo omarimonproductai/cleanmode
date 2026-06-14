@@ -22,6 +22,10 @@ _RETRYABLE_STATUS = {429, 500, 502, 503, 504}
 class ModeAPIError(RuntimeError):
     """Error no recuperable retornat per l'API de MODE."""
 
+    def __init__(self, message: str, *, status_code: int | None = None) -> None:
+        super().__init__(message)
+        self.status_code = status_code
+
 
 class ModeClient:
     """Client minimalista per a la Discovery API de MODE."""
@@ -66,7 +70,8 @@ class ModeClient:
                     return response.json()
                 if response.status_code not in _RETRYABLE_STATUS:
                     raise ModeAPIError(
-                        f"GET {url} ha retornat {response.status_code}: {response.text[:300]}"
+                        f"GET {url} ha retornat {response.status_code}: {response.text[:300]}",
+                        status_code=response.status_code,
                     )
                 last_exc = ModeAPIError(
                     f"GET {url} ha retornat {response.status_code} (transitori)"
