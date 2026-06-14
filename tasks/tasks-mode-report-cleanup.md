@@ -49,7 +49,7 @@ Update the file after completing each sub-task, not just after completing an ent
   - [x] 2.3 Incloure també els reports **arxivats** a l'enumeració.
   - [x] 2.4 Per cada report, obtenir les seves **queries** amb `data_source_id` i `raw_query`.
   - [x] 2.5 Per cada report, obtenir la data de l'**últim run** (s'extreu dels camps del report a `process.py`).
-  - [ ] 2.6 Confirmar els noms exactes dels camps de l'API (p. ex. `last_run_at` vs `last_successfully_run_at`) contra una resposta real i ajustar el codi. *(Pendent: requereix execució real contra l'API.)*
+  - [x] 2.6 Confirmar els noms exactes dels camps de l'API (`last_successfully_run_at`/`last_run_at`) contra el run real — `days_since_last_run` es pobla bé (0 reports "mai").
 
 - [x] 3.0 Processament: mapeig query→font de dades i càlcul d'antiguitat de l'últim run
   - [x] 3.1 `process.py`: construir un índex `data_source_id` → nom de font de dades a partir de 2.1.
@@ -67,7 +67,7 @@ Update the file after completing each sub-task, not just after completing an ent
 - [x] 5.0 Documentació, versionat de sortides i validació final
   - [x] 5.1 Escriure `README.md` amb requisits, configuració de variables d'entorn i com executar l'eina.
   - [x] 5.2 Escriure tests bàsics (`tests/`) amb crides a l'API mockejades i executar `pytest` en verd.
-  - [ ] 5.3 Fer una execució real contra el workspace i validar els dos CSV + el resum. *(Pendent: llançar el workflow "MODE inventory" a GitHub Actions — requereix xarxa/credencials no disponibles en aquest entorn.)*
-  - [ ] 5.4 Versionar la carpeta `output/` amb la primera "fotografia" generada. *(Es genera automàticament en córrer el workflow.)*
+  - [x] 5.3 Execució real contra el workspace validada: 574 reports / 2585 queries de 41 col·leccions.
+  - [x] 5.4 `output/` versionat amb la fotografia completa (CSVs, summary, index.html, llistes de neteja).
   - [x] 5.5 Commit i push de tot el treball a la branca designada.
   - **Extra:** workflow de GitHub Actions (`.github/workflows/mode-inventory.yml`) que executa l'eina amb els secrets del repo i committeja `output/`.
