@@ -61,14 +61,44 @@
   "batch_probes": [
     {
       "url": "https://app.mode.com/batch/ecooltra706/reports",
+      "status_no_redirect": 401,
+      "redirect_location": "",
       "status": 401,
+      "final_url": "https://app.mode.com/batch/ecooltra706/reports",
+      "redirect_chain": [],
+      "content_type": "application/hal+json",
+      "length": 147,
+      "snippet": "{\"id\":\"unauthorized\",\"message\":\"Please authenticate\",\"_links\":{\"help\":{\"href\":\"http://developer.modeanalytics.com/#/introduction/authentication\"}}}"
+    },
+    {
+      "url": "https://app.mode.com/batch/ecooltra706/reports/",
+      "status_no_redirect": 401,
+      "redirect_location": "",
+      "status": 401,
+      "final_url": "https://app.mode.com/batch/ecooltra706/reports/",
+      "redirect_chain": [],
+      "content_type": "application/hal+json",
+      "length": 147,
+      "snippet": "{\"id\":\"unauthorized\",\"message\":\"Please authenticate\",\"_links\":{\"help\":{\"href\":\"http://developer.modeanalytics.com/#/introduction/authentication\"}}}"
+    },
+    {
+      "url": "https://app.mode.com/batch/ecooltra706/reports?format=json",
+      "status_no_redirect": 401,
+      "redirect_location": "",
+      "status": 401,
+      "final_url": "https://app.mode.com/batch/ecooltra706/reports?format=json",
+      "redirect_chain": [],
       "content_type": "application/hal+json",
       "length": 147,
       "snippet": "{\"id\":\"unauthorized\",\"message\":\"Please authenticate\",\"_links\":{\"help\":{\"href\":\"http://developer.modeanalytics.com/#/introduction/authentication\"}}}"
     },
     {
       "url": "https://app.mode.com/batch/ecooltra706/queries",
+      "status_no_redirect": 401,
+      "redirect_location": "",
       "status": 401,
+      "final_url": "https://app.mode.com/batch/ecooltra706/queries",
+      "redirect_chain": [],
       "content_type": "application/hal+json",
       "length": 147,
       "snippet": "{\"id\":\"unauthorized\",\"message\":\"Please authenticate\",\"_links\":{\"help\":{\"href\":\"http://developer.modeanalytics.com/#/introduction/authentication\"}}}"
