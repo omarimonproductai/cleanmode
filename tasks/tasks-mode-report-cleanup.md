@@ -31,17 +31,17 @@ Update the file after completing each sub-task, not just after completing an ent
 
 ## Tasks
 
-- [ ] 0.0 Create feature branch
-  - [ ] 0.1 El treball es desenvolupa a la branca designada `claude/festive-cori-w94f1m` (ja creada); confirmar que hi estem situats abans de començar.
+- [x] 0.0 Create feature branch
+  - [x] 0.1 El treball es desenvolupa a la branca designada `claude/festive-cori-w94f1m` (ja creada); confirmar que hi estem situats abans de començar.
 
-- [ ] 1.0 Configuració del projecte i connexió autenticada a l'API de MODE
-  - [ ] 1.1 Crear l'estructura del paquet `mode_cleanup/` i `requirements.txt` (afegir `requests` i `pytest`).
-  - [ ] 1.2 Crear `.env.example` amb `MODE_WORKSPACE`, `MODE_API_TOKEN`, `MODE_API_SECRET` i `.gitignore` que ignori `.env`.
-  - [ ] 1.3 Implementar `config.py`: llegir les variables d'entorn i fallar amb missatge clar si en falta alguna.
-  - [ ] 1.4 Implementar `client.py` amb auth HTTP Basic (token:secret) i capçalera `Accept: application/hal+json`.
-  - [ ] 1.5 Afegir al client la gestió de **paginació HAL** (seguir `_links.next` fins esgotar resultats).
-  - [ ] 1.6 Afegir al client **reintents amb backoff** davant respostes 429 / errors transitoris.
-  - [ ] 1.7 Test de fum: una crida autenticada a `/api/{workspace}/data_sources` retorna 200 i llista fonts.
+- [x] 1.0 Configuració del projecte i connexió autenticada a l'API de MODE
+  - [x] 1.1 Crear l'estructura del paquet `mode_cleanup/` i `requirements.txt` (afegir `requests` i `pytest`).
+  - [x] 1.2 Crear `.env.example` amb `MODE_WORKSPACE`, `MODE_API_TOKEN`, `MODE_API_SECRET` i `.gitignore` que ignori `.env`.
+  - [x] 1.3 Implementar `config.py`: llegir les variables d'entorn i fallar amb missatge clar si en falta alguna.
+  - [x] 1.4 Implementar `client.py` amb auth HTTP Basic (token:secret) i capçalera `Accept: application/hal+json`.
+  - [x] 1.5 Afegir al client la gestió de **paginació HAL** (seguir `_links.next` fins esgotar resultats).
+  - [x] 1.6 Afegir al client **reintents amb backoff** davant respostes 429 / errors transitoris.
+  - [x] 1.7 Test de fum: una crida autenticada a `/api/{workspace}/data_sources` retorna 200 i llista fonts.
 
 - [ ] 2.0 Recollida de dades: fonts de dades, reports, queries i runs
   - [ ] 2.1 `collect.py`: obtenir **totes les fonts de dades** (id, nom, token, tipus).
