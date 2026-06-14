@@ -1,0 +1,62 @@
+# Col·leccions de MODE a escanejar (token  nom).
+# Una per línia: <token> <nom lliure>. Les línies amb # s'ignoren.
+6fef0fc17ee6 ++ aSlack reports
+64f3cb13ff78 ++ City Managers
+88b22903c339 ++ CS team
+4a5cddd3521e + ORIOL - OB investigacions
+3a55cb154060 1-Coses meves
+bd5cdacb949c 2-ORIOL Procés tancament mensual
+6da08d1c915d [B2C-ST] ST reporting
+b2b2047861a5 [ETENDO] Amortizations
+851c7a248916 [ETENDO] B2C
+f2381e59424b [ETENDO] Finanzas
+2564fe37da2d [GAIA]
+4e79aa8aa576 [HQ] - Marketing retention
+128dd6764be9 [TELEMATICS] Internal
+915269b25558 [ZEUS] Audit Users
+3d92d4fc32ad [ZEUS] City Managers
+d49e61539c20 [ZEUS] HQ Customer Service
+de7dc5a13004 [ZEUS] HQ Finance
+652f27303c00 [ZEUS] Understand users
+6b594c0e6dc2 B2C - SB | Marco
+8c314d23fe31 Backup Lluís
+2f7be518362a CAGLIARI_Reports
+9ac2100f5779 Cohorts
+877c64876fae Community
+323a1eddc0f0 DATA
+2d351c8c7204 Data Science
+d6a84743249a Deprecated reports
+9fe1bb821ca4 eCooltra ABC(DE) Analysis
+67da2a7cf694 Export data
+18cdcbf93bd2 Exports
+9d367a761ba1 git
+b138314fed09 IBIZA_Reports
+ecab792be0e2 IT
+58cfab68d29a MALLORCA REPORTS
+a44f8be01758 MNC_Alquileres
+38f368e89361 MNC_Colaboradores Y TIENDAS
+0c39238bf509 MNC_Flota
+66b716cfb763 MNC_Partners_solo_web
+6d2f3f3b1a6a MNC_Reports
+ffbd339c67da OB
+2dc0714f2e17 ONLY FINANCE TEAM ETENDO
+8860f3ad1b77 rebalancing
+b84397b4417f RecordGo
+1a7b3a6e5427 Tests
+b24a85420063 Personal
+f9ae793438f4 Personal
+c9f458e52396 Personal
+a499c37b4f95 Personal
+d24c56635e0f Personal
+9b12e5fe3be3 Personal
+fe79b5f2c8b4 Personal
+b9b91b76a234 Personal
+36f73d40ffe4 Personal
+0b32432b2e93 Personal
+96aa77d91a05 Personal
+feba89b21be9 Personal
+3bcf73153f4a Personal
+d3b65bfc75a3 Personal
+83414ee0e845 Personal
+30f3408992f4 Personal
+305ff9403708 Personal

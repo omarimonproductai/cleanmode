@@ -36,6 +36,25 @@ def _safe_dump(client: ModeClient, path: str, out_path: Path) -> tuple[dict | No
     return payload, None
 
 
+def _read_collections_file(path: str) -> tuple[list[str], dict[str, str]]:
+    """Llegeix '<token> <nom>' per línia. Retorna (tokens, {token: nom})."""
+    p = Path(path)
+    if not p.exists():
+        return [], {}
+    tokens: list[str] = []
+    names: dict[str, str] = {}
+    for line in p.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        parts = line.split(None, 1)
+        token = parts[0]
+        tokens.append(token)
+        if len(parts) > 1:
+            names[token] = parts[1].strip()
+    return tokens, names
+
+
 def _probe_collections(client: ModeClient, tokens: list[str]) -> list[dict]:
     """Prova l'accés directe a collections/{token}/reports per cada token."""
     out = []
@@ -162,9 +181,22 @@ def main(argv: list[str] | None = None) -> int:
         help="Tokens de col·leccions separats per comes a recórrer directament "
         "(útil si /spaces no les llista).",
     )
+    parser.add_argument(
+        "--collections-file",
+        default="collections.txt",
+        help="Fitxer amb '<token> <nom>' per línia (s'usa si --collections és buit).",
+    )
     args = parser.parse_args(argv)
 
-    collection_tokens = [t.strip() for t in args.collections.split(",") if t.strip()]
+    collection_names: dict[str, str] = {}
+    if args.collections.strip():
+        collection_tokens = [
+            t.strip() for t in args.collections.split(",") if t.strip()
+        ]
+    else:
+        collection_tokens, collection_names = _read_collections_file(
+            args.collections_file
+        )
 
     try:
         config = load_config()
@@ -178,8 +210,13 @@ def main(argv: list[str] | None = None) -> int:
         _debug_dump(client, args.output_dir, collection_tokens)
         return 0
 
-    print(f"Recollint dades del workspace '{config.workspace}'...")
-    collected = collect_all(client, collection_tokens or None)
+    print(
+        f"Recollint dades del workspace '{config.workspace}' "
+        f"({len(collection_tokens)} col·leccions)..."
+    )
+    collected = collect_all(
+        client, collection_tokens or None, collection_names or None
+    )
     print(
         f"  {len(collected.data_sources)} fonts de dades, "
         f"{len(collected.reports)} reports."

@@ -71,17 +71,24 @@ def _collection_name(client: ModeClient, token: str) -> str:
 
 
 def _iter_collection_sources(
-    client: ModeClient, collection_tokens: list[str] | None
+    client: ModeClient,
+    collection_tokens: list[str] | None,
+    collection_names: dict[str, str] | None,
 ) -> list[tuple[str, str]]:
     """Retorna (nom, reports_path) per cada col·lecció a recórrer.
 
     Si es passen tokens explícits, s'accedeix directament a
-    ``collections/{token}/reports`` (encara que /spaces no els llisti). Si no,
-    s'enumeren els espais de què l'usuari del token és membre.
+    ``collections/{token}/reports`` (encara que /spaces no els llisti). El nom
+    s'agafa de ``collection_names`` si es coneix; si no, es demana a l'API. Si
+    no hi ha tokens, s'enumeren els espais de què l'usuari del token és membre.
     """
+    names = collection_names or {}
     if collection_tokens:
         return [
-            (_collection_name(client, t), f"collections/{t}/reports")
+            (
+                names.get(t) or _collection_name(client, t),
+                f"collections/{t}/reports",
+            )
             for t in collection_tokens
         ]
 
@@ -99,7 +106,9 @@ def _iter_collection_sources(
 
 
 def collect_all(
-    client: ModeClient, collection_tokens: list[str] | None = None
+    client: ModeClient,
+    collection_tokens: list[str] | None = None,
+    collection_names: dict[str, str] | None = None,
 ) -> Collected:
     """Recull fonts de dades i els reports (amb queries) de les col·leccions.
 
@@ -112,7 +121,7 @@ def collect_all(
 
     reports: list[CollectedReport] = []
     for space_name, reports_path in _iter_collection_sources(
-        client, collection_tokens
+        client, collection_tokens, collection_names
     ):
         try:
             space_reports = list(client.paginate(reports_path, "reports"))
