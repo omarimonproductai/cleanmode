@@ -1,0 +1,288 @@
+report_name,space_name,report_url,days_since_last_run,purity,data_sources,has_from_definition,reasons
+[ORIOL] Control Credits,1-Coses meves,https://app.mode.com/editor/ecooltra706/reports/804ca56d1b98,2551,pure,EF_postgresql,no,antic_+2anys
+Locations KPIs,DATA,https://app.mode.com/editor/ecooltra706/reports/30aa664d4f25,2511,pure,EF_postgresql,no,antic_+2anys
+Finance monthly export per city,2-ORIOL Procés tancament mensual,https://app.mode.com/editor/ecooltra706/reports/0707b6e50b12,2510,pure,EF_postgresql,no,antic_+2anys
+ABCDE Final Analysis by Oriol,eCooltra ABC(DE) Analysis,https://app.mode.com/editor/ecooltra706/reports/ade910d659d6,2488,pure,EF_postgresql,no,antic_+2anys
+"Monthly ABC(DE) (No rental filter, excluding refunds)",eCooltra ABC(DE) Analysis,https://app.mode.com/editor/ecooltra706/reports/d79a2b10bfb1,2488,pure,EF_postgresql,no,antic_+2anys
+"Monthly ABC(DE) (Rentals prefiltered, excluding refunds)",eCooltra ABC(DE) Analysis,https://app.mode.com/editor/ecooltra706/reports/5d60163d8892,2488,pure,EF_postgresql,no,antic_+2anys
+Monthly ABC(DE)_ Milan,eCooltra ABC(DE) Analysis,https://app.mode.com/editor/ecooltra706/reports/276c4553c7d1,2488,pure,EF_postgresql,no,antic_+2anys
+Monthly ABC(DE)_ Lisbon,eCooltra ABC(DE) Analysis,https://app.mode.com/editor/ecooltra706/reports/d4f87bd37f7b,2488,pure,EF_postgresql,no,antic_+2anys
+Monthly ABC(DE)_ Rome,eCooltra ABC(DE) Analysis,https://app.mode.com/editor/ecooltra706/reports/9eb3e72b3e82,2488,pure,EF_postgresql,no,antic_+2anys
+Monthly ABC(DE)_ Madrid,eCooltra ABC(DE) Analysis,https://app.mode.com/editor/ecooltra706/reports/7a861b5d2e85,2488,pure,EF_postgresql,no,antic_+2anys
+Monthly ABC(DE)_ Barcelona,eCooltra ABC(DE) Analysis,https://app.mode.com/editor/ecooltra706/reports/f40c5c672c36,2488,pure,EF_postgresql,no,antic_+2anys
+Monthly ABC(DE)_ Valencia,eCooltra ABC(DE) Analysis,https://app.mode.com/editor/ecooltra706/reports/03e6072b0e1a,2488,pure,EF_postgresql,no,antic_+2anys
+Lifetime ABC(DE),eCooltra ABC(DE) Analysis,https://app.mode.com/editor/ecooltra706/reports/6db8e1a5f57d,2488,pure,EF_postgresql,no,antic_+2anys
+Charges with 0% VAT,Exports,https://app.mode.com/editor/ecooltra706/reports/f0d398954e3a,2480,pure,EF_postgresql,no,antic_+2anys
+PACK Campaign - Total per Pack,++ aSlack reports,https://app.mode.com/editor/ecooltra706/reports/b56b002ccfae,2467,pure,EF_postgresql,no,antic_+2anys
+_NOW_ promocode report (copy),DATA,https://app.mode.com/editor/ecooltra706/reports/ade45a770a6a,2424,pure,EF_postgresql,no,antic_+2anys
+Lisbon: Data for Insurance Purposes,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/e0dbe8064697,2396,pure,EF_postgresql,no,antic_+2anys
+Lisbon rentals matrix of zip codes,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/299919d56258,2385,pure,EF_postgresql,no,antic_+2anys
+Monthly progress of Unique Riders,Deprecated reports,https://app.mode.com/editor/ecooltra706/reports/640e5db3a5a7,2379,pure,EF_postgresql,no,antic_+2anys
+Lisbon users per age range and gender,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/7b93702f79f1,2322,pure,EF_postgresql,no,antic_+2anys
+Swapping KPIs,DATA,https://app.mode.com/editor/ecooltra706/reports/5a9f5808f86c,2319,pure,EF_postgresql,no,antic_+2anys
+MONTHLY CSV EXPORT FOR RONAN,2-ORIOL Procés tancament mensual,https://app.mode.com/editor/ecooltra706/reports/a4b15b27846a,2318,pure,EF_postgresql,no,antic_+2anys
+Workshop KPIs,DATA,https://app.mode.com/editor/ecooltra706/reports/627d9bf3ba80,2314,pure,EF_postgresql,no,antic_+2anys
+Monthly Retention for dormants,Cohorts,https://app.mode.com/editor/ecooltra706/reports/aa3e9899eb30,2313,pure,EF_postgresql,no,antic_+2anys
+Main KPIs,DATA,https://app.mode.com/editor/ecooltra706/reports/d5aa02326edd,2294,pure,EF_postgresql,no,antic_+2anys
+Approved Users with Missing Data,Exports,https://app.mode.com/editor/ecooltra706/reports/d11a77acad27,2294,pure,EF_postgresql,no,antic_+2anys
+[COHORT] Monthly Retention (PG) without BCN - Retention bonus,Cohorts,https://app.mode.com/editor/ecooltra706/reports/38df2228f1a9,2291,pure,EF_postgresql,no,antic_+2anys
+Checkout Success Rate,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/8b14b594df1f,2285,pure,EF_postgresql,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/c95e65d585d7,2275,pure,Invers_datawarehouse,no,antic_+2anys
+Lisbon data,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/5668f7a68648,2211,pure,EF_postgresql,no,antic_+2anys
+OB-BACKUP Definitions,+ ORIOL - OB investigacions,https://app.mode.com/editor/ecooltra706/reports/5cdc5f386ca1,2149,pure,from definition,si,nomes_from_definition|antic_+2anys
+OB-Estudi de taules a nivell quantitats de registres - privat,+ ORIOL - OB investigacions,https://app.mode.com/editor/ecooltra706/reports/9e2a797503a9,2120,pure,from definition,si,nomes_from_definition|antic_+2anys
+OPS - KMs dels rentals,DATA,https://app.mode.com/editor/ecooltra706/reports/686525108d4d,2075,pure,EF_postgresql,no,antic_+2anys
+24h Online Bookings tracking,++ aSlack reports,https://app.mode.com/editor/ecooltra706/reports/ed2dacdf3196,2058,pure,from definition,si,nomes_from_definition|antic_+2anys
+NIGHT RIDERS,Data Science,https://app.mode.com/editor/ecooltra706/reports/833a7f5711f6,2049,pure,EF_postgresql,no,antic_+2anys
+Clone of App opens issue analysis,Data Science,https://app.mode.com/editor/ecooltra706/reports/70c33195e281,2049,pure,EF_postgresql,no,antic_+2anys
+DURATION,Data Science,https://app.mode.com/editor/ecooltra706/reports/28ed2c0b16db,2041,pure,EF_postgresql,no,antic_+2anys
+Mobile App Opens,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/b46add53cd6c,2032,pure,EF_postgresql,no,antic_+2anys
+HEAVY USERS RENTALS BEFORE AND POST COVID-19,Data Science,https://app.mode.com/editor/ecooltra706/reports/e6ca3b307bf2,2029,pure,EF_postgresql,no,antic_+2anys
+USER AGENT,Data Science,https://app.mode.com/editor/ecooltra706/reports/029c3b20e532,2026,pure,EF_postgresql,no,antic_+2anys
+Total Registrations,++ aSlack reports,https://app.mode.com/editor/ecooltra706/reports/1fbe89904682,2021,pure,EF_postgresql,no,antic_+2anys
+Invoices Export per company,2-ORIOL Procés tancament mensual,https://app.mode.com/editor/ecooltra706/reports/18cdca7700b7,2021,pure,EF_postgresql,no,antic_+2anys
+Users without Duplicates,Exports,https://app.mode.com/editor/ecooltra706/reports/9e85e33e69eb,2021,pure,EF_postgresql,no,antic_+2anys
+RENTED MIN PER USER,Data Science,https://app.mode.com/editor/ecooltra706/reports/e6f765121933,2020,pure,EF_postgresql,no,antic_+2anys
+Clone of BLACK FRIDAY,Data Science,https://app.mode.com/editor/ecooltra706/reports/132742b6768f,2018,pure,EF_postgresql,no,antic_+2anys
+[Nat] Users with app version 4.0,Data Science,https://app.mode.com/editor/ecooltra706/reports/2d95a0b31b17,2012,pure,EF_postgresql,no,antic_+2anys
+LISBOA30 - Flat rate analysis,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/8c99e4b75b0b,2007,pure,EF_postgresql,no,antic_+2anys
+[Roberto] Card declined,Data Science,https://app.mode.com/editor/ecooltra706/reports/afca90a0639e,2007,mixed,EF_Gecco; EF_PRIME; EF_postgresql,no,antic_+2anys
+"[CS] Gecco active ""TARIFA PLANA 39"" subscriptions",Data Science,https://app.mode.com/editor/ecooltra706/reports/06398f2861b6,2007,pure,EF_Gecco,no,antic_+2anys
+Retention: Registration ID from a list,Data Science,https://app.mode.com/editor/ecooltra706/reports/e0cd45317b2a,2006,pure,EF_postgresql,no,antic_+2anys
+REPORT AS ROMA,Data Science,https://app.mode.com/editor/ecooltra706/reports/0e02d04cc0a7,2003,pure,EF_postgresql,no,antic_+2anys
+DATI COMUNE MILANO – OFFICIAL,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/2d10fcab1d99,2000,pure,EF_postgresql,no,antic_+2anys
+POTENTIAL 125cc USERS IN MADRID,Data Science,https://app.mode.com/editor/ecooltra706/reports/4c76fb08491b,1994,mixed,EF_Gecco; EF_postgresql,no,antic_+2anys
+Clone of _IMAGIN_ promocode report,Data Science,https://app.mode.com/editor/ecooltra706/reports/06f718d9c4f6,1978,pure,EF_postgresql,no,antic_+2anys
+DIRT Motos,Data Science,https://app.mode.com/editor/ecooltra706/reports/669eac9ad170,1978,pure,EF_postgresql,no,antic_+2anys
+RENTALPASS,Data Science,https://app.mode.com/editor/ecooltra706/reports/94c817f1287e,1958,pure,EF_postgresql,no,antic_+2anys
+[OB] Contratos activos LT,Data Science,https://app.mode.com/editor/ecooltra706/reports/d8b1e99135b0,1948,pure,from definition,si,nomes_from_definition|antic_+2anys
+Riders únicos en ciudades españolas en febrero 2021,Personal,https://app.mode.com/editor/ecooltra706/reports/625b81cef4e7,1930,pure,EF_postgresql,no,antic_+2anys
+Monthly progress of Minutes,Deprecated reports,https://app.mode.com/editor/ecooltra706/reports/a0d89e6c42df,1927,pure,EF_postgresql,no,antic_+2anys
+Datos de usuarios - Cierre de zona Bovisa - Milan,Data Science,https://app.mode.com/editor/ecooltra706/reports/b44ca95a328a,1915,pure,EF_postgresql,no,antic_+2anys
+[Retention] Last week's revenue from a list uf users,Data Science,https://app.mode.com/editor/ecooltra706/reports/75a62b767c25,1910,pure,EF_postgresql,no,antic_+2anys
+Clone of [FLUCTUO] Market Analysis,Personal,https://app.mode.com/editor/ecooltra706/reports/f60e30bf0cee,1908,pure,Fluctuo_datawarehouse,no,antic_+2anys
+OB_B2CLT_activos,Data Science,https://app.mode.com/editor/ecooltra706/reports/fa6832663951,1907,pure,from definition,si,nomes_from_definition|antic_+2anys
+Specific Retention Campaigns using credit_title or promo_code,Cohorts,https://app.mode.com/editor/ecooltra706/reports/d6cdc57fb25d,1906,pure,EF_postgresql,no,antic_+2anys
+[GROUP] Monthly Revenue Progress (old version),Data Science,https://app.mode.com/editor/ecooltra706/reports/7c18e1523485,1904,mixed,EF_postgresql; from definition,si,antic_+2anys
+Cálculo% retención mensual y por trimestres,Data Science,https://app.mode.com/editor/ecooltra706/reports/86cf2162d7d9,1903,pure,EF_postgresql,no,antic_+2anys
+Clone of Monthly P&L per Business Line (Ebidta before HQ),Personal,https://app.mode.com/editor/ecooltra706/reports/b493e5e705af,1895,pure,from definition,si,nomes_from_definition|antic_+2anys
+INFO: Respuesta Ayt. Valencia APR Ciutat Vella Nord,Data Science,https://app.mode.com/editor/ecooltra706/reports/a0b275f4f2fc,1887,mixed,EF_postgresql; from definition,si,antic_+2anys
+Deleted credits,++ aSlack reports,https://app.mode.com/editor/ecooltra706/reports/71d2b10f369c,1858,pure,EF_postgresql,no,antic_+2anys
+Weekend users,Data Science,https://app.mode.com/editor/ecooltra706/reports/d6247ee0df58,1840,pure,EF_postgresql,no,antic_+2anys
+[COHORT] Average Net Rental Revenue per returning rider (PG),Cohorts,https://app.mode.com/editor/ecooltra706/reports/4e76fe6e83d7,1812,pure,EF_postgresql,no,antic_+2anys
+[COHORT] Average Net Rental Revenue per User Total Cohort (PG),Cohorts,https://app.mode.com/editor/ecooltra706/reports/415026f01e59,1812,pure,EF_postgresql,no,antic_+2anys
+[COHORT] Monthly Average Rentals by Returning Riders (PG),Cohorts,https://app.mode.com/editor/ecooltra706/reports/8bd4b475c651,1812,pure,EF_postgresql,no,antic_+2anys
+[COHORT] Monthly Average Rentals by Total Cohort (PG),Cohorts,https://app.mode.com/editor/ecooltra706/reports/d62631e43c62,1812,pure,EF_postgresql,no,antic_+2anys
+[COHORT] Monthly Total Rentals (PG),Cohorts,https://app.mode.com/editor/ecooltra706/reports/94d88b2b3e7e,1812,pure,EF_postgresql,no,antic_+2anys
+[COHORT] Net Rental Revenue Total (PG),Cohorts,https://app.mode.com/editor/ecooltra706/reports/401320be395b,1812,pure,EF_postgresql,no,antic_+2anys
+[COHORT] Monthly Retention of Packers,Cohorts,https://app.mode.com/editor/ecooltra706/reports/880afce8c646,1812,pure,EF_postgresql,no,antic_+2anys
+Users con contry_code = FR,Personal,https://app.mode.com/editor/ecooltra706/reports/796ea93f00c0,1812,pure,EF_postgresql,no,antic_+2anys
+Unprocessed Problem Reports (Cooltra Prime),++ aSlack reports,https://app.mode.com/editor/ecooltra706/reports/db03fc70ac61,1804,pure,EF_PRIME,no,antic_+2anys
+LISBOA30 - Control Report,++ CS team,https://app.mode.com/editor/ecooltra706/reports/ac5cf03781b8,1802,pure,EF_postgresql_backup,no,antic_+2anys|usa_EF_postgresql_backup
+Users_Paris,Data Science,https://app.mode.com/editor/ecooltra706/reports/748fc3f201ed,1794,pure,EF_postgresql,no,antic_+2anys
+Unapproved users (Cooltra Prime),++ aSlack reports,https://app.mode.com/editor/ecooltra706/reports/1bab33225223,1793,pure,EF_PRIME,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/456980e00f2b,1791,pure,EF_postgresql,no,antic_+2anys
+Find users with rentals in areas,Data Science,https://app.mode.com/editor/ecooltra706/reports/dedc8e3bfd15,1789,mixed,EF_PRIME; EF_postgresql,no,antic_+2anys
+Volumen de usuarios inactivos,Data Science,https://app.mode.com/editor/ecooltra706/reports/f846cce9ce10,1747,pure,EF_postgresql,no,antic_+2anys
+Rentals in L'H,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/36f25c14637b,1733,pure,EF_postgresql,no,antic_+2anys
+Promo Code Misuse,1-Coses meves,https://app.mode.com/editor/ecooltra706/reports/c52833136b5d,1732,pure,EF_postgresql,no,antic_+2anys
+INVOICING PROCESS HOURLY FOLLOW UP,Deprecated reports,https://app.mode.com/editor/ecooltra706/reports/3240c0bed540,1718,pure,EF_postgresql,no,antic_+2anys
+Proves amb PENDING TO BE INVOICED,Personal,https://app.mode.com/editor/ecooltra706/reports/fa019e3b9c47,1714,pure,EF_postgresql,no,antic_+2anys
+Usage per age and gender,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/b3e95e76c7b7,1712,pure,EF_postgresql,no,antic_+2anys
+App opens and rentals analysis in an area,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/e4f8ef5377a2,1712,pure,EF_postgresql,no,antic_+2anys
+B2C Revenue by categories,Personal,https://app.mode.com/editor/ecooltra706/reports/abdd68fd790d,1699,pure,from definition,si,nomes_from_definition|antic_+2anys
+Unprocessed invoices,++ aSlack reports,https://app.mode.com/editor/ecooltra706/reports/8fdeebb49336,1696,pure,EF_postgresql,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/97fcb95f0639,1696,pure,EF_postgresql,no,antic_+2anys
+Info para unpaid en Lisboa en octubre 2021,DATA,https://app.mode.com/editor/ecooltra706/reports/a5c407fa0a6b,1683,pure,EF_postgresql,no,antic_+2anys
+Hypothesis validation for Lisbon fleet,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/3106fc512bd1,1682,pure,EF_postgresql,no,antic_+2anys
+Rebranded vehicles,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/5251cd7b2601,1679,pure,EF_postgresql,no,antic_+2anys
+Pruebas para detectar vehículos con vehicle_kind_name = null,DATA,https://app.mode.com/editor/ecooltra706/reports/7c6048a94054,1679,pure,EF_postgresql,no,antic_+2anys
+[ALL] Total Riders,++ aSlack reports,https://app.mode.com/editor/ecooltra706/reports/e2b2232961dc,1656,pure,EF_postgresql,no,antic_+2anys
+Report ecológico,Data Science,https://app.mode.com/editor/ecooltra706/reports/6907543e21de,1627,pure,EF_postgresql,no,antic_+2anys
+Proves Home Alone,Personal,https://app.mode.com/editor/ecooltra706/reports/d39ad97ff2e1,1601,pure,EF_postgresql,no,antic_+2anys
+Pricing ABC test,Personal,https://app.mode.com/editor/ecooltra706/reports/0ffb07c0b8e4,1598,mixed,EF_postgresql; from definition,si,antic_+2anys
+CODICE SCONTO promocode report,Personal,https://app.mode.com/editor/ecooltra706/reports/78a4ed39e006,1594,mixed,EF_postgresql; from definition,si,antic_+2anys
+Gender Bias,Personal,https://app.mode.com/editor/ecooltra706/reports/bd5c8d93db86,1588,pure,EF_postgresql,no,antic_+2anys
+test_cities_0222,Personal,https://app.mode.com/editor/ecooltra706/reports/77062abfe47d,1586,pure,EF_postgresql,no,antic_+2anys
+Club employes promocode report,Personal,https://app.mode.com/editor/ecooltra706/reports/f9f45928757a,1586,pure,EF_postgresql,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/38d14993074f,1584,pure,EF_postgresql,no,antic_+2anys
+Practica 10-11 febrer,Personal,https://app.mode.com/editor/ecooltra706/reports/01a8e45e8daa,1581,pure,EF_postgresql,no,antic_+2anys
+[MKT] Pricing ABC test,Deprecated reports,https://app.mode.com/editor/ecooltra706/reports/a2060cc994b1,1579,pure,EF_postgresql,no,antic_+2anys
+Clone of [MKT] Pricing ABC test - 2022,Personal,https://app.mode.com/editor/ecooltra706/reports/9c4c51f98dd1,1579,pure,EF_postgresql,no,antic_+2anys
+Single User Queries,Personal,https://app.mode.com/editor/ecooltra706/reports/05a693df10a9,1579,pure,EF_postgresql,no,antic_+2anys
+Testers & Versions 4.6,Personal,https://app.mode.com/editor/ecooltra706/reports/aecebcc1ca26,1577,pure,EF_postgresql,no,antic_+2anys
+Paris unique users,Personal,https://app.mode.com/editor/ecooltra706/reports/27668e2be88e,1577,pure,EF_postgresql,no,antic_+2anys
+[ALL IN ONE] User Verification Query,++ CS team,https://app.mode.com/editor/ecooltra706/reports/6f352d4cb98c,1575,mixed,EF_Gecco; EF_PRIME; EF_postgresql,no,antic_+2anys
+Practica datetime/string,Personal,https://app.mode.com/editor/ecooltra706/reports/8cc2d48286e9,1573,pure,EF_postgresql,no,antic_+2anys
+[COHORT] Monthly Retention (PG),Cohorts,https://app.mode.com/editor/ecooltra706/reports/46ac17436da7,1563,pure,EF_postgresql,no,antic_+2anys
+Clone of [OFFICIAL] ACTIVATIONS REPORT,Personal,https://app.mode.com/editor/ecooltra706/reports/fc7462372f3c,1556,mixed,EF_postgresql; from definition,si,antic_+2anys
+Data Analyst - Sergi,Personal,https://app.mode.com/editor/ecooltra706/reports/f07912f83994,1556,pure,EF_postgresql,no,antic_+2anys
+Barcelona Regulation (SCOOTERS with QR),++ City Managers,https://app.mode.com/editor/ecooltra706/reports/e32c5ad53742,1553,pure,EF_postgresql,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/f5a6b2abaf68,1550,pure,EF_postgresql,no,antic_+2anys
+COOLTRA15CPC promocode report,Personal,https://app.mode.com/editor/ecooltra706/reports/f66e2675ca3b,1530,pure,EF_postgresql,no,antic_+2anys
+[Firebase] Events,DATA,https://app.mode.com/editor/ecooltra706/reports/3fb32b48c8f2,1514,mixed,App_FirebaseEvents; EF_postgresql,no,antic_+2anys
+Onboarding Fabio,Personal,https://app.mode.com/editor/ecooltra706/reports/953cbb639603,1514,mixed,App_FirebaseEvents; EF_postgresql; Fluctuo_datawarehouse,no,antic_+2anys
+Ratings per OS,IT,https://app.mode.com/editor/ecooltra706/reports/1516e7b02f9d,1500,pure,EF_postgresql,no,antic_+2anys
+[COHORT] Inverted Monthly Retention,Cohorts,https://app.mode.com/editor/ecooltra706/reports/271d06357ec4,1496,pure,EF_postgresql,no,antic_+2anys
+MONTHLY FUNNEL,Personal,https://app.mode.com/editor/ecooltra706/reports/628b0ee29e38,1494,pure,EF_postgresql,no,antic_+2anys
+Data of Turin scooter sharing from w1 to w19 in 2022,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/3434e8f17ecd,1482,pure,Fluctuo_datawarehouse,no,antic_+2anys
+[GROUP] YTD Revenue per Region (with BBPP and Forecast),Deprecated reports,https://app.mode.com/editor/ecooltra706/reports/f3f7f755e63a,1444,mixed,EF_postgresql; from definition,si,antic_+2anys
+[ZEUS] MONTHLY DAMAGE REPORTS PER OPERATOR,[ZEUS] HQ Customer Service,https://app.mode.com/editor/ecooltra706/reports/48462118dbc0,1440,pure,ZEUS - PRO,no,antic_+2anys
+Datos para IESE,DATA,https://app.mode.com/editor/ecooltra706/reports/7f85c3993da4,1424,pure,EF_postgresql,no,antic_+2anys
+"Revenue per week, day of week and city",++ City Managers,https://app.mode.com/editor/ecooltra706/reports/85093e7abcaa,1416,pure,EF_postgresql,no,antic_+2anys
+Ghost rentals,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/94b90cfff6d5,1374,pure,EF_postgresql,no,antic_+2anys
+Datos para PPTs corporativas,Deprecated reports,https://app.mode.com/editor/ecooltra706/reports/7165d8690cf5,1360,mixed,EF_postgresql; from definition,si,antic_+2anys
+Clone of [SWA/SINGLE] Swapping analysis,Personal,https://app.mode.com/editor/ecooltra706/reports/99c54fbdc761,1360,pure,EF_postgresql,no,antic_+2anys
+[B2C] Report clientes deudores Sharing PROCESO JUDICIAL,Data Science,https://app.mode.com/editor/ecooltra706/reports/dc365c42ac7f,1346,pure,EF_postgresql,no,antic_+2anys
+Underaged: Activated+Approved,++ aSlack reports,https://app.mode.com/editor/ecooltra706/reports/a1ac03e91693,1342,mixed,EF_Gecco; EF_postgresql,no,antic_+2anys
+Incorrect DL: Activated+Approved,++ aSlack reports,https://app.mode.com/editor/ecooltra706/reports/c1255f9c1c18,1342,mixed,EF_Gecco; EF_postgresql,no,antic_+2anys
+Unapproved users,++ aSlack reports,https://app.mode.com/editor/ecooltra706/reports/1a956e7ca0ce,1342,mixed,EF_Gecco; EF_postgresql,no,antic_+2anys
+Infractores BCN 2022-01-09,Backup Lluís,https://app.mode.com/editor/ecooltra706/reports/28ffeeec972a,1339,pure,EF_postgresql,no,antic_+2anys
+Clone of Datos para Policía de Valencia,Backup Lluís,https://app.mode.com/editor/ecooltra706/reports/00e36d54f533,1339,pure,EF_postgresql,no,antic_+2anys
+Portugal ST and LT revenues,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/2e481914888f,1317,pure,from definition,si,nomes_from_definition|antic_+2anys
+Clone of [Fluctuo] City Matrix Data,Backup Lluís,https://app.mode.com/editor/ecooltra706/reports/262f332925ea,1314,pure,Fluctuo_datawarehouse,no,antic_+2anys
+[ZEUS] Work shifts,Backup Lluís,https://app.mode.com/editor/ecooltra706/reports/e76e7adcd105,1308,pure,from definition,si,nomes_from_definition|antic_+2anys
+Paris task control (FW Jumper),[ZEUS] City Managers,https://app.mode.com/editor/ecooltra706/reports/a377a407f556,1307,pure,ZEUS - PRO,no,antic_+2anys
+Clone of Contratos y reservas,Backup Lluís,https://app.mode.com/editor/ecooltra706/reports/6f65ece8bb4b,1305,pure,from definition,si,nomes_from_definition|antic_+2anys
+Clone of Análisis de usuarios,DATA,https://app.mode.com/editor/ecooltra706/reports/e3e08504402b,1305,mixed,EF_postgresql; from definition,si,antic_+2anys
+[Fluctuo] Prediction of rentals in 2023 in all cities,Backup Lluís,https://app.mode.com/editor/ecooltra706/reports/b02662a37fea,1304,mixed,EF_postgresql; Fluctuo_datawarehouse,no,antic_+2anys
+Clone of Riders por rango de edad y ciudades,DATA,https://app.mode.com/editor/ecooltra706/reports/47500bcf1d9b,1304,mixed,EF_postgresql; from definition,si,antic_+2anys
+"Lisbon rentals, vehicles and riders data",++ City Managers,https://app.mode.com/editor/ecooltra706/reports/b7dff062e000,1300,pure,EF_postgresql,no,antic_+2anys
+Proves...,Backup Lluís,https://app.mode.com/editor/ecooltra706/reports/a2bf9a60903b,1300,mixed,EF_postgresql; from definition,si,antic_+2anys
+Current location of bikes,Backup Lluís,https://app.mode.com/editor/ecooltra706/reports/ef8de8d3e701,1299,pure,from definition,si,nomes_from_definition|antic_+2anys
+OB-Online Bookings,OB,https://app.mode.com/editor/ecooltra706/reports/883ec6ca0fd5,1291,mixed,ETENDO PRO Replica lectura; from definition,si,antic_+2anys
+5 DAY PLAN,OB,https://app.mode.com/editor/ecooltra706/reports/ee581c5a4ad6,1291,pure,ETENDO PRO Replica lectura,no,antic_+2anys
+[OB] Control Report,OB,https://app.mode.com/editor/ecooltra706/reports/ed8686daabc3,1291,mixed,ETENDO PRO Replica lectura; from definition,si,antic_+2anys
+[OB] AUTOMATIZADO DE CLIENTES PENDIENTES DE COBRO,OB,https://app.mode.com/editor/ecooltra706/reports/e9ba6f1255f1,1291,pure,ETENDO PRO Replica lectura,no,antic_+2anys
+[GROUP] YTD Revenue Progress,OB,https://app.mode.com/editor/ecooltra706/reports/ffce1c93cf39,1291,mixed,EF_postgresql; ETENDO PRO Replica lectura; from definition,si,antic_+2anys
+[GROUP] Monthly Revenue per Region (BBPP & Forecast),OB,https://app.mode.com/editor/ecooltra706/reports/b4b347c47f06,1291,mixed,EF_postgresql; ETENDO PRO Replica lectura; from definition,si,antic_+2anys
+[GROUP] YTD Revenue Progress (with BBPP and Forecast),OB,https://app.mode.com/editor/ecooltra706/reports/6c31ca33c9a6,1291,mixed,EF_postgresql; ETENDO PRO Replica lectura; from definition,si,antic_+2anys
+[GROUP] Monthly Revenue per Region,OB,https://app.mode.com/editor/ecooltra706/reports/588075736482,1291,mixed,EF_postgresql; ETENDO PRO Replica lectura; from definition,si,antic_+2anys
+[GROUP] YTD Revenue per Region,OB,https://app.mode.com/editor/ecooltra706/reports/d86565f7704b,1291,mixed,EF_postgresql; ETENDO PRO Replica lectura; from definition,si,antic_+2anys
+[GROUP] Monthly Revenue Progress,OB,https://app.mode.com/editor/ecooltra706/reports/9a054f43dce4,1291,mixed,EF_postgresql; ETENDO PRO Replica lectura; from definition,si,antic_+2anys
+YTD Revenue per Region (with BBPP and Forecast),OB,https://app.mode.com/editor/ecooltra706/reports/876f62d0d276,1291,mixed,EF_postgresql; ETENDO PRO Replica lectura,no,antic_+2anys
+[OB ] EXPORT VEHÍCULOS,OB,https://app.mode.com/editor/ecooltra706/reports/8b49610d977d,1291,pure,ETENDO PRO Replica lectura,no,antic_+2anys
+[OB] OPS: Plantillas de Mantenimiento por líneas,OB,https://app.mode.com/editor/ecooltra706/reports/0a9d520e0393,1291,mixed,ETENDO PRO Replica lectura; from definition,si,antic_+2anys
+[OB] Datos de Openbravo (contratos/reservas),OB,https://app.mode.com/editor/ecooltra706/reports/3d6652bce81b,1291,mixed,ETENDO PRO Replica lectura; from definition,si,antic_+2anys
+User domains,Backup Lluís,https://app.mode.com/editor/ecooltra706/reports/b7ca853806e0,1290,pure,EF_postgresql,no,antic_+2anys
+Scooter Servicing State,Exports,https://app.mode.com/editor/ecooltra706/reports/2c8872eafc49,1283,pure,EF_postgresql,no,antic_+2anys
+ZEUS tables,Backup Lluís,https://app.mode.com/editor/ecooltra706/reports/63b0c1e754fa,1278,mixed,EF_postgresql; from definition,si,antic_+2anys
+ZIP Code analysis Paris,Backup Lluís,https://app.mode.com/editor/ecooltra706/reports/eb520067286f,1277,pure,EF_postgresql,no,antic_+2anys
+Clone of Selligent,Backup Lluís,https://app.mode.com/editor/ecooltra706/reports/ed737bb82447,1275,mixed,EF_postgresql; from definition,si,antic_+2anys
+Original [ALL] MONTHLY REVENUE PROGRESS,++ aSlack reports,https://app.mode.com/editor/ecooltra706/reports/acc34a989e58,1271,pure,EF_postgresql,no,antic_+2anys
+,Backup Lluís,https://app.mode.com/editor/ecooltra706/reports/c3897400147b,1270,pure,EF_postgresql,no,antic_+2anys
+[OLD] [ZEUS][SWA/SINGLE] Swapping analysis,[ZEUS] City Managers,https://app.mode.com/editor/ecooltra706/reports/95649457f5e5,1269,pure,ZEUS - PRO,no,antic_+2anys
+CS (Listado de rentals para un usuario),[ZEUS] HQ Customer Service,https://app.mode.com/editor/ecooltra706/reports/47ee827b9bb5,1269,pure,ZEUS - PRO,no,antic_+2anys
+Clone of [ZEUS][SWA/SINGLE] Swapping analysis,Backup Lluís,https://app.mode.com/editor/ecooltra706/reports/30a0e5e5d5c7,1264,mixed,EF_postgresql; from definition,si,antic_+2anys
+TES_IAG,Personal,https://app.mode.com/editor/ecooltra706/reports/3be905b243cc,1263,pure,from definition,si,nomes_from_definition|antic_+2anys
+[OPS] Rome swappers statistics,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/4d41db643cd8,1257,pure,EF_postgresql,no,antic_+2anys
+Zeus explorations,DATA,https://app.mode.com/editor/ecooltra706/reports/b63076265995,1256,mixed,EF_postgresql; Fluctuo_datawarehouse; ZEUS - PRO; from definition,si,antic_+2anys
+[OLD] Cooltra-Zeus data for Fluctuo reports,DATA,https://app.mode.com/editor/ecooltra706/reports/55b6937e2f10,1256,mixed,Fluctuo_datawarehouse; ZEUS - PRO; from definition,si,antic_+2anys
+[SWA/SINGLE] Swapping analysis,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/bb559b07d922,1250,pure,EF_postgresql,no,antic_+2anys
+_IMAGIN_ promocode report (copy),DATA,https://app.mode.com/editor/ecooltra706/reports/a07bd09ddbee,1250,pure,EF_postgresql,no,antic_+2anys
+Rentals in Bonus Areas,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/1bd251c4eedc,1248,pure,EF_postgresql,no,antic_+2anys
+Clone of [OFFICIAL ECOOLTRA] MONTHLY KPIS FOR COOLTRA... (Fabio),DATA,https://app.mode.com/editor/ecooltra706/reports/aa0dae94333b,1240,pure,ZEUS - PRO,no,antic_+2anys
+[US/ALL] Unused Scooters,[ZEUS] City Managers,https://app.mode.com/editor/ecooltra706/reports/4fe4b6a64f46,1237,pure,EF_postgresql,no,antic_+2anys
+Export-Vehicles,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/a36d13335e06,1231,pure,EF_postgresql,no,antic_+2anys
+Check special subscriptions,2-ORIOL Procés tancament mensual,https://app.mode.com/editor/ecooltra706/reports/9213e8c3d193,1229,pure,EF_postgresql,no,antic_+2anys
+Selligent,DATA,https://app.mode.com/editor/ecooltra706/reports/01616bb8aac1,1229,mixed,EF_postgresql; ZEUS - PRO; from definition,si,antic_+2anys
+Unavailability time ARCADE,DATA,https://app.mode.com/editor/ecooltra706/reports/eefcbfe57e07,1229,pure,ZEUS - PRO,no,antic_+2anys
+[FIN] DETALLE FACTURACION CMSHARING,Data Science,https://app.mode.com/editor/ecooltra706/reports/35e6e7f0fa2b,1228,pure,EF_postgresql,no,antic_+2anys
+Automatic sync,IT,https://app.mode.com/editor/ecooltra706/reports/a9edb88b720d,1228,pure,EF_postgresql,no,antic_+2anys
+Underaged control (simple),++ aSlack reports,https://app.mode.com/editor/ecooltra706/reports/8e4764ed8fd4,1223,pure,EF_postgresql,no,antic_+2anys
+Unprocessed Problem Reports,++ aSlack reports,https://app.mode.com/editor/ecooltra706/reports/2dd1c0995e44,1223,pure,EF_postgresql,no,antic_+2anys
+RENTALS 0-3 MIN WITH BAD RATING,++ aSlack reports,https://app.mode.com/editor/ecooltra706/reports/27fa94e8dfc3,1223,pure,EF_postgresql,no,antic_+2anys
+24h PACK TRACKING,++ aSlack reports,https://app.mode.com/editor/ecooltra706/reports/71ebb084f472,1223,pure,EF_postgresql,no,antic_+2anys
+Problem reports closed in the last 24 hours,++ aSlack reports,https://app.mode.com/editor/ecooltra706/reports/8b8a850c9b55,1223,pure,EF_postgresql,no,antic_+2anys
+Yesterday rentals per city,++ aSlack reports,https://app.mode.com/editor/ecooltra706/reports/0d998fcf3819,1223,pure,EF_postgresql,no,antic_+2anys
+MODE Sync Control,++ aSlack reports,https://app.mode.com/editor/ecooltra706/reports/9285d75a41ad,1223,pure,EF_postgresql,no,antic_+2anys
+[Slack] Barcelona Regulation (SCOOTERS with QR),++ City Managers,https://app.mode.com/editor/ecooltra706/reports/c600ed1d7444,1223,pure,EF_postgresql,no,antic_+2anys
+Barcelona Regulation (only SCOOTERS),++ City Managers,https://app.mode.com/editor/ecooltra706/reports/3a74c3b07023,1223,pure,EF_postgresql,no,antic_+2anys
+User Master Data check,++ CS team,https://app.mode.com/editor/ecooltra706/reports/ba823edce1ec,1223,pure,EF_postgresql,no,antic_+2anys
+[GROUP] Monthly Revenue Progress (with BBPP and Forecast),OB,https://app.mode.com/editor/ecooltra706/reports/e2fd1ad22479,1223,mixed,EF_postgresql; ETENDO PRO Replica lectura,no,antic_+2anys
+Location of fined rentals,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/5a6ed83d3288,1213,pure,EF_postgresql_backup,no,antic_+2anys|usa_EF_postgresql_backup
+Cooltra Club analysis,DATA,https://app.mode.com/editor/ecooltra706/reports/d4aa3b158e0b,1206,pure,EF_postgresql_backup,no,antic_+2anys|usa_EF_postgresql_backup
+[ZEUS] Providers rentals & riders (CS version),[ZEUS] HQ Customer Service,https://app.mode.com/editor/ecooltra706/reports/db01c2de835d,1188,pure,ZEUS - PRO,no,antic_+2anys
+[TEST] PARAMETERS,Personal,https://app.mode.com/editor/ecooltra706/reports/7e33c487c35b,1185,pure,ZEUS - PRO,no,antic_+2anys
+[TEST] NOTEBOOK,Personal,https://app.mode.com/editor/ecooltra706/reports/9ce04356afda,1185,pure,ZEUS - PRO,no,antic_+2anys
+[DBT] PERFORMANCE CTES VS SELECT,Personal,https://app.mode.com/editor/ecooltra706/reports/fbf127ee3364,1183,pure,ZEUS - PRO,no,antic_+2anys
+[TEST] GENERATE_SERIES,Personal,https://app.mode.com/editor/ecooltra706/reports/f7029b0a7d28,1181,pure,ZEUS - PRO,no,antic_+2anys
+[TEST] RFM_SEGMENT,Personal,https://app.mode.com/editor/ecooltra706/reports/7635e5ead5db,1179,pure,ZEUS - PRO,no,antic_+2anys
+[TEST] CLAUSES,Personal,https://app.mode.com/editor/ecooltra706/reports/d110e310ae9a,1179,mixed,EF_postgresql; ZEUS - PRO,no,antic_+2anys
+[TEST] RETENTION_ANALYSIS,Personal,https://app.mode.com/editor/ecooltra706/reports/5c038bea8c40,1179,pure,ZEUS - PRO,no,antic_+2anys
+[DBT] SEMANTIC LAYER INTEGRATION,Personal,https://app.mode.com/editor/ecooltra706/reports/ee63a7874224,1178,sense_queries,,no,sense_queries|antic_+2anys
+[TEST] METRICS SEMANTIC LAYER,Personal,https://app.mode.com/editor/ecooltra706/reports/a7ad52fd9cf6,1177,sense_queries,,no,sense_queries|antic_+2anys
+[WORK] UNPAID INVOICES,Personal,https://app.mode.com/editor/ecooltra706/reports/94df3dfa9289,1177,pure,ZEUS - PRO,no,antic_+2anys
+[ZEUS] Detection of possible fraud by shared usage of accounts,[ZEUS] HQ Customer Service,https://app.mode.com/editor/ecooltra706/reports/f2909c1eb628,1167,pure,ZEUS - PRO,no,antic_+2anys
+[ZEUS] TASKS 3 veces,[ZEUS] HQ Customer Service,https://app.mode.com/editor/ecooltra706/reports/f79756c5e649,1166,pure,ZEUS - PRO,no,antic_+2anys
+[TEST] INFORMATION_SCHEMA,Personal,https://app.mode.com/editor/ecooltra706/reports/29d882a5da91,1158,pure,ZEUS - PRO,no,antic_+2anys
+[ZEUS] [OFFICIAL] QUARTERLY ACTIVATIONS & DAMAGE REPORTS,[ZEUS] HQ Customer Service,https://app.mode.com/editor/ecooltra706/reports/c984988b3dd7,1156,pure,ZEUS - PRO,no,antic_+2anys
+[Zeus] Waiting time for the activations in the last 24 hours,[ZEUS] HQ Customer Service,https://app.mode.com/editor/ecooltra706/reports/7c3973e1b6b7,1153,pure,ZEUS - PRO,no,antic_+2anys
+[OPS] 01 MONTHLY RENTALS PER CITY (billable minutes and kms),[ZEUS] City Managers,https://app.mode.com/editor/ecooltra706/reports/16c8b46a35e2,1144,pure,ZEUS - PRO,no,antic_+2anys
+[OFFICIAL ECOOLTRA] MONTHLY KPIS FOR COOLTRA GROUP REPORTING,++ City Managers,https://app.mode.com/editor/ecooltra706/reports/fb3f9451fa4d,1140,pure,EF_postgresql_backup,no,antic_+2anys|usa_EF_postgresql_backup
+Mobility infographic - multicity,[ZEUS] City Managers,https://app.mode.com/editor/ecooltra706/reports/5b19e2878cc0,1139,pure,ZEUS - PRO,no,antic_+2anys
+Clone of [ZEUS] [OPS] Automatized KPIs,Personal,https://app.mode.com/editor/ecooltra706/reports/e9d5e010cfd0,1133,pure,ZEUS - PRO,no,antic_+2anys
+Reserves Validation,Personal,https://app.mode.com/editor/ecooltra706/reports/04d62e3bd9f8,1129,mixed,ETENDO PRO Replica lectura; ZEUS - PRO,no,antic_+2anys
+"Users activated/suspended with no ""DL category""",[ZEUS] HQ Customer Service,https://app.mode.com/editor/ecooltra706/reports/69cc26c54271,1128,pure,ZEUS - PRO,no,antic_+2anys
+[ZEUS] Last operators that have closed work units on a vehicle,[ZEUS] City Managers,https://app.mode.com/editor/ecooltra706/reports/2c4875e11cbf,1118,pure,ZEUS - PRO,no,antic_+2anys
+B2C Revenue broken down by product category,OB,https://app.mode.com/editor/ecooltra706/reports/6666d8bf3b0a,1102,pure,ETENDO PRO Replica lectura,no,antic_+2anys
+Test - 27/06/2023,Personal,https://app.mode.com/editor/ecooltra706/reports/943e5b45d515,1083,pure,ZEUS - PRO,no,antic_+2anys
+[GROUP] Monthly Revenue per Region (with BBPP and Forecast),OB,https://app.mode.com/editor/ecooltra706/reports/6b7259bffde3,1074,mixed,EF_postgresql; ETENDO PRO Replica lectura,no,antic_+2anys
+Clone of Users with expired driver license,Personal,https://app.mode.com/editor/ecooltra706/reports/41cdf2471172,1066,mixed,EF_postgresql; ZEUS - PRO,no,antic_+2anys
+Queries Validation,Personal,https://app.mode.com/editor/ecooltra706/reports/8931b03686e3,1066,mixed,ETENDO PRO Replica lectura; ZEUS - PRO,no,antic_+2anys
+Bloomreach Dani,Personal,https://app.mode.com/editor/ecooltra706/reports/c623acf154d9,1054,pure,ZEUS - PRO,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/61f995cd7fe9,1054,pure,ZEUS - PRO,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/3140a06551e0,1052,pure,ZEUS - PRO,no,antic_+2anys
+Revenue per delegation,OB,https://app.mode.com/editor/ecooltra706/reports/b4af1c63adf0,1048,pure,ETENDO PRO Replica lectura,no,antic_+2anys
+Data Check - Invoiced Amount,Personal,https://app.mode.com/editor/ecooltra706/reports/c959c9deef5f,1039,pure,ZEUS - PRO,no,antic_+2anys
+Bloomreach imports,DATA,https://app.mode.com/editor/ecooltra706/reports/890db891e956,1012,pure,ZEUS - PRO,no,antic_+2anys
+Geolocation of a vehicle in a given timestamp,[ZEUS] City Managers,https://app.mode.com/editor/ecooltra706/reports/82663fb1368b,995,pure,ZEUS - PRO,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/b516c6b7d04c,979,pure,ZEUS - PRO,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/1b1c001a5676,977,mixed,ETENDO PRO Replica lectura; ZEUS - PRO,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/40ef6940824e,970,pure,ZEUS - PRO,no,antic_+2anys
+[ZEUS][CS] Quarterly Rentals,[ZEUS] HQ Customer Service,https://app.mode.com/editor/ecooltra706/reports/b94c12835ab4,957,pure,ZEUS - PRO,no,antic_+2anys
+[WIP] User's State model,[ZEUS] Understand users,https://app.mode.com/editor/ecooltra706/reports/bfd79ba51c3a,956,mixed,Snowflake; ZEUS - PRO,no,antic_+2anys
+Datos de contabilidad - Amortización de Activos,Personal,https://app.mode.com/editor/ecooltra706/reports/034608a9a94f,949,pure,Snowflake,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/aaa89b76630d,942,pure,ZEUS - PRO,no,antic_+2anys
+[ETENDO] Facturas proveedor con mismo numero en 2023,[ETENDO] Finanzas,https://app.mode.com/editor/ecooltra706/reports/f5d050985930,940,pure,ETENDO PRO Replica lectura,no,antic_+2anys
+Heatmap of rentals,[ZEUS] City Managers,https://app.mode.com/editor/ecooltra706/reports/2618c4debc79,934,mixed,EF_postgresql; ZEUS - PRO,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/15ce99827fe9,925,pure,ZEUS - PRO,no,antic_+2anys
+[ZEUS] AUDIT USERS,[ZEUS] Audit Users,https://app.mode.com/editor/ecooltra706/reports/7ba5d5572934,914,mixed,Snowflake; ZEUS - PRO,no,antic_+2anys
+[ZEUS] [US/ALL] Unused Scooters,[ZEUS] City Managers,https://app.mode.com/editor/ecooltra706/reports/d82873031c9f,909,pure,ZEUS - PRO,no,antic_+2anys
+Lost vehicles Paris,[ZEUS] City Managers,https://app.mode.com/editor/ecooltra706/reports/9e367e463a74,908,pure,ZEUS - PRO,no,antic_+2anys
+[WIP] Events timeline,[ZEUS] Understand users,https://app.mode.com/editor/ecooltra706/reports/496b800d4670,907,pure,Snowflake,no,antic_+2anys
+[ETENDO] Bookings - Cuponcode analysis,[ETENDO] B2C,https://app.mode.com/editor/ecooltra706/reports/2dd9d282e43b,898,pure,ETENDO PRO Replica lectura,no,antic_+2anys
+Control de amortizaciones,[ETENDO] Finanzas,https://app.mode.com/editor/ecooltra706/reports/92581b9c07c2,886,mixed,ETENDO PRO Replica lectura; Snowflake,no,antic_+2anys
+[WIP] Events timeline metrics,[ZEUS] Understand users,https://app.mode.com/editor/ecooltra706/reports/39ffd605d445,885,mixed,Snowflake; ZEUS - PRO,no,antic_+2anys
+Dormant analysis,Personal,https://app.mode.com/editor/ecooltra706/reports/69fc2f3c54ed,884,mixed,EF_postgresql; ZEUS - PRO,no,antic_+2anys
+New riders de cada ciudad,DATA,https://app.mode.com/editor/ecooltra706/reports/a3e37689a542,881,pure,ZEUS - PRO,no,antic_+2anys
+[ZEUS] [OFFICIAL] PROBLEM REPORTS,[ZEUS] HQ Customer Service,https://app.mode.com/editor/ecooltra706/reports/9387c83524de,874,mixed,EF_postgresql; ZEUS - PRO,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/42253151633e,870,pure,ZEUS - PRO,no,antic_+2anys
+Cierres de caja,OB,https://app.mode.com/editor/ecooltra706/reports/b9a35a3b0309,854,pure,ETENDO PRO Replica lectura,no,antic_+2anys
+[ZEUS] Abonos y facturas,[ZEUS] HQ Finance,https://app.mode.com/editor/ecooltra706/reports/f65976774a0c,853,pure,ZEUS - PRO,no,antic_+2anys
+[ZEUS] Abonos y facturas (Francia),[ZEUS] HQ Finance,https://app.mode.com/editor/ecooltra706/reports/9cea5d455adb,853,pure,ZEUS - PRO,no,antic_+2anys
+[ZEUS] Abonos y facturas (Italy),[ZEUS] HQ Finance,https://app.mode.com/editor/ecooltra706/reports/37159b7aab44,853,pure,ZEUS - PRO,no,antic_+2anys
+[ZEUS] Abonos y facturas (Portugal),[ZEUS] HQ Finance,https://app.mode.com/editor/ecooltra706/reports/bf0a32478b0c,853,pure,ZEUS - PRO,no,antic_+2anys
+H3 maps,Personal,https://app.mode.com/editor/ecooltra706/reports/5d2da0651bcd,849,pure,ZEUS - PRO,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/213c25ea9ba4,847,pure,ZEUS - PRO,no,antic_+2anys
+Kms por vehículo,OB,https://app.mode.com/editor/ecooltra706/reports/b30ca90e6918,846,pure,ETENDO PRO Replica lectura,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/8afbb275a90e,845,pure,ZEUS - PRO,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/0936dc888d82,844,pure,ZEUS - PRO,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/fe9f08ac24d7,841,pure,ZEUS - PRO,no,antic_+2anys
+Rentals per minute,Personal,https://app.mode.com/editor/ecooltra706/reports/b7df4c03e3ff,828,pure,ZEUS - PRO,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/7dfa32a1cfce,821,mixed,Snowflake; ZEUS - PRO,no,antic_+2anys
+Clone of Maps of rentals from 7:00 to 9:30,Personal,https://app.mode.com/editor/ecooltra706/reports/52d30c104b88,815,pure,ZEUS - PRO,no,antic_+2anys
+[ZEUS] Operations shifts,[ZEUS] City Managers,https://app.mode.com/editor/ecooltra706/reports/ecf46647e26b,813,mixed,ETENDO PRO Replica lectura; ZEUS - PRO,no,antic_+2anys
+Rentals before fines,DATA,https://app.mode.com/editor/ecooltra706/reports/65bd314d28e4,810,mixed,EF_postgresql; ZEUS - PRO,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/ea1796592c79,810,pure,ETENDO PRO Replica lectura,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/e34f0185af1b,809,pure,ZEUS - PRO,no,antic_+2anys
+Templates,Personal,https://app.mode.com/editor/ecooltra706/reports/b20639141db7,809,pure,ZEUS - PRO,no,antic_+2anys
+[Zeus] Alarms Dashboard,[ZEUS] City Managers,https://app.mode.com/editor/ecooltra706/reports/328e9aa075ce,779,pure,ZEUS - PRO,no,antic_+2anys
+[Etendo] FF Repair Shops,[ZEUS] City Managers,https://app.mode.com/editor/ecooltra706/reports/619fd72c8a73,765,pure,ETENDO PRO Replica lectura,no,antic_+2anys
+,Personal,https://app.mode.com/editor/ecooltra706/reports/4ec20b4caee3,759,pure,ZEUS - PRO,no,antic_+2anys
+EXERCICI ARNAU,DATA,https://app.mode.com/editor/ecooltra706/reports/77bd107f2e6e,755,pure,ZEUS - PRO,no,antic_+2anys
+[B2C-ST] ANALYSIS-Online bookings-Calendar units x category,[B2C-ST] ST reporting,https://app.mode.com/editor/ecooltra706/reports/70cd48ae73fd,676,sense_queries,,no,sense_queries
+Automatic sync (monthly subscription),IT,https://app.mode.com/editor/ecooltra706/reports/64b5665229ef,522,mixed,EF_postgresql_backup; ZEUS - PRO,no,usa_EF_postgresql_backup
+[B2C-ST] ANALYSIS-Online bookings-When are being created?,[B2C-ST] ST reporting,https://app.mode.com/editor/ecooltra706/reports/579587b221d5,425,sense_queries,,no,sense_queries
+,Personal,https://app.mode.com/editor/ecooltra706/reports/7fef71047fe3,158,sense_queries,,no,sense_queries
+[B2C-ST] DAILY-Online bookings-Units per model and day,[B2C-ST] ST reporting,https://app.mode.com/editor/ecooltra706/reports/348740640b07,79,sense_queries,,no,sense_queries
