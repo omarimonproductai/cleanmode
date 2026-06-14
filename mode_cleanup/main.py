@@ -55,6 +55,29 @@ def _read_collections_file(path: str) -> tuple[list[str], dict[str, str]]:
     return tokens, names
 
 
+def _sample_schedules(client: ModeClient, tokens: list[str]) -> list[dict]:
+    """Bolca els schedules crus de fins a 5 reports de la primera col·lecció
+    accessible, per descobrir l'estructura real."""
+    out: list[dict] = []
+    for t in tokens:
+        try:
+            payload = client.get(f"collections/{t}/reports")
+        except ModeAPIError:
+            continue
+        reps = payload.get("_embedded", {}).get("reports", [])
+        for rep in reps[:5]:
+            rt = rep.get("token")
+            entry = {"report_token": rt, "report_name": rep.get("name")}
+            try:
+                entry["schedules"] = client.get(f"reports/{rt}/schedules")
+            except ModeAPIError as exc:
+                entry["error_status"] = exc.status_code
+            out.append(entry)
+        if out:
+            break
+    return out
+
+
 def _probe_collections(client: ModeClient, tokens: list[str]) -> list[dict]:
     """Prova l'accés directe a collections/{token}/reports per cada token."""
     out = []
@@ -148,6 +171,10 @@ def _debug_dump(
         probe["collection_direct_probes"] = _probe_collections(
             client, collection_tokens
         )
+
+    # --- Estructura crua dels schedules d'uns quants reports ---
+    if collection_tokens:
+        probe["schedules_sample"] = _sample_schedules(client, collection_tokens)
 
     (out / "_debug_probe.json").write_text(
         json.dumps(probe, indent=2, ensure_ascii=False), encoding="utf-8"
