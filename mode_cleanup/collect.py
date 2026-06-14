@@ -37,8 +37,13 @@ def collect_data_sources(client: ModeClient) -> list[dict[str, Any]]:
 
 
 def collect_spaces(client: ModeClient) -> list[dict[str, Any]]:
-    """Tots els espais/col·leccions (inclou l'espai personal)."""
-    return list(client.paginate("spaces", "spaces"))
+    """Tots els espais/col·leccions.
+
+    ``filter=all`` demana totes les col·leccions del workspace (cal ser
+    Workspace Admin perquè en retorni més enllà de les pròpies); sense això
+    l'API només retorna les col·leccions de què l'usuari del token és membre.
+    """
+    return list(client.paginate("spaces?filter=all", "spaces"))
 
 
 def _href(obj: dict[str, Any], rel: str) -> str | None:
