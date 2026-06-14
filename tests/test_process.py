@@ -80,11 +80,9 @@ def test_purity_mixed_and_pure():
     assert r2.pure_source == "(morta/desconeguda)"
 
 
-def test_report_url_absolute():
+def test_report_url_editor_format():
     _, reports = process(_collected(), now=NOW, workspace="ecooltra706")
     r1 = [r for r in reports if r.report_token == "r1"][0]
-    # Té _links.web.href relatiu -> es torna absolut.
-    assert r1.report_url == "https://app.mode.com/x/r1"
+    assert r1.report_url == "https://app.mode.com/editor/ecooltra706/reports/r1"
     r2 = [r for r in reports if r.report_token == "r2"][0]
-    # Sense web link -> es construeix amb workspace + token.
-    assert r2.report_url == "https://app.mode.com/ecooltra706/reports/r2"
+    assert r2.report_url == "https://app.mode.com/editor/ecooltra706/reports/r2"

@@ -45,7 +45,7 @@ def _rows():
         ReportRow(
             report_name="Old",
             report_token="r2",
-            report_url="https://app.mode.com/ecooltra706/reports/r2",
+            report_url="https://app.mode.com/editor/ecooltra706/reports/r2",
             space_name="Personal",
             owner="",
             last_run_at="",
@@ -82,5 +82,5 @@ def test_write_outputs_creates_files(tmp_path):
     # HTML autònom amb les dades incrustades.
     html = (tmp_path / REPORT_HTML).read_text(encoding="utf-8")
     assert "Inventari de reports MODE" in html
-    assert "https://app.mode.com/ecooltra706/reports/r2" in html
+    assert "https://app.mode.com/editor/ecooltra706/reports/r2" in html
     assert "__DATA__" not in html  # el placeholder s'ha substituït

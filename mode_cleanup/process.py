@@ -76,13 +76,10 @@ def _yes_no(value: Any) -> str:
 
 
 def _report_url(report: dict[str, Any], workspace: str) -> str:
-    """URL web absoluta i clicable del report."""
-    href = report.get("_links", {}).get("web", {}).get("href")
-    if href:
-        return href if href.startswith("http") else f"https://app.mode.com{href}"
+    """URL de l'editor del report: app.mode.com/editor/<ws>/reports/<token>."""
     token = report.get("token")
     if token and workspace:
-        return f"https://app.mode.com/{workspace}/reports/{token}"
+        return f"https://app.mode.com/editor/{workspace}/reports/{token}"
     return ""
 
 
