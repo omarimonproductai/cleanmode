@@ -120,33 +120,45 @@ def collect_all(
     data_sources = collect_data_sources(client)
 
     reports: list[CollectedReport] = []
+    query_failures = 0
     for space_name, reports_path in _iter_collection_sources(
         client, collection_tokens, collection_names
     ):
         try:
             space_reports = list(client.paginate(reports_path, "reports"))
         except ModeAPIError as exc:
-            if exc.status_code in _SKIP_STATUSES:
-                print(
-                    f"  Avís: col·lecció '{space_name}' no accessible "
-                    f"({exc.status_code}), s'omet.",
-                    file=sys.stderr,
-                )
-                continue
-            raise
+            # Qualsevol error (permís, 500, reintents exhaurits) -> saltar la
+            # col·lecció sencera amb avís, però no tombar el run.
+            print(
+                f"  Avís: col·lecció '{space_name}' no accessible "
+                f"({exc.status_code or 'error'}), s'omet.",
+                file=sys.stderr,
+            )
+            continue
 
         for report in space_reports:
             try:
                 queries = collect_report_queries(client, report)
             except ModeAPIError as exc:
-                if exc.status_code in _SKIP_STATUSES:
-                    queries = []
-                else:
-                    raise
+                # Un report concret que falla no ha d'aturar tot l'escaneig.
+                query_failures += 1
+                print(
+                    f"  Avís: queries del report "
+                    f"'{report.get('name', report.get('token'))}' no "
+                    f"recuperables ({exc.status_code or 'error'}), queries=0.",
+                    file=sys.stderr,
+                )
+                queries = []
             reports.append(
                 CollectedReport(
                     report=report, space_name=space_name, queries=queries
                 )
             )
+
+    if query_failures:
+        print(
+            f"  Total reports amb queries no recuperables: {query_failures}.",
+            file=sys.stderr,
+        )
 
     return Collected(data_sources=data_sources, reports=reports)

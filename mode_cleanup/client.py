@@ -74,8 +74,10 @@ class ModeClient:
         """GET amb reintents/backoff. Retorna el cos JSON com a dict."""
         url = self._absolute_url(path)
         last_exc: Exception | None = None
+        retry_after: float | None = None
 
         for attempt in range(self._max_retries + 1):
+            retry_after = None
             try:
                 response = self._session.get(url, timeout=self._timeout)
             except requests.RequestException as exc:  # error de xarxa transitori
@@ -91,9 +93,14 @@ class ModeClient:
                 last_exc = ModeAPIError(
                     f"GET {url} ha retornat {response.status_code} (transitori)"
                 )
+                # Respecta Retry-After (segons) en rate limiting (429).
+                header = response.headers.get("Retry-After", "")
+                if header.isdigit():
+                    retry_after = float(header)
 
             if attempt < self._max_retries:
-                time.sleep(self._backoff_base ** attempt)
+                delay = retry_after if retry_after is not None else self._backoff_base ** attempt
+                time.sleep(delay)
 
         raise ModeAPIError(
             f"GET {url} ha fallat després de {self._max_retries + 1} intents"

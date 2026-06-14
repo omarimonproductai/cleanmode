@@ -142,3 +142,42 @@ def test_collect_with_explicit_collection_tokens():
     assert len(result.reports) == 1
     assert result.reports[0].space_name == "Finance"
     assert result.reports[0].report["token"] == "rA"
+
+
+@responses.activate
+def test_failed_report_queries_does_not_abort_run():
+    responses.add(
+        responses.GET,
+        f"{WS}/data_sources",
+        json={"_embedded": {"data_sources": []}},
+        status=200,
+    )
+    responses.add(
+        responses.GET,
+        f"{WS}/collections/tokX/reports",
+        json={
+            "_embedded": {
+                "reports": [
+                    {"token": "rOK", "name": "OK"},
+                    {"token": "rBAD", "name": "Bad"},
+                ]
+            }
+        },
+        status=200,
+    )
+    responses.add(
+        responses.GET,
+        f"{WS}/reports/rOK/queries",
+        json={"_embedded": {"queries": [{"name": "q", "data_source_id": 1}]}},
+        status=200,
+    )
+    # rBAD retorna 500 sempre -> reintents exhaurits, però NO ha d'aturar el run.
+    responses.add(responses.GET, f"{WS}/reports/rBAD/queries", status=500)
+
+    client = ModeClient(CONFIG, max_retries=1, backoff_base=0)
+    result = collect_all(client, collection_tokens=["tokX"])
+    # Tots dos reports hi son; el dolent amb queries buides.
+    by_token = {r.report["token"]: r for r in result.reports}
+    assert set(by_token) == {"rOK", "rBAD"}
+    assert by_token["rBAD"].queries == []
+    assert len(by_token["rOK"].queries) == 1
