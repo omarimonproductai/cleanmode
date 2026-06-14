@@ -175,6 +175,7 @@ _HTML_TEMPLATE = """<!DOCTYPE html>
 <div class="controls">
   <input id="q" placeholder="Cerca per report, col·lecció o creador...">
   <select id="source"><option value="">Totes les fonts</option></select>
+  <select id="creator"><option value="">Tots els creadors</option></select>
   <select id="purity">
     <option value="">Pures i mixtes</option>
     <option value="pure">Només pures</option>
@@ -218,16 +219,23 @@ function renderCards(){
   s.by_source.forEach(([name])=>{
     const o = document.createElement("option"); o.value = name; o.textContent = name; sel.appendChild(o);
   });
+  const creators = [...new Set(reports.map(r=>r.creator).filter(Boolean))].sort();
+  const csel = document.getElementById("creator");
+  creators.forEach(c=>{
+    const o = document.createElement("option"); o.value = c; o.textContent = c; csel.appendChild(o);
+  });
 }
 
 function rowsFiltered(){
   const q = document.getElementById("q").value.toLowerCase();
   const src = document.getElementById("source").value;
+  const cre = document.getElementById("creator").value;
   const pur = document.getElementById("purity").value;
   const dead = document.getElementById("dead").value;
   return reports.filter(r=>{
     if (q && !(`${r.report_name} ${r.space_name} ${r.creator}`.toLowerCase().includes(q))) return false;
     if (src && !r.data_sources.split("; ").includes(src)) return false;
+    if (cre && r.creator !== cre) return false;
     if (pur && r.purity !== pur) return false;
     if (dead && r.has_dead_source !== dead) return false;
     return true;
@@ -269,7 +277,7 @@ document.querySelectorAll("th").forEach(th=>th.addEventListener("click",()=>{
   if (sortKey === k) sortAsc = !sortAsc; else { sortKey = k; sortAsc = true; }
   render();
 }));
-["q","source","purity","dead"].forEach(id=>document.getElementById(id).addEventListener("input", render));
+["q","source","creator","purity","dead"].forEach(id=>document.getElementById(id).addEventListener("input", render));
 renderCards(); render();
 </script>
 </body>
