@@ -13,6 +13,10 @@ on:
         description: "Mode diagnòstic: bolca l'estructura crua de /spaces i surt"
         type: boolean
         default: false
+      collections:
+        description: "Tokens de col·leccions (separats per comes) a recórrer directament"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -38,8 +42,10 @@ jobs:
           MODE_API_TOKEN: ${{ secrets.MODE_API_TOKEN }}
           # El secret del repo es diu MODE_SECRET; config.py l'accepta com a àlies.
           MODE_API_SECRET: ${{ secrets.MODE_SECRET }}
+          MODE_COLLECTIONS: ${{ inputs.collections }}
         run: |
           python -m mode_cleanup.main --output-dir output \
+            --collections "$MODE_COLLECTIONS" \
             ${{ inputs.debug && '--debug-dump' || '' }}
 
       - name: Commit results

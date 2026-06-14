@@ -58,32 +58,69 @@ def collect_report_queries(
     return list(client.paginate(path, "queries"))
 
 
-def collect_all(client: ModeClient) -> Collected:
-    """Recull fonts de dades i tots els reports (amb queries) de tots els espais.
+_SKIP_STATUSES = {403, 404}
 
-    Inclou reports arxivats. Segueix els enllaços HAL que dona l'API per cada
-    espai/report en comptes de construir paths a mà. Si un espai no és accessible
-    (404), el salta amb un avís en comptes de tombar tot el run.
+
+def _collection_name(client: ModeClient, token: str) -> str:
+    """Intenta llegir el nom d'una col·lecció pel seu token; si no, retorna el token."""
+    try:
+        detail = client.get(f"collections/{token}")
+    except ModeAPIError:
+        return token
+    return detail.get("name", token)
+
+
+def _iter_collection_sources(
+    client: ModeClient, collection_tokens: list[str] | None
+) -> list[tuple[str, str]]:
+    """Retorna (nom, reports_path) per cada col·lecció a recórrer.
+
+    Si es passen tokens explícits, s'accedeix directament a
+    ``collections/{token}/reports`` (encara que /spaces no els llisti). Si no,
+    s'enumeren els espais de què l'usuari del token és membre.
     """
-    data_sources = collect_data_sources(client)
-    spaces = collect_spaces(client)
+    if collection_tokens:
+        return [
+            (_collection_name(client, t), f"collections/{t}/reports")
+            for t in collection_tokens
+        ]
 
-    reports: list[CollectedReport] = []
-    for space in spaces:
-        space_name = space.get("name", "(sense nom)")
-        reports_path = _href(space, "reports")
-        if not reports_path:
+    sources: list[tuple[str, str]] = []
+    for space in collect_spaces(client):
+        name = space.get("name", "(sense nom)")
+        path = _href(space, "reports")
+        if not path:
             token = space.get("token")
             if not token:
                 continue
-            reports_path = f"spaces/{token}/reports"
+            path = f"collections/{token}/reports"
+        sources.append((name, path))
+    return sources
 
+
+def collect_all(
+    client: ModeClient, collection_tokens: list[str] | None = None
+) -> Collected:
+    """Recull fonts de dades i els reports (amb queries) de les col·leccions.
+
+    Inclou reports arxivats. Si ``collection_tokens`` es passa, accedeix
+    directament a aquestes col·leccions; si no, recorre els espais de què
+    l'usuari del token és membre. Salta amb un avís les col·leccions/reports no
+    accessibles (403/404) en comptes de tombar el run.
+    """
+    data_sources = collect_data_sources(client)
+
+    reports: list[CollectedReport] = []
+    for space_name, reports_path in _iter_collection_sources(
+        client, collection_tokens
+    ):
         try:
             space_reports = list(client.paginate(reports_path, "reports"))
         except ModeAPIError as exc:
-            if exc.status_code == 404:
+            if exc.status_code in _SKIP_STATUSES:
                 print(
-                    f"  Avís: espai '{space_name}' no accessible (404), s'omet.",
+                    f"  Avís: col·lecció '{space_name}' no accessible "
+                    f"({exc.status_code}), s'omet.",
                     file=sys.stderr,
                 )
                 continue
@@ -93,7 +130,7 @@ def collect_all(client: ModeClient) -> Collected:
             try:
                 queries = collect_report_queries(client, report)
             except ModeAPIError as exc:
-                if exc.status_code == 404:
+                if exc.status_code in _SKIP_STATUSES:
                     queries = []
                 else:
                     raise

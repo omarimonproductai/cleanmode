@@ -24,7 +24,7 @@ def test_collect_all_gathers_reports_with_queries():
     )
     responses.add(
         responses.GET,
-        f"{WS}/spaces/sp1/reports",
+        f"{WS}/collections/sp1/reports",
         json={
             "_embedded": {
                 "reports": [
@@ -94,7 +94,7 @@ def test_collect_follows_hal_reports_link_and_skips_404_space():
     )
     responses.add(
         responses.GET,
-        f"{WS}/spaces/sp_bad/reports",
+        f"{WS}/collections/sp_bad/reports",
         json={"id": "not_found", "message": "space not found"},
         status=404,
     )
@@ -108,3 +108,37 @@ def test_collect_follows_hal_reports_link_and_skips_404_space():
     result = collect_all(ModeClient(CONFIG))
     # L'espai 404 s'ha saltat; només queda el report de l'espai accessible.
     assert {r.report["token"] for r in result.reports} == {"r1"}
+
+
+@responses.activate
+def test_collect_with_explicit_collection_tokens():
+    responses.add(
+        responses.GET,
+        f"{WS}/data_sources",
+        json={"_embedded": {"data_sources": []}},
+        status=200,
+    )
+    # Nom de la col·lecció via detail.
+    responses.add(
+        responses.GET,
+        f"{WS}/collections/tok123",
+        json={"name": "Finance"},
+        status=200,
+    )
+    responses.add(
+        responses.GET,
+        f"{WS}/collections/tok123/reports",
+        json={"_embedded": {"reports": [{"token": "rA", "name": "A"}]}},
+        status=200,
+    )
+    responses.add(
+        responses.GET,
+        f"{WS}/reports/rA/queries",
+        json={"_embedded": {"queries": [{"name": "q", "data_source_id": 5}]}},
+        status=200,
+    )
+
+    result = collect_all(ModeClient(CONFIG), collection_tokens=["tok123"])
+    assert len(result.reports) == 1
+    assert result.reports[0].space_name == "Finance"
+    assert result.reports[0].report["token"] == "rA"

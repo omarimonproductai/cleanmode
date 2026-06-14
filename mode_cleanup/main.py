@@ -36,7 +36,17 @@ def _safe_dump(client: ModeClient, path: str, out_path: Path) -> tuple[dict | No
     return payload, None
 
 
-def _debug_dump(client: ModeClient, output_dir: str) -> None:
+def _probe_collections(client: ModeClient, tokens: list[str]) -> list[dict]:
+    """Prova l'accés directe a collections/{token}/reports per cada token."""
+    out = []
+    for t in tokens:
+        out.append(_probe(client, f"collections/{t}/reports"))
+    return out
+
+
+def _debug_dump(
+    client: ModeClient, output_dir: str, collection_tokens: list[str] | None = None
+) -> None:
     """Bolca l'estructura crua de /spaces i /data_sources i prova rutes de
     reports. Cada secció és independent: un error no atura la resta."""
     out = Path(output_dir)
@@ -114,6 +124,12 @@ def _debug_dump(client: ModeClient, output_dir: str) -> None:
             )
     probe["batch_probes"] = batch_probes
 
+    # --- Accés directe a col·leccions concretes pel seu token ---
+    if collection_tokens:
+        probe["collection_direct_probes"] = _probe_collections(
+            client, collection_tokens
+        )
+
     (out / "_debug_probe.json").write_text(
         json.dumps(probe, indent=2, ensure_ascii=False), encoding="utf-8"
     )
@@ -140,7 +156,15 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Bolca l'estructura crua de /spaces a output/ i surt (diagnòstic).",
     )
+    parser.add_argument(
+        "--collections",
+        default="",
+        help="Tokens de col·leccions separats per comes a recórrer directament "
+        "(útil si /spaces no les llista).",
+    )
     args = parser.parse_args(argv)
+
+    collection_tokens = [t.strip() for t in args.collections.split(",") if t.strip()]
 
     try:
         config = load_config()
@@ -151,11 +175,11 @@ def main(argv: list[str] | None = None) -> int:
     client = ModeClient(config)
 
     if args.debug_dump:
-        _debug_dump(client, args.output_dir)
+        _debug_dump(client, args.output_dir, collection_tokens)
         return 0
 
     print(f"Recollint dades del workspace '{config.workspace}'...")
-    collected = collect_all(client)
+    collected = collect_all(client, collection_tokens or None)
     print(
         f"  {len(collected.data_sources)} fonts de dades, "
         f"{len(collected.reports)} reports."
