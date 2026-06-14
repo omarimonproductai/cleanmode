@@ -55,6 +55,13 @@ class ModeClient:
             return f"https://app.mode.com{path}"
         return f"{self._config.workspace_url}/{path.lstrip('/')}"
 
+    def raw_get(self, url: str) -> requests.Response:
+        """GET d'un sol intent que retorna la Response crua (sense parsejar).
+
+        Útil per endpoints que no són HAL/JSON (p. ex. el Batch API).
+        """
+        return self._session.get(url, timeout=self._timeout)
+
     def get(self, path: str) -> dict[str, Any]:
         """GET amb reintents/backoff. Retorna el cos JSON com a dict."""
         url = self._absolute_url(path)

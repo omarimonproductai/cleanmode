@@ -77,6 +77,32 @@ def _debug_dump(client: ModeClient, output_dir: str) -> None:
     else:
         probe["data_sources_error_status"] = ds_err
 
+    # --- Batch API (app.mode.com/batch/...): pot saltar-se els permisos de
+    #     col·leccions. Provem reports i queries i registrem què retorna. ---
+    ws = client._config.workspace  # noqa: SLF001 (diagnòstic)
+    batch_probes = []
+    for resource in ("reports", "queries"):
+        url = f"https://app.mode.com/batch/{ws}/{resource}"
+        try:
+            resp = client.raw_get(url)
+        except Exception as exc:  # noqa: BLE001 - diagnòstic, no ha de petar
+            batch_probes.append({"url": url, "error": str(exc)})
+            continue
+        body = resp.text or ""
+        entry = {
+            "url": url,
+            "status": resp.status_code,
+            "content_type": resp.headers.get("Content-Type", ""),
+            "length": len(body),
+            "snippet": body[:1000],
+        }
+        batch_probes.append(entry)
+        if resp.status_code == 200:
+            (out / f"_debug_batch_{resource}.txt").write_text(
+                body[:200000], encoding="utf-8"
+            )
+    probe["batch_probes"] = batch_probes
+
     (out / "_debug_probe.json").write_text(
         json.dumps(probe, indent=2, ensure_ascii=False), encoding="utf-8"
     )
