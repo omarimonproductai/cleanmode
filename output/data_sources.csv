@@ -1,0 +1,15 @@
+name,token,id,adapter,vendor,provider,host,database,queryable,asleep,soft_deleted,public,default_access_level,creator,created_at,updated_at
+App_FirebaseEvents,8d0b1ba3d4d5,31860,jdbc:bigquery,bigquery,google,api-project-1029065104652,default,si,no,no,no,View,robertoleta,2021-06-28T09:21:10.751Z,2025-04-03T07:32:05.778Z
+EF_Gecco,25153eba0548,25788,jdbc:postgresql,postgresql,default,ef-warehouse.cwkdbly7jpmk.eu-west-1.rds.amazonaws.com,86d53d8f58cc,si,no,no,no,View,robertoleta,2020-07-13T18:04:31.130Z,2025-04-03T07:32:33.334Z
+EF_postgresql,19371e2503f8,18616,jdbc:postgresql,postgresql,default,ef-warehouse.cwkdbly7jpmk.eu-west-1.rds.amazonaws.com,b98042e9eafc,si,no,no,no,View,robertoleta,2019-05-23T10:16:50.049Z,2025-04-03T07:32:33.380Z
+EF_postgresql_backup,e465cfc808d4,40594,jdbc:postgresql,postgresql,aurora,ef-backup.zeus.cooltra.com,efbackup,si,no,no,no,View,modezeus,2023-02-07T11:20:30.007Z,2023-02-07T11:20:30.161Z
+EF_PRIME,e12d2bc32007,22468,jdbc:postgresql,postgresql,default,ef-warehouse.cwkdbly7jpmk.eu-west-1.rds.amazonaws.com,861fe0b487c0,si,no,no,no,View,robertoleta,2019-12-17T20:49:58.011Z,2025-04-03T07:32:33.424Z
+ETENDO PRO Replica lectura,35697c007101,39596,jdbc:postgresql,postgresql,default,cooltra-etendo-22q2-cluster.cluster-ro-c0oeog17s6z6.eu-west-1.rds.amazonaws.com,openbravo,si,no,no,no,Query,robertoleta,2022-11-16T09:25:12.386Z,2023-02-03T14:25:19.195Z
+Fluctuo_datawarehouse,2307d9629f39,29154,jdbc:postgresql,postgresql,default,modedatawarehouse.cluster-c0oeog17s6z6.eu-west-1.rds.amazonaws.com,ModeFluctuo,si,no,no,no,View,robertoleta,2021-01-29T15:40:39.317Z,2025-04-03T07:32:35.837Z
+Invers_datawarehouse,50aa0bf820e8,22215,jdbc:postgresql,postgresql,default,modedatawarehouse.cluster-c0oeog17s6z6.eu-west-1.rds.amazonaws.com,invers,si,no,no,no,View,robertoleta,2019-11-30T22:35:34.722Z,2025-04-03T07:32:51.895Z
+Numintec_datawarehouse,5f04f1742ea7,22169,jdbc:postgresql,postgresql,default,modedatawarehouse.cluster-c0oeog17s6z6.eu-west-1.rds.amazonaws.com,numintec,si,no,no,no,View,robertoleta,2019-11-27T17:21:54.408Z,2025-04-03T07:33:10.216Z
+QuestDB,37d6459de6ad,49690,jdbc:postgresql,postgresql,default,questdb.zeus-data.local,qdb,si,no,no,no,View,fabiofacchini,2026-05-21T15:26:03.948Z,2026-05-21T15:26:04.164Z
+SFSC_DataWarehouse,c699b71ea84b,22518,jdbc:postgresql,postgresql,default,modedatawarehouse.cluster-c0oeog17s6z6.eu-west-1.rds.amazonaws.com,ModeSFSC,si,no,no,no,View,robertoleta,2019-12-19T18:30:07.196Z,2022-05-19T11:54:06.303Z
+Snowflake,ae9722cef05a,41462,jdbc:snowflake,snowflake,snowflake,rd02543.europe-west4.gcp.snowflakecomputing.com,COOLTRA,si,no,no,no,Query,estebanprieto,2023-04-17T09:05:21.568Z,2026-04-23T13:03:32.338Z
+Web_LT_datawarehouse,12f511a19578,33625,jdbc:postgresql,postgresql,default,modedatawarehouse.cluster-c0oeog17s6z6.eu-west-1.rds.amazonaws.com,web_lt,si,no,no,no,View,robertoleta,2021-10-15T11:19:24.852Z,2021-10-15T11:19:24.852Z
+ZEUS - PRO,b9cc5aaba102,40151,jdbc:postgresql,postgresql,aurora,data-replica-endpoint.cluster-custom-csrtb3rzfc9n.eu-west-1.rds.amazonaws.com,zeus,si,no,no,no,Query,fabiofacchini,2023-01-04T11:23:23.468Z,2025-05-19T11:19:03.025Z
