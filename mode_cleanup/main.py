@@ -80,10 +80,17 @@ def _debug_dump(client: ModeClient, output_dir: str) -> None:
     # --- Batch API (app.mode.com/batch/...): pot saltar-se els permisos de
     #     col·leccions. Provem reports i queries i registrem què retorna. ---
     ws = client._config.workspace  # noqa: SLF001 (diagnòstic)
+    batch_urls = [
+        f"https://app.mode.com/batch/{ws}/reports",
+        f"https://app.mode.com/batch/{ws}/reports/",
+        f"https://app.mode.com/batch/{ws}/reports?format=json",
+        f"https://app.mode.com/batch/{ws}/queries",
+    ]
     batch_probes = []
-    for resource in ("reports", "queries"):
-        url = f"https://app.mode.com/batch/{ws}/{resource}"
+    for url in batch_urls:
         try:
+            # Primer sense seguir redirects, per veure si n'hi ha.
+            no_redir = client.raw_get(url, allow_redirects=False)
             resp = client.raw_get(url)
         except Exception as exc:  # noqa: BLE001 - diagnòstic, no ha de petar
             batch_probes.append({"url": url, "error": str(exc)})
@@ -91,14 +98,18 @@ def _debug_dump(client: ModeClient, output_dir: str) -> None:
         body = resp.text or ""
         entry = {
             "url": url,
+            "status_no_redirect": no_redir.status_code,
+            "redirect_location": no_redir.headers.get("Location", ""),
             "status": resp.status_code,
+            "final_url": resp.url,
+            "redirect_chain": [r.status_code for r in resp.history],
             "content_type": resp.headers.get("Content-Type", ""),
             "length": len(body),
-            "snippet": body[:1000],
+            "snippet": body[:600],
         }
         batch_probes.append(entry)
-        if resp.status_code == 200:
-            (out / f"_debug_batch_{resource}.txt").write_text(
+        if resp.status_code == 200 and "reports" in url:
+            (out / "_debug_batch_reports.txt").write_text(
                 body[:200000], encoding="utf-8"
             )
     probe["batch_probes"] = batch_probes

@@ -55,12 +55,20 @@ class ModeClient:
             return f"https://app.mode.com{path}"
         return f"{self._config.workspace_url}/{path.lstrip('/')}"
 
-    def raw_get(self, url: str) -> requests.Response:
+    def raw_get(
+        self, url: str, *, allow_redirects: bool = True
+    ) -> requests.Response:
         """GET d'un sol intent que retorna la Response crua (sense parsejar).
 
-        Útil per endpoints que no són HAL/JSON (p. ex. el Batch API).
+        Envia l'auth explícita (no només via la sessió) per descartar que es
+        perdi en redirects. Útil per endpoints no-HAL (p. ex. el Batch API).
         """
-        return self._session.get(url, timeout=self._timeout)
+        return self._session.get(
+            url,
+            timeout=self._timeout,
+            allow_redirects=allow_redirects,
+            auth=(self._config.api_token, self._config.api_secret),
+        )
 
     def get(self, path: str) -> dict[str, Any]:
         """GET amb reintents/backoff. Retorna el cos JSON com a dict."""
