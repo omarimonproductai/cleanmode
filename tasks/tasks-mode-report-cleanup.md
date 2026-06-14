@@ -43,13 +43,13 @@ Update the file after completing each sub-task, not just after completing an ent
   - [x] 1.6 Afegir al client **reintents amb backoff** davant respostes 429 / errors transitoris.
   - [x] 1.7 Test de fum: una crida autenticada a `/api/{workspace}/data_sources` retorna 200 i llista fonts.
 
-- [ ] 2.0 Recollida de dades: fonts de dades, reports, queries i runs
-  - [ ] 2.1 `collect.py`: obtenir **totes les fonts de dades** (id, nom, token, tipus).
-  - [ ] 2.2 Obtenir **tots els espais** (`/spaces`) i enumerar-ne tots els **reports**, incloent l'espai personal.
-  - [ ] 2.3 Incloure també els reports **arxivats** a l'enumeració.
-  - [ ] 2.4 Per cada report, obtenir les seves **queries** amb `data_source_id` i `raw_query`.
-  - [ ] 2.5 Per cada report, obtenir la data de l'**últim run** (i últim run reeixit si està disponible) via `/runs` o el camp del report.
-  - [ ] 2.6 Confirmar els noms exactes dels camps de l'API (p. ex. `last_run_at` vs `last_successfully_run_at`) contra una resposta real i ajustar el codi.
+- [x] 2.0 Recollida de dades: fonts de dades, reports, queries i runs
+  - [x] 2.1 `collect.py`: obtenir **totes les fonts de dades** (id, nom, token, tipus).
+  - [x] 2.2 Obtenir **tots els espais** (`/spaces`) i enumerar-ne tots els **reports**, incloent l'espai personal.
+  - [x] 2.3 Incloure també els reports **arxivats** a l'enumeració.
+  - [x] 2.4 Per cada report, obtenir les seves **queries** amb `data_source_id` i `raw_query`.
+  - [x] 2.5 Per cada report, obtenir la data de l'**últim run** (s'extreu dels camps del report a `process.py`).
+  - [ ] 2.6 Confirmar els noms exactes dels camps de l'API (p. ex. `last_run_at` vs `last_successfully_run_at`) contra una resposta real i ajustar el codi. *(Pendent: requereix execució real contra l'API.)*
 
 - [ ] 3.0 Processament: mapeig query→font de dades i càlcul d'antiguitat de l'últim run
   - [ ] 3.1 `process.py`: construir un índex `data_source_id` → nom de font de dades a partir de 2.1.

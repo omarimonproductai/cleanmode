@@ -33,7 +33,12 @@ class Config:
         return f"{self.base_url}/{self.workspace}"
 
 
-_REQUIRED_VARS = ("MODE_WORKSPACE", "MODE_API_TOKEN", "MODE_API_SECRET")
+_REQUIRED_VARS = ("MODE_WORKSPACE", "MODE_API_TOKEN")
+
+
+def _resolve_secret(source) -> str | None:
+    """El secret pot venir com MODE_API_SECRET o, com a àlies, MODE_SECRET."""
+    return source.get("MODE_API_SECRET") or source.get("MODE_SECRET")
 
 
 def load_config(env: dict[str, str] | None = None) -> Config:
@@ -44,6 +49,8 @@ def load_config(env: dict[str, str] | None = None) -> Config:
     """
     source = os.environ if env is None else env
     missing = [name for name in _REQUIRED_VARS if not source.get(name)]
+    if not _resolve_secret(source):
+        missing.append("MODE_API_SECRET (o MODE_SECRET)")
     if missing:
         raise ConfigError(
             "Falten variables d'entorn obligatòries: "
@@ -54,5 +61,5 @@ def load_config(env: dict[str, str] | None = None) -> Config:
     return Config(
         workspace=source["MODE_WORKSPACE"],
         api_token=source["MODE_API_TOKEN"],
-        api_secret=source["MODE_API_SECRET"],
+        api_secret=_resolve_secret(source),
     )
