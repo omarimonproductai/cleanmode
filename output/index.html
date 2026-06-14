@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>&#129529;</text></svg>">
-<title>Inventari de reports MODE</title>
+<title>MODE reports inventory</title>
 <style>
   body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; padding: 1.5rem; color: #1a1a2e; background: #f5f6fa; }
   h1 { margin: 0 0 .5rem; font-size: 1.4rem; }
@@ -31,35 +31,35 @@
 </style>
 </head>
 <body>
-<h1>Inventari de reports MODE</h1>
+<h1>MODE reports inventory</h1>
 <div class="cards" id="cards"></div>
 <div class="controls">
-  <input id="q" placeholder="Cerca per report, col·lecció o creador...">
-  <select id="source"><option value="">Totes les fonts</option></select>
-  <select id="creator"><option value="">Tots els creadors</option></select>
+  <input id="q" placeholder="Search by report, collection or creator...">
+  <select id="source"><option value="">All data sources</option></select>
+  <select id="creator"><option value="">All creators</option></select>
   <select id="purity">
-    <option value="">Pures i mixtes</option>
-    <option value="pure">Només pures</option>
-    <option value="mixed">Només mixtes</option>
-    <option value="sense_queries">Sense queries</option>
+    <option value="">Pure and mixed</option>
+    <option value="pure">Pure only</option>
+    <option value="mixed">Mixed only</option>
+    <option value="sense_queries">No queries</option>
   </select>
   <select id="dead">
-    <option value="">Amb i sense "from definition"</option>
-    <option value="si">Només amb "from definition"</option>
-    <option value="no">Només sense "from definition"</option>
+    <option value="">With and without "from definition"</option>
+    <option value="si">Only with "from definition"</option>
+    <option value="no">Only without "from definition"</option>
   </select>
 </div>
 <div id="count"></div>
 <table>
   <thead><tr>
-    <th data-k="space_name">Col·lecció</th>
+    <th data-k="space_name">Collection</th>
     <th data-k="report_name">Report</th>
-    <th data-k="data_sources">Fonts de dades</th>
-    <th data-k="purity">Puresa</th>
+    <th data-k="data_sources">Data sources</th>
+    <th data-k="purity">Purity</th>
     <th data-k="query_count">Queries</th>
-    <th data-k="days_since_last_run">Dies sense run</th>
-    <th data-k="creator">Creador</th>
-    <th data-k="is_archived">Arxivat</th>
+    <th data-k="days_since_last_run">Time since last run</th>
+    <th data-k="creator">Creator</th>
+    <th data-k="is_archived">Archived</th>
   </tr></thead>
   <tbody id="rows"></tbody>
 </table>
@@ -69,6 +69,23 @@ const reports = DATA.reports;
 let sortKey = "days_since_last_run", sortAsc = false;
 
 function daysNum(v){ return v === "mai" ? Infinity : Number(v); }
+
+function fmtAge(v){
+  if (v === "mai") return "never";
+  let d = Number(v);
+  if (isNaN(d)) return v;
+  const y = Math.floor(d / 365.25);
+  let rem = d - y * 365.25;
+  const m = Math.floor(rem / 30.44);
+  const days = Math.round(rem - m * 30.44);
+  const parts = [];
+  if (y) parts.push(y + "y");
+  if (m || y) parts.push(m + "m");
+  parts.push(days + "d");
+  return parts.join(" ");
+}
+
+function purityLabel(p){ return p === "sense_queries" ? "no queries" : p; }
 
 function renderCards(rows){
   const queries = rows.reduce((a,r)=>a+Number(r.query_count||0),0);
@@ -129,9 +146,9 @@ function render(){
       <td>${esc(r.space_name)}</td>
       <td>${name}${dead}</td>
       <td>${esc(r.data_sources)}</td>
-      <td><span class="tag ${purClass}">${r.purity}</span></td>
+      <td><span class="tag ${purClass}">${purityLabel(r.purity)}</span></td>
       <td>${r.query_count}</td>
-      <td>${r.days_since_last_run}</td>
+      <td>${fmtAge(r.days_since_last_run)}</td>
       <td class="muted">${esc(r.creator)}</td>
       <td>${r.is_archived}</td>
     </tr>`;

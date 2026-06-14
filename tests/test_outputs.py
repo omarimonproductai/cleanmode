@@ -82,6 +82,6 @@ def test_write_outputs_creates_files(tmp_path):
 
     # HTML autònom amb les dades incrustades.
     html = (tmp_path / REPORT_HTML).read_text(encoding="utf-8")
-    assert "Inventari de reports MODE" in html
+    assert "MODE reports inventory" in html
     assert "https://app.mode.com/editor/ecooltra706/reports/r2" in html
     assert "__DATA__" not in html  # el placeholder s'ha substituït
