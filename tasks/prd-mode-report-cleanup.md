@@ -32,7 +32,7 @@ L'objectiu d'aquesta primera versió és **purament informatiu (no destructiu)**
 
 ### Recollida de dades
 5. El sistema ha de llistar **totes les fonts de dades** del workspace (id, nom, token, tipus).
-6. El sistema ha d'enumerar **tots els reports** del workspace, recorrent tots els espais/col·leccions (spaces) i l'espai personal.
+6. El sistema ha d'enumerar **tots els reports** del workspace, recorrent tots els espais/col·leccions (spaces) i l'espai personal. **S'inclouen també els reports arxivats.**
 7. Per cada report, el sistema ha d'obtenir les seves **queries** i, per cada query, el seu **`data_source_id`** i el text SQL (`raw_query`).
 8. El sistema ha de **resoldre el `data_source_id` de cada query al nom de la font de dades** corresponent (creuant amb el llistat del requisit 5). Si l'id no existeix al llistat actual de fonts de dades, s'ha de marcar com **"font de dades morta / desconeguda"**.
 9. Per cada report, el sistema ha d'obtenir la **data de l'últim run** (i, si està disponible, l'últim run reeixit) i calcular els **dies des de l'últim run**. Si un report no s'ha executat mai, s'ha de marcar explícitament com **"mai executat"**.
@@ -54,6 +54,10 @@ L'objectiu d'aquesta primera versió és **purament informatiu (no destructiu)**
 
 ### Resum
 14. El sistema ha d'imprimir per consola (i opcionalment en un petit `summary.md`) un **resum**: nombre total de reports, queries, fonts de dades, quantes queries apunten a fonts mortes/desconegudes, i top-N reports més antics sense executar.
+
+### Emmagatzematge de sortides
+15. Els fitxers de sortida (els dos CSV i el resum) s'han de desar en una **carpeta del repo** (p. ex. `tasks/output/` o `output/`) i **versionar-se** (committejar-se), per tenir històric de les fotos successives.
+16. Els CSV de sortida **no han de contenir credencials** ni secrets; el token/secret de l'API només viu en variables d'entorn fora del repo.
 
 ## 5. Non-Goals (Out of Scope)
 
@@ -89,10 +93,10 @@ L'objectiu d'aquesta primera versió és **purament informatiu (no destructiu)**
 - L'inventari permet **identificar el 100% dels reports/queries** que apunten a fonts de dades mortes/desconegudes.
 - L'equip pot, a partir dels llistats, **iniciar la neteja quirúrgica** i mesurar la reducció de reports/queries soroll en passades successives.
 
-## 9. Open Questions
+## 9. Decisions resoltes
 
-1. **Quin/s data source/s** són exactament els "morts" a prioritzar un cop tinguem la foto? (es decidirà amb l'inventari a la mà).
-2. Confirmació que el compte de MODE té **pla i permisos** per usar la Discovery API i qui genera el token/secret.
-3. **On es desen** els CSV de sortida (carpeta local del repo, Google Drive, etc.) i si cal versionar-los o no.
-4. Llindar de "obsolet" per la Sortida 2 (p. ex. > 3, 6, 12 mesos) — o deixem només `days_since_last_run` perquè es filtri a mà?
-5. Cal incloure també reports **arxivats** a l'inventari, o només els actius?
+1. **Data source mort:** no es fixa ara. Es decidirà **amb l'inventari a la mà** un cop generada la foto.
+2. **Accés API:** confirmat — l'equip **ja disposa de token/secret** de la Discovery API. ✅
+3. **On es desen les sortides:** en una **carpeta del propi repo**, i **sí que es versionen** (els CSV es committegen). *(Atenció: assegurar que els CSV no continguin secrets; les credencials mai al repo.)*
+4. **Llindar d'obsolet:** **cap llindar fix**. La Sortida 2 només exposa `days_since_last_run` i es filtra a mà.
+5. **Reports arxivats:** **s'inclou tot** (actius i arxivats) — neteja a fons.
