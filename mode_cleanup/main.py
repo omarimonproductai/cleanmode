@@ -7,16 +7,26 @@ import json
 import sys
 from pathlib import Path
 
-from .client import ModeClient
+from .client import ModeAPIError, ModeClient
 from .collect import collect_all
 from .config import ConfigError, load_config
 from .outputs import write_outputs
 from .process import process
 
 
+def _probe(client: ModeClient, path: str) -> dict:
+    """Prova un GET i retorna ok/status/recompte de reports, sense petar."""
+    try:
+        payload = client.get(path)
+    except ModeAPIError as exc:
+        return {"path": path, "ok": False, "status": exc.status_code}
+    reports = payload.get("_embedded", {}).get("reports", [])
+    return {"path": path, "ok": True, "reports_count": len(reports)}
+
+
 def _debug_dump(client: ModeClient, output_dir: str) -> None:
-    """Bolca l'estructura crua de /spaces (i el detall del primer espai via
-    el seu self link) per inspeccionar com cal demanar els reports."""
+    """Bolca l'estructura crua de /spaces i prova diverses rutes de reports
+    per descobrir quina funciona. No peta mai."""
     out = Path(output_dir)
     out.mkdir(parents=True, exist_ok=True)
 
@@ -28,14 +38,25 @@ def _debug_dump(client: ModeClient, output_dir: str) -> None:
 
     spaces = spaces_payload.get("_embedded", {}).get("spaces", [])
     print(f"Debug: /spaces ha retornat {len(spaces)} espais.")
+
+    probe: dict = {"space_count": len(spaces)}
     if spaces:
-        self_href = spaces[0].get("_links", {}).get("self", {}).get("href")
-        if self_href:
-            detail = client.get(self_href)
-            (out / "_debug_space_detail.json").write_text(
-                json.dumps(detail, indent=2, ensure_ascii=False),
-                encoding="utf-8",
-            )
+        sp = spaces[0]
+        token = sp.get("token")
+        probe["first_space_links"] = sp.get("_links", {})
+        candidates = []
+        reports_link = sp.get("_links", {}).get("reports", {}).get("href")
+        if reports_link:
+            candidates.append(reports_link)
+        if token:
+            candidates.append(f"collections/{token}/reports")
+            candidates.append(f"spaces/{token}/reports")
+        probe["report_path_probes"] = [_probe(client, p) for p in candidates]
+
+    (out / "_debug_probe.json").write_text(
+        json.dumps(probe, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+    print(f"Debug: proves escrites a {out / '_debug_probe.json'}")
 
 
 def main(argv: list[str] | None = None) -> int:
