@@ -10,8 +10,8 @@ from pathlib import Path
 from .client import ModeAPIError, ModeClient
 from .collect import collect_all
 from .config import ConfigError, load_config
-from .outputs import write_outputs
-from .process import process
+from .outputs import write_data_sources, write_outputs
+from .process import process, process_data_sources
 
 
 def _probe(client: ModeClient, path: str) -> dict:
@@ -124,16 +124,28 @@ def main(argv: list[str] | None = None) -> int:
         f"{len(collected.reports)} reports."
     )
 
-    inventory, reports = process(collected)
-    paths = write_outputs(
-        inventory, reports, args.output_dir, top_n=args.top_n
-    )
+    # Inventari de fonts de dades: sempre es genera.
+    ds_rows = process_data_sources(collected.data_sources)
+    ds_path = write_data_sources(ds_rows, args.output_dir)
+    print(f"Inventari de fonts de dades: {ds_path}")
 
-    dead = sum(1 for r in inventory if r.data_source_alive == "no")
-    print("Sortides generades:")
-    for name, path in paths.items():
-        print(f"  - {name}: {path}")
-    print(f"Queries cap a fonts mortes/desconegudes: {dead}")
+    # Inventari per report/query: només si el token hi té accés.
+    if collected.reports:
+        inventory, reports = process(collected)
+        paths = write_outputs(
+            inventory, reports, args.output_dir, top_n=args.top_n
+        )
+        dead = sum(1 for r in inventory if r.data_source_alive == "no")
+        print("Sortides de reports generades:")
+        for name, path in paths.items():
+            print(f"  - {name}: {path}")
+        print(f"Queries cap a fonts mortes/desconegudes: {dead}")
+    else:
+        print(
+            "Avís: 0 reports accessibles amb aquest token (permisos de "
+            "col·leccions). Generat només l'inventari de fonts de dades.",
+            file=sys.stderr,
+        )
     return 0
 
 

@@ -7,10 +7,17 @@ from collections import Counter
 from dataclasses import fields
 from pathlib import Path
 
-from .process import NEVER_RUN, InventoryRow, ReportRow, row_to_dict
+from .process import (
+    NEVER_RUN,
+    DataSourceRow,
+    InventoryRow,
+    ReportRow,
+    row_to_dict,
+)
 
 INVENTORY_CSV = "inventory_by_data_source.csv"
 REPORTS_CSV = "reports_by_staleness.csv"
+DATA_SOURCES_CSV = "data_sources.csv"
 SUMMARY_MD = "summary.md"
 
 
@@ -21,6 +28,17 @@ def _write_csv(path: Path, rows: list, row_type) -> None:
         writer.writeheader()
         for row in rows:
             writer.writerow(row_to_dict(row))
+
+
+def write_data_sources(
+    rows: list[DataSourceRow], output_dir: str | Path
+) -> Path:
+    """Escriu l'inventari de fonts de dades. Retorna el path generat."""
+    out = Path(output_dir)
+    out.mkdir(parents=True, exist_ok=True)
+    path = out / DATA_SOURCES_CSV
+    _write_csv(path, rows, DataSourceRow)
+    return path
 
 
 def write_outputs(

@@ -182,5 +182,60 @@ def _report_staleness_key(row: ReportRow) -> float:
     return float(row.days_since_last_run)
 
 
-def row_to_dict(row: InventoryRow | ReportRow) -> dict[str, Any]:
+def row_to_dict(row: InventoryRow | ReportRow | "DataSourceRow") -> dict[str, Any]:
     return asdict(row)
+
+
+@dataclass
+class DataSourceRow:
+    """Una fila de l'inventari de fonts de dades."""
+
+    name: str
+    token: str
+    id: str
+    adapter: str
+    vendor: str
+    provider: str
+    host: str
+    database: str
+    queryable: str
+    asleep: str
+    soft_deleted: str
+    public: str
+    default_access_level: str
+    creator: str
+    created_at: str
+    updated_at: str
+
+
+def _creator(ds: dict[str, Any]) -> str:
+    """Username del creador, extret de l'enllaç HAL ``creator``."""
+    href = ds.get("_links", {}).get("creator", {}).get("href", "")
+    return href.rstrip("/").split("/")[-1] if href else ""
+
+
+def process_data_sources(data_sources: list[dict[str, Any]]) -> list[DataSourceRow]:
+    """Converteix les fonts de dades crues en files, ordenades per nom."""
+    rows = [
+        DataSourceRow(
+            name=ds.get("name", ""),
+            token=ds.get("token", ""),
+            id=ds.get("id", ""),
+            adapter=ds.get("adapter", ""),
+            vendor=ds.get("vendor", ""),
+            provider=ds.get("provider", "") or "",
+            host=ds.get("host", "") or "",
+            database=ds.get("database", "") or "",
+            queryable=_yes_no(ds.get("queryable")),
+            asleep=_yes_no(ds.get("asleep")),
+            soft_deleted=_yes_no(ds.get("soft_deleted")),
+            public=_yes_no(ds.get("public")),
+            default_access_level=ds.get("default_access_level", "") or "",
+            creator=_creator(ds),
+            created_at=ds.get("created_at", "") or "",
+            updated_at=ds.get("updated_at", "") or "",
+        )
+        for ds in data_sources
+    ]
+    rows.sort(key=lambda r: r.name.lower())
+    return rows
