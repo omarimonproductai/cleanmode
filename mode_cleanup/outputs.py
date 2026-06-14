@@ -209,14 +209,20 @@ let sortKey = "days_since_last_run", sortAsc = false;
 
 function daysNum(v){ return v === "mai" ? Infinity : Number(v); }
 
-function renderCards(){
-  const s = DATA.stats;
+function renderCards(rows){
+  const queries = rows.reduce((a,r)=>a+Number(r.query_count||0),0);
+  const pure = rows.filter(r=>r.purity==="pure").length;
+  const mixed = rows.filter(r=>r.purity==="mixed").length;
+  const dead = rows.filter(r=>r.has_dead_source==="si").length;
   document.getElementById("cards").innerHTML = [
-    ["Reports", s.reports], ["Queries", s.queries],
-    ["Pures", s.pure], ["Mixtes", s.mixed], ["From definition", s.with_dead]
+    ["Reports", rows.length], ["Queries", queries],
+    ["Pures", pure], ["Mixtes", mixed], ["From definition", dead]
   ].map(([k,v])=>`<div class="card"><b>${v}</b>${k}</div>`).join("");
+}
+
+function initFilters(){
   const sel = document.getElementById("source");
-  s.by_source.forEach(([name])=>{
+  DATA.stats.by_source.forEach(([name])=>{
     const o = document.createElement("option"); o.value = name; o.textContent = name; sel.appendChild(o);
   });
   const creators = [...new Set(reports.map(r=>r.creator).filter(Boolean))].sort();
@@ -252,6 +258,7 @@ function render(){
     if (x > y) return sortAsc ? 1 : -1;
     return 0;
   });
+  renderCards(rows);
   document.getElementById("count").textContent = `${rows.length} reports`;
   document.getElementById("rows").innerHTML = rows.map(r=>{
     const purClass = r.purity;
@@ -278,7 +285,7 @@ document.querySelectorAll("th").forEach(th=>th.addEventListener("click",()=>{
   render();
 }));
 ["q","source","creator","purity","dead"].forEach(id=>document.getElementById(id).addEventListener("input", render));
-renderCards(); render();
+initFilters(); render();
 </script>
 </body>
 </html>
