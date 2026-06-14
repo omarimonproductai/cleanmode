@@ -103,5 +103,12 @@
       "length": 147,
       "snippet": "{\"id\":\"unauthorized\",\"message\":\"Please authenticate\",\"_links\":{\"help\":{\"href\":\"http://developer.modeanalytics.com/#/introduction/authentication\"}}}"
     }
+  ],
+  "collection_direct_probes": [
+    {
+      "path": "collections/6fef0fc17ee6/reports",
+      "ok": true,
+      "reports_count": 27
+    }
   ]
 }
