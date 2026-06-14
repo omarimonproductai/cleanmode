@@ -119,9 +119,10 @@ function renderCards(rows){
   const pure = rows.filter(r=>r.purity==="pure").length;
   const mixed = rows.filter(r=>r.purity==="mixed").length;
   const dead = rows.filter(r=>r.has_dead_source==="si").length;
+  const sched = rows.filter(r=>r.has_schedule==="si").length;
   document.getElementById("cards").innerHTML = [
     ["Reports", rows.length], ["Queries", queries],
-    ["Pure", pure], ["Mixed", mixed], ["From definition", dead]
+    ["Pure", pure], ["Mixed", mixed], ["From definition", dead], ["Scheduled", sched]
   ].map(([k,v])=>`<div class="card"><b>${v}</b>${k}</div>`).join("");
 }
 
