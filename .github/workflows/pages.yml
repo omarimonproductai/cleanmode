@@ -1,0 +1,48 @@
+name: Deploy HTML to Pages
+
+# Publica output/index.html a GitHub Pages. NOMÉS desplega l'HTML (no els CSV),
+# per minimitzar l'exposició. Cal activar Pages al repo:
+#   Settings -> Pages -> Source: "GitHub Actions".
+# AVÍS: en plans Free el lloc és PÚBLIC a Internet.
+on:
+  push:
+    branches: [claude/festive-cori-w94f1m]
+    paths: [output/index.html]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Evita desplegaments concurrents.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare site (només index.html)
+        run: |
+          mkdir -p _site
+          cp output/index.html _site/index.html
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
