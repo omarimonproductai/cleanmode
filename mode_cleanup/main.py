@@ -24,46 +24,58 @@ def _probe(client: ModeClient, path: str) -> dict:
     return {"path": path, "ok": True, "reports_count": len(reports)}
 
 
+def _safe_dump(client: ModeClient, path: str, out_path: Path) -> tuple[dict | None, Any]:
+    """GET defensiu: bolca el JSON a disc si va bé; mai peta."""
+    try:
+        payload = client.get(path)
+    except ModeAPIError as exc:
+        return None, exc.status_code
+    out_path.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+    return payload, None
+
+
 def _debug_dump(client: ModeClient, output_dir: str) -> None:
-    """Bolca l'estructura crua de /spaces i prova diverses rutes de reports
-    per descobrir quina funciona. No peta mai."""
+    """Bolca l'estructura crua de /spaces i /data_sources i prova rutes de
+    reports. Cada secció és independent: un error no atura la resta."""
     out = Path(output_dir)
     out.mkdir(parents=True, exist_ok=True)
+    probe: dict = {}
 
-    spaces_payload = client.get("spaces?filter=all")
-    (out / "_debug_spaces.json").write_text(
-        json.dumps(spaces_payload, indent=2, ensure_ascii=False),
-        encoding="utf-8",
+    # --- Espais / col·leccions ---
+    spaces_payload, sp_err = _safe_dump(
+        client, "spaces", out / "_debug_spaces.json"
     )
+    if spaces_payload is not None:
+        spaces = spaces_payload.get("_embedded", {}).get("spaces", [])
+        probe["space_count"] = len(spaces)
+        if spaces:
+            sp = spaces[0]
+            token = sp.get("token")
+            probe["first_space_links"] = sp.get("_links", {})
+            candidates = []
+            reports_link = sp.get("_links", {}).get("reports", {}).get("href")
+            if reports_link:
+                candidates.append(reports_link)
+            if token:
+                candidates.append(f"collections/{token}/reports")
+                candidates.append(f"spaces/{token}/reports")
+            probe["report_path_probes"] = [_probe(client, p) for p in candidates]
+    else:
+        probe["spaces_error_status"] = sp_err
 
-    # Pla B: bolca també l'estructura de les fonts de dades (que SÍ veiem) per
-    # veure si exposen enllaços cap a les seves queries/reports.
-    ds_payload = client.get("data_sources")
-    (out / "_debug_data_sources.json").write_text(
-        json.dumps(ds_payload, indent=2, ensure_ascii=False),
-        encoding="utf-8",
+    # --- Pla B: fonts de dades (que SÍ veiem) i els seus enllaços ---
+    ds_payload, ds_err = _safe_dump(
+        client, "data_sources", out / "_debug_data_sources.json"
     )
-    ds_list = ds_payload.get("_embedded", {}).get("data_sources", [])
-    print(f"Debug: /data_sources ha retornat {len(ds_list)} fonts.")
-
-    spaces = spaces_payload.get("_embedded", {}).get("spaces", [])
-    print(f"Debug: /spaces?filter=all ha retornat {len(spaces)} espais.")
-
-    probe: dict = {"space_count": len(spaces), "data_source_count": len(ds_list)}
-    if ds_list:
-        probe["first_data_source_links"] = ds_list[0].get("_links", {})
-    if spaces:
-        sp = spaces[0]
-        token = sp.get("token")
-        probe["first_space_links"] = sp.get("_links", {})
-        candidates = []
-        reports_link = sp.get("_links", {}).get("reports", {}).get("href")
-        if reports_link:
-            candidates.append(reports_link)
-        if token:
-            candidates.append(f"collections/{token}/reports")
-            candidates.append(f"spaces/{token}/reports")
-        probe["report_path_probes"] = [_probe(client, p) for p in candidates]
+    if ds_payload is not None:
+        ds_list = ds_payload.get("_embedded", {}).get("data_sources", [])
+        probe["data_source_count"] = len(ds_list)
+        if ds_list:
+            probe["first_data_source_links"] = ds_list[0].get("_links", {})
+    else:
+        probe["data_sources_error_status"] = ds_err
 
     (out / "_debug_probe.json").write_text(
         json.dumps(probe, indent=2, ensure_ascii=False), encoding="utf-8"
