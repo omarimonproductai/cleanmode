@@ -56,7 +56,17 @@ jobs:
           git add output/
           if git diff --staged --quiet; then
             echo "Sense canvis a output/."
-          else
-            git commit -m "Update MODE inventory output"
-            git push
+            exit 0
           fi
+          git commit -m "Update MODE inventory output"
+          # Reintents amb rebase per evitar carreres amb altres pushos.
+          # En cas de conflicte, guanya la sortida generada pel runner (-X theirs).
+          for i in 1 2 3 4 5; do
+            git fetch origin "${GITHUB_REF_NAME}"
+            git rebase -X theirs "origin/${GITHUB_REF_NAME}" || git rebase --abort
+            if git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              echo "Push OK"; exit 0
+            fi
+            echo "Push rebutjat, reintent $i..."; sleep 3
+          done
+          echo "No s'ha pogut fer push després de diversos intents"; exit 1
